@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Magic — Strategic Synthesis</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm: #F5EDE0;
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --ink: #1C1814;
+    --ink-light: #4A4038;
+    --ink-muted: #7A6E65;
+    --accent: #8B4A3C;
+    --sage: #6B7B6A;
+    --border: rgba(201,169,110,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Decorative background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(ellipse at 20% 20%, rgba(201,169,110,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(139,74,60,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 70px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .header::after {
+    content: '✦';
+    display: block;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cream);
+    padding: 0 16px;
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  .header .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 6vw, 58px);
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header .subtitle {
+    font-size: 14px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+
+  .header .meta {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .header .meta span::before {
+    content: '— ';
+    color: var(--gold);
+  }
+
+  /* Navigation dots */
+  .nav-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+  }
+
+  .nav-dot {
+    padding: 6px 14px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .nav-dot:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 64px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s forwards;
+  }
+
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.2s; }
+  .section:nth-child(3) { animation-delay: 0.3s; }
+  .section:nth-child(4) { animation-delay: 0.4s; }
+  .section:nth-child(5) { animation-delay: 0.5s; }
+  .section:nth-child(6) { animation-delay: 0.6s; }
+  .section:nth-child(7) { animation-delay: 0.7s; }
+  .section:nth-child(8) { animation-delay: 0.8s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 1px;
+    min-width: 24px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.2px;
+  }
+
+  .section-tag {
+    margin-left: auto;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* Cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--warm);
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .card:hover {
+    border-color: var(--gold-light);
+  }
+
+  .card-icon {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.1px;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .card .evolved {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 10px;
+    padding: 2px 6px;
+    border: 1px solid rgba(139,74,60,0.3);
+    border-radius: 2px;
+  }
+
+  /* List items */
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .item {
+    display: flex;
+    gap: 16px;
+    padding: 18px 20px;
+    background: var(--warm);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    transition: border-color 0.2s;
+  }
+
+  .item:hover {
+    border-color: var(--gold-light);
+  }
+
+  .item-marker {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 8px;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .item-content {
+    flex: 1;
+  }
+
+  .item-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 4px;
+  }
+
+  .item-text {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    line-height: 1.65;
+  }
+
+  .item-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Action items - special styling */
+  .action-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .action-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 20px;
+    background: rgba(201,169,110,0.06);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 3px 3px 0;
+  }
+
+  .action-who {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    min-width: 70px;
+    padding-top: 2px;
+  }
+
+  .action-text {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .action-deadline {
+    margin-left: auto;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  /* Insight boxes */
+  .insight {
+    background: linear-gradient(135deg, rgba(201,169,110,0.08) 0%, rgba(139,74,60,0.05) 100%);
+    border: 1px solid var(--gold-light);
+    border-radius: 3px;
+    padding: 28px 32px;
+    margin-top: 16px;
+    position: relative;
+  }
+
+  .insight::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    color: var(--gold);
+    opacity: 0.2;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    line-height: 1;
+  }
+
+  .insight p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  .insight .attribution {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-top: 12px;
+    font-style: normal;
+  }
+
+  /* Framework diagram */
+  .framework {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    margin: 24px 0;
+  }
+
+  .framework-layer {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    padding: 16px 24px;
+    border: 1px solid var(--border);
+    background: var(--warm);
+    position: relative;
+  }
+
+  .framework-layer + .framework-layer {
+    border-top: none;
+  }
+
+  .framework-layer:first-child { border-radius: 3px 3px 0 0; }
+  .framework-layer:last-child { border-radius: 0 0 3px 3px; }
+
+  .framework-layer .layer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .framework-layer .layer-desc {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+
+  .framework-arrow {
+    font-size: 18px;
+    color: var(--gold);
+    opacity: 0.5;
+    padding: 4px 0;
+  }
+
+  /* Two column */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .two-col { grid-template-columns: 1fr; }
+    .page { padding: 40px 24px 80px; }
+  }
+
+  /* Tags cloud */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .tag {
+    padding: 5px 12px;
+    background: var(--warm);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-size: 11px;
+    color: var(--ink-light);
+    letter-spacing: 0.3px;
+  }
+
+  .tag.accent {
+    border-color: rgba(139,74,60,0.3);
+    color: var(--accent);
+    background: rgba(139,74,60,0.04);
+  }
+
+  .tag.gold {
+    border-color: rgba(201,169,110,0.5);
+    color: var(--gold);
+    background: rgba(201,169,110,0.06);
+  }
+
+  /* Divider */
+  .divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 8px;
+    margin: 20px 0;
+    opacity: 0.5;
+  }
+
+  /* Filter buttons */
+  .filter-btn {
+    padding: 6px 14px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,169,110,0.06);
+  }
+
+  /* Interactive action items */
+  .action-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 20px;
+    background: rgba(201,169,110,0.06);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+  }
+
+  .action-item:hover {
+    background: rgba(201,169,110,0.1);
+    border-left-color: var(--gold);
+  }
+
+  .action-item.done {
+    background: rgba(107,123,106,0.06);
+    border-left-color: var(--sage);
+    opacity: 0.7;
+  }
+
+  .action-item.done .action-text {
+    text-decoration: line-through;
+    color: var(--ink-muted);
+  }
+
+  .action-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 11px;
+    color: transparent;
+    background: transparent;
+  }
+
+  .action-item.done .action-checkbox {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: white;
+  }
+
+  .action-who {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    min-width: 70px;
+    padding-top: 2px;
+  }
+
+  .action-who.who-gina { color: var(--sage); }
+  .action-who.who-helena { color: var(--accent); }
+  .action-who.who-hk { color: var(--gold); }
+  .action-who.who-team { color: var(--ink-muted); }
+
+  .action-text {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    line-height: 1.6;
+    flex: 1;
+    transition: all 0.2s;
+  }
+
+  .action-deadline {
+    margin-left: auto;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .action-deadline.urgent { color: var(--accent); font-weight: 500; }
+  .action-deadline.soon { color: var(--gold); }
+
+  /* Footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .footer strong {
+    color: var(--gold);
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="eyebrow">Mind Magic Inc. · Strategic Intelligence</div>
+    <h1>From <em>Explosion of Ideas</em><br>to Actionable Strategy</h1>
+    <p class="subtitle">Synthesis of the MM App/Planning/Tools WhatsApp conversation · March 4–6, 2026</p>
+    <div class="meta">
+      <span>HK · Helena · Gina</span>
+      <span>Ibiza → Global</span>
+      <span>Living Document</span>
+    </div>
+  </header>
+
+  <!-- SECTION 1: VISION -->
+  <div class="section" id="vision">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">The Vision</h2>
+      <span class="section-tag">North Star</span>
+    </div>
+
+    <div class="insight">
+      <p>Mind Magic is not a manifestation program. It is a compassion story disguised as a manifestation story — and that distinction is the brand's greatest strategic asset.</p>
+      <div class="attribution">Gina, via ChatGPT analysis · March 5</div>
+    </div>
+
+    <div class="divider">· · ·</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h4>The Real Thesis</h4>
+        <p>Jim's story progresses from a struggling boy → success → loss → realising compassion was always the true magic. This final realization is the brand's intellectual and moral core — not manifestation.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚗️</div>
+        <h4>Category Creation</h4>
+        <p>By framing Mind Magic as "the neuroscience of attention, intention, and compassion," the brand exits the crowded manifestation/The Secret space and enters a credible, timeless, and scalable category of its own.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌳</div>
+        <h4>Ecosystem Ambition</h4>
+        <p>The long-term vision maps onto the world's most successful intellectual legacy ecosystems — Brené Brown, Dalai Lama, Tony Robbins — with Jim's story positioned as the rare origin that bridges neuroscience, spirituality, and compassion research.</p>
+      </div>
+    </div>
+
+    <div class="divider">· · ·</div>
+
+    <div class="framework">
+      <div class="framework-layer">
+        <div class="layer-name">IDEAS</div>
+        <div class="layer-desc">Compassion · Attention · Intention · Neuroscience (Jim's CCARE research)</div>
+      </div>
+      <div class="framework-arrow">↓</div>
+      <div class="framework-layer">
+        <div class="layer-name">STORY</div>
+        <div class="layer-desc">Into the Magic Shop · The Ruth arc · The cinematic origin myth</div>
+      </div>
+      <div class="framework-arrow">↓</div>
+      <div class="framework-layer">
+        <div class="layer-name">PROGRAMS</div>
+        <div class="layer-desc">Mind Magic cohorts · TTT · App · Corporate · Education</div>
+      </div>
+      <div class="framework-arrow">↓</div>
+      <div class="framework-layer">
+        <div class="layer-name">INSTITUTION</div>
+        <div class="layer-desc">The entity being shaped now — Mind Magic Inc. (structure TBD)</div>
+      </div>
+    </div>
+    <p style="text-align:center; font-size:11px; color:var(--ink-muted); margin-top:8px;">You already have the first three layers forming naturally. The institution is what you're building now.</p>
+  </div>
+
+  <!-- SECTION 2: BRAND DEFINITION -->
+  <div class="section" id="brand">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Brand Definitions</h2>
+      <span class="section-tag">Identity & Positioning</span>
+    </div>
+
+    <div class="items">
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">Core Differentiator</div>
+          <div class="item-text"><strong>Compassion is the bedrock.</strong> Not always the most glamorous sales hook, but the key distinction from other manifestation approaches. Helena: "It's a sense of coherence between the brain and the heart — when we are connected to how we feel and how our decisions impact others, we make heart-based decisions. And are happier as a result."</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">Second Core Differentiator</div>
+          <div class="item-text"><strong>Human agency.</strong> Jim's second point: the universe doesn't give you things passively — we have the agency and power to make choices and act in alignment with what matters. We are the universe. This separates MM from passive manifestation.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">Narrative Architecture</div>
+          <div class="item-text"><strong>Ruth is the true emotional center.</strong> While Jim is the seeker, Ruth is the catalytic, mythic character. She teaches, disappears, and yet shapes everything. Centering the brand on Ruth's teachings (not Jim's success) repositions Mind Magic as a timeless mentorship and compassion story — not a success story.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">Scientific Grounding</div>
+          <div class="item-text"><strong>Credible, not woo.</strong> The neuroscience foundation (CCARE, RAS, brain coherence) is what places MM in a different tier from The Secret and similar programs. Gina notes Jim may have had to fight his publisher to include "compassion" in the title. The science is the moat.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">Movement Identity (nascent)</div>
+          <div class="item-text"><strong>"I practice Mind Magic"</strong> vs. "I took a course." The goal is identity-level belonging, not transactional consumption. Community, shared language, shared practices, shared symbols — modelled on movements like BTS ARMY, CrossFit, AA, and The Artist's Way. <span class="evolved">Evolving idea</span></div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">IP Architecture (proposed)</div>
+          <div class="item-text">Layered trademark structure suggested: <strong>Mind Magic</strong> (umbrella) → <strong>Mind Magic Method</strong> → <strong>Mind Magic Institute</strong> → <strong>Mind Magic Certification</strong>. Multiple defensible marks rather than one vulnerable phrase. Formal clearance search estimated at £1–3k recommended before entity formation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: STRATEGIC NARRATIVE -->
+  <div class="section" id="narrative">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Strategic Narrative</h2>
+      <span class="section-tag">Storytelling & Media</span>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎬</div>
+        <h4>The Film / Documentary Angle</h4>
+        <p>Jim's story has a three-act cinematic arc. The magic shop functions as a mythic doorway — structurally similar to Good Will Hunting and Karate Kid. Ruth as mentor figure is universal and emotionally powerful. The doco is already being discussed.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💜</div>
+        <h4>The BTS Connection</h4>
+        <p><em>Into the Magic Shop</em> was reportedly the inspiration behind K-pop group BTS. Gina's contact Steph (Apple Music) surfaced this. This unlocks the ARMY fanbase — one of the most organised, mobilised communities in the world — as a potential instant global audience and brand awareness lever.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <h4>Taylor Swift Parallel</h4>
+        <p><em>Mastermind</em> maps onto the intentional manifestation framework; <em>Long Live</em> maps onto collective belief and shared purpose — both could anchor experiential moments in the programme. Gina proposes using "Long Live" as a closing reflection in Ibiza cohorts.</p>
+      </div>
+    </div>
+
+    <div class="insight" style="margin-top:20px;">
+      <p>The most powerful asset in this ecosystem may not be Mind Magic, the program, or Jim's research. It may be Ruth and the magic shop story itself. Because it's mythic. And mythic stories travel across films, schools, children's books, documentaries, and education systems.</p>
+      <div class="attribution">Gina, ChatGPT synthesis · March 5</div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: MASHA / LEGACY RELATIONSHIP -->
+  <div class="section" id="masha">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">The Masha Relationship</h2>
+      <span class="section-tag">Legacy Stewardship</span>
+    </div>
+
+    <p style="font-size:13.5px; color:var(--ink-light); margin-bottom:20px; line-height:1.7;">Gina did a deep dive into how to navigate a relationship with a legacy holder. Four quiet questions Masha is likely holding:</p>
+
+    <div class="two-col">
+      <div class="card">
+        <h4>"Do they really understand Jim?"</h4>
+        <p>Signal: reference Jim's values and intentions, not just the programme content. Demonstrate you understand the depth of the compassion work, his scientific credibility, and the human story with Ruth.</p>
+      </div>
+      <div class="card">
+        <h4>"Will they protect his legacy?"</h4>
+        <p>Signal: restraint, scientific grounding, careful tone. Show you're conscious of keeping the work credible and not diluted into noisy manifestation territory.</p>
+      </div>
+      <div class="card">
+        <h4>"Are they building with me or around me?"</h4>
+        <p>Signal: regular updates, no surprises, transparency. HK's practice of sending progress updates is exactly right. "You're part of the journey."</p>
+      </div>
+      <div class="card">
+        <h4>"Can they actually make this happen?"</h4>
+        <p>Signal: structured thinking, competent pacing, progress milestones. Even mentioning you're taking time to get the business plan right signals seriousness over excitement.</p>
+      </div>
+    </div>
+
+    <div class="insight" style="margin-top:20px;">
+      <p>You're holding two energies at once — reverence for Jim and ambition for the future of the work. Most people lean too far one way. Think of tomorrow not as "presenting to Masha" but as three people exploring how Jim's work wants to grow.</p>
+      <div class="attribution">Gina's ChatGPT session · March 5</div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: BUSINESS MODEL & TENTACLES -->
+  <div class="section" id="expansion">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Tentacles for Expansion</h2>
+      <span class="section-tag">Revenue & Scale</span>
+    </div>
+
+    <p style="font-size:13.5px; color:var(--ink-light); margin-bottom:20px; line-height:1.7;">Three growth paths identified — each valid, each leads somewhere different. The opportunity is that Jim's story allows all three to coexist:</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌿</div>
+        <h4>Path 1 — The Programme Model</h4>
+        <p>Cohorts, retreats, leadership programmes. Tight community. Thousands of participants. Comparable: Tara Brach, Jack Kornfield. Authentic but founder-dependent.</p>
+        <span class="evolved">Currently Active</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📡</div>
+        <h4>Path 2 — Thought-Leader Brand</h4>
+        <p>Media, books, film, podcasts, corporate training. Millions reached. Comparable: Brené Brown, Simon Sinek. Huge cultural influence, personality-driven scale.</p>
+        <span class="evolved">In Development</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <h4>Path 3 — Institutional Legacy</h4>
+        <p>Foundation or Institute. Research, fellowships, global education systems. Comparable: Dalai Lama, Mind & Life Institute. Decades-long impact, protected legacy.</p>
+        <span class="evolved">Horizon Vision</span>
+      </div>
+    </div>
+
+    <div class="divider">· · ·</div>
+
+    <div class="items" style="margin-top:8px;">
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">App — MVP Target</div>
+          <div class="item-text"><strong>April deliverable.</strong> Gina's priority #1. Define what MVP looks like — prototype to be showcased in Masha preso. "Never Leave" product design principles (gamification, personalised MM agent, push notifications, vision board uploads) remain the north star.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">Train the Trainer</div>
+          <div class="item-text">Revised TTT plan needed: coaches and therapists only, live online delivery, same pricing tiers (Foundation £2,500 / Professional £3,500 / Executive £5,000).</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">BTS / Global Audience</div>
+          <div class="item-text"><strong>Potentially explosive.</strong> The BTS connection (ARMY community) + Apple Music relationship (Ole/Steph) creates a route to instant global audience and potential early brand sponsor/partnership conversations. Needs more exploration post-Masha lock-in.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">CCARE Partnership</div>
+          <div class="item-text">Gina proposes getting introductions to CCARE faculty and getting under the hood of their course. Sequencing: after things are locked in with Masha. Adds academic credibility and research grounding.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker"></div>
+        <div class="item-content">
+          <div class="item-label">Children's & Schools</div>
+          <div class="item-text">The mythic "magic shop" setting and Ruth's teaching style are naturally adapted to children's books, school programmes, and youth education — referenced as a long-term expansion lane for the ecosystem.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: INVESTOR / BUSINESS STRUCTURE -->
+  <div class="section" id="structure">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Business Plan & Investor Framework</h2>
+      <span class="section-tag">Masha Preso Priority</span>
+    </div>
+
+    <p style="font-size:13.5px; color:var(--ink-light); margin-bottom:20px; line-height:1.7;">Gina's outlined the required bones for the Masha presentation. This is the forcing function for investor-grade materials:</p>
+
+    <div class="items">
+      <div class="item">
+        <div class="item-marker" style="background:var(--accent);"></div>
+        <div class="item-content">
+          <div class="item-label">Vision</div>
+          <div class="item-text">Re-state the vision for Mind Magic Inc. — grounded in compassion neuroscience, not manifestation.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker" style="background:var(--accent);"></div>
+        <div class="item-content">
+          <div class="item-label">WHY</div>
+          <div class="item-text">Macro business opportunity (TAM), personal motivation to bring this work to the world, and a clear definition of the problem being solved.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker" style="background:var(--accent);"></div>
+        <div class="item-content">
+          <div class="item-label">HOW</div>
+          <div class="item-text">The app, online cohorts, Train the Trainer, and adaptations/licensing — the four delivery channels.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker" style="background:var(--accent);"></div>
+        <div class="item-content">
+          <div class="item-label">Financial Model</div>
+          <div class="item-text">Revenue projections across all four streams. % splits and royalty/licensing structure with Doty estate still TBD — needs to be addressed before full investor presentation.</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker" style="background:var(--accent);"></div>
+        <div class="item-content">
+          <div class="item-label">Entity Structure</div>
+          <div class="item-text">IP ownership, equity, revenue share between Helena/Gina/HK/Seb/Masha still unresolved. Open strategic question: should the top-level entity be Mind Magic Inc. or something like "The Doty Institute" with Mind Magic as flagship programme?</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-marker" style="background:var(--accent);"></div>
+        <div class="item-content">
+          <div class="item-label">Prototype Showcase</div>
+          <div class="item-text">App MVP and/or workbook to be demonstrated as proof of execution capability.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight" style="margin-top:20px;">
+      <p>Re: Masha's deck — given it's effectively "hers," we should note this is the vision she's had so far. Our involvement with any of that still TBD, but likely quite limited.</p>
+      <div class="attribution">Gina · March 6</div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: OPERATING PRINCIPLES -->
+  <div class="section" id="principles">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2 class="section-title">Operating Principles</h2>
+      <span class="section-tag">How We Work</span>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔑</div>
+        <h4>Shared Operating Document</h4>
+        <p>The strategy dashboard is the single place for all decisions — vision, 13 verticals, priorities, roadmap. Goal is to replace scattered voice memos and notebooks with one living document updated together.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌊</div>
+        <h4>Organic Over Engineered</h4>
+        <p>The progression from cohorts → storytelling → institution should feel natural rather than designed. This builds Masha's trust and is how the most enduring movements actually grow.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h4>Brand Guide Needed</h4>
+        <p>HK called this out explicitly: "We need to create a brand guide for Mind Magic — even if it changes, good to uniform all assets for now." Informed by trademark architecture and the layered brand structure proposed by Gina.</p>
+        <span class="evolved">Immediate Priority</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">📼</div>
+        <h4>Ibiza Cohort as Gold Standard</h4>
+        <p>Helena identifies the Ibiza cohort as her best to date — "3 done and 3 to follow." This should be the foundation for programme recordings and curriculum refinement. HK has requested recordings.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: ACTION ITEMS -->
+  <div class="section" id="actions">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2 class="section-title">Action Items</h2>
+      <span class="section-tag">Committed & Open</span>
+    </div>
+
+    <!-- Progress bar -->
+    <div style="margin-bottom:28px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-muted);">Progress</span>
+        <span id="progress-label" style="font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--gold);">0 of 10 done</span>
+      </div>
+      <div style="height:3px; background:var(--border); border-radius:2px; overflow:hidden;">
+        <div id="progress-bar" style="height:100%; width:0%; background:linear-gradient(90deg, var(--gold), var(--accent)); border-radius:2px; transition:width 0.4s ease;"></div>
+      </div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div style="display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap;">
+      <button class="filter-btn active" onclick="filterActions('all')">All</button>
+      <button class="filter-btn" onclick="filterActions('Gina')" style="--btn-color:var(--sage);">Gina</button>
+      <button class="filter-btn" onclick="filterActions('Helena')" style="--btn-color:var(--accent);">Helena</button>
+      <button class="filter-btn" onclick="filterActions('HK')" style="--btn-color:var(--gold);">HK</button>
+      <button class="filter-btn" onclick="filterActions('Team')">Team</button>
+      <button class="filter-btn" onclick="filterActions('done')">✓ Done</button>
+    </div>
+
+    <div id="checklist" class="action-items"></div>
+  </div>
+
+  <style>
+    .filter-btn {
+      padding: 6px 14px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(201,169,110,0.08); }
+    .filter-btn.done-active { border-color: var(--sage); color: var(--sage); background: rgba(107,123,106,0.08); }
+
+    .check-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      background: rgba(201,169,110,0.04);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 3px 3px 0;
+      margin-bottom: 10px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .check-row:hover { background: rgba(201,169,110,0.09); border-color: var(--gold-light); }
+    .check-row.done {
+      background: rgba(107,123,106,0.05);
+      border-left-color: var(--sage);
+      opacity: 0.6;
+    }
+    .check-row.hidden { display: none; }
+
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--gold);
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .check-row.done .check-box {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+    .check-tick {
+      width: 5px;
+      height: 9px;
+      border-right: 2px solid white;
+      border-bottom: 2px solid white;
+      transform: rotate(45deg) translate(-1px, -1px);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+    .check-row.done .check-tick { opacity: 1; }
+
+    .check-body { flex: 1; min-width: 0; }
+
+    .check-who {
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .who-gina   { color: var(--sage); }
+    .who-helena { color: var(--accent); }
+    .who-hk     { color: var(--gold); }
+    .who-team   { color: var(--ink-muted); }
+
+    .check-text {
+      font-size: 13.5px;
+      color: var(--ink-light);
+      line-height: 1.6;
+      transition: all 0.2s;
+    }
+    .check-row.done .check-text {
+      text-decoration: line-through;
+      color: var(--ink-muted);
+    }
+
+    .check-deadline {
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      white-space: nowrap;
+      padding-top: 3px;
+      flex-shrink: 0;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .deadline-urgent { color: var(--accent); }
+  </style>
+
+  <script>
+    const ACTIONS = [
+      { id:1,  who:'Gina',   cls:'gina',   deadline:'By Monday',    urgent:true,  text:'Get onboarded with Claude Pro and have the MM workspace set up and ready to use.' },
+      { id:2,  who:'Gina',   cls:'gina',   deadline:'By Monday',    urgent:true,  text:'Compile detailed prompt and output for proposed entity/structure scenarios with Masha / Doty family — including % splits, royalties, and IP architecture options.' },
+      { id:3,  who:'Gina',   cls:'gina',   deadline:'By Monday',    urgent:true,  text:'Follow up with Masha to schedule a casual Sunday call (with Helena) and a formal presentation meeting for Thursday, pending Sam and Seb availabilities.' },
+      { id:4,  who:'Gina',   cls:'gina',   deadline:'This week',    urgent:true,  text:'Send Masha\'s deck to HK — noting it represents Masha\'s vision to date, MM team involvement limited/TBD.' },
+      { id:5,  who:'Helena', cls:'helena', deadline:'No rush',      urgent:false, text:'Send recordings from the full Ibiza 6-week cohort to HK as the basis for curriculum and content work. First 3 sessions done, 3 to follow.' },
+      { id:6,  who:'HK',     cls:'hk',     deadline:'Next up',      urgent:true,  text:'Create a brand guide for Mind Magic v1 — even a working draft — to unify all assets. Informed by the layered trademark architecture (Mind Magic / Method / Institute / Certification).' },
+      { id:7,  who:'Team',   cls:'team',   deadline:'This week',    urgent:true,  text:'Define App MVP: what is the deliverable by April? What does the prototype need to demonstrate for the Masha presentation? Align on scope before building.' },
+      { id:8,  who:'Team',   cls:'team',   deadline:'Before entity', urgent:true, text:'Trademark clearance search across USPTO, EUIPO, WIPO, domain registrations, and common law usage before entity formation. Estimated cost: £1–3k via IP lawyer.' },
+      { id:9,  who:'Team',   cls:'team',   deadline:'Post-Masha',   urgent:false, text:'CCARE introductions — explore connections to Stanford CCARE faculty and possibly audit their course. Sequence after Masha relationship is formalised.' },
+      { id:10, who:'Team',   cls:'team',   deadline:'Explore',      urgent:false, text:'BTS / ARMY angle — explore with Steph (Apple Music / Ole connection) how the K-pop connection could be leveraged for global audience, brand sponsorship, or early publicity.' },
+    ];
+
+    const doneSet = new Set();
+    let activeFilter = 'all';
+
+    function render() {
+      const container = document.getElementById('checklist');
+      container.innerHTML = '';
+      ACTIONS.forEach(a => {
+        const done = doneSet.has(a.id);
+        const row = document.createElement('div');
+        row.className = 'check-row' + (done ? ' done' : '');
+        row.innerHTML = `
+          <div class="check-box"><div class="check-tick"></div></div>
+          <div class="check-body">
+            <div class="check-who who-${a.cls}">${a.who}</div>
+            <div class="check-text">${a.text}</div>
+          </div>
+          <div class="check-deadline ${a.urgent && !done ? 'deadline-urgent' : ''}">${a.deadline}</div>
+        `;
+        row.addEventListener('click', () => { toggle(a.id); });
+        container.appendChild(row);
+      });
+      applyFilter(activeFilter);
+      updateProgress();
+    }
+
+    function toggle(id) {
+      doneSet.has(id) ? doneSet.delete(id) : doneSet.add(id);
+      render();
+    }
+
+    function applyFilter(f) {
+      activeFilter = f;
+      document.querySelectorAll('.check-row').forEach((row, i) => {
+        const a = ACTIONS[i];
+        const done = doneSet.has(a.id);
+        let show = f === 'all' || (f === 'done' && done) || (f !== 'done' && a.who === f);
+        row.classList.toggle('hidden', !show);
+      });
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        const label = btn.textContent.trim();
+        const isActive =
+          (f === 'all' && label === 'All') ||
+          (f === 'done' && label === '✓ Done') ||
+          (f !== 'all' && f !== 'done' && label === f);
+        btn.classList.toggle('active', isActive && f !== 'done');
+        btn.classList.toggle('done-active', isActive && f === 'done');
+      });
+    }
+
+    function filterActions(f) { activeFilter = f; render(); }
+
+    function updateProgress() {
+      const total = ACTIONS.length;
+      const done = doneSet.size;
+      const pct = Math.round(done / total * 100);
+      document.getElementById('progress-bar').style.width = pct + '%';
+      document.getElementById('progress-label').textContent = done + ' of ' + total + ' done';
+    }
+
+    render();
+  </script>
+
+  <!-- Tags -->
+  <div style="margin-top:48px; padding:24px; background:var(--warm); border:1px solid var(--border); border-radius:3px;">
+    <p style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--ink-muted); margin-bottom:12px;">Key Concepts in Play</p>
+    <div class="tags">
+      <span class="tag gold">Compassion as core</span>
+      <span class="tag gold">Category creation</span>
+      <span class="tag gold">Neuroscience of intention</span>
+      <span class="tag accent">Trademark architecture</span>
+      <span class="tag accent">Entity structure TBD</span>
+      <span class="tag accent">IP clearance needed</span>
+      <span class="tag">Masha relationship</span>
+      <span class="tag">App MVP April</span>
+      <span class="tag">Ibiza cohort gold standard</span>
+      <span class="tag">BTS / ARMY connection</span>
+      <span class="tag">Ruth as mythic figure</span>
+      <span class="tag">Trunk & branches model</span>
+      <span class="tag">Brand guide needed</span>
+      <span class="tag">CCARE partnership</span>
+      <span class="tag">Train the Trainer</span>
+      <span class="tag">Documentary / film</span>
+      <span class="tag">Never Leave design</span>
+      <span class="tag">Movement not course</span>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Mind Magic Inc. · Strategic Synthesis · March 2026</p>
+    <p style="margin-top:8px;">Synthesised from WhatsApp chat: <strong>HK · Helena · Gina</strong> · Compiled by Claude</p>
+  </footer>
+
+</div>
+</body>
+</html>

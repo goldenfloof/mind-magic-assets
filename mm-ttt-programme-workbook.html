@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Magic — Certified Trainer Programme & Workbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral:    #E8735A;
+  --peach:    #F2A07B;
+  --amber:    #E8B86D;
+  --lavender: #B8A4C9;
+  --rose:     #D4849A;
+  --sky:      #A8C4D4;
+  --sage:     #9AB5A0;
+  --warm-white: #FDF8F4;
+  --off-white:  #F7F1EB;
+  --soft-grey:  #EDE7E0;
+  --ink:        #2A1F1A;
+  --ink-light:  #5A4A42;
+  --ink-faint:  #8A7A72;
+  --border:     rgba(180,150,130,0.18);
+  --shadow:     0 4px 24px rgba(100,60,40,0.08);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--off-white);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #F2C27A 0%, #EFA07A 18%, #E8735A 36%, #C97090 54%, #B09AC8 72%, #9AB8D8 88%, #A8C8E0 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 40px; position: relative; overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 900px; height: 900px; border-radius: 50%;
+  border: 120px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.cover::after {
+  content: '';
+  position: absolute; bottom: -150px; left: -150px;
+  width: 600px; height: 600px; border-radius: 50%;
+  border: 80px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.cover-inner { max-width: 680px; position: relative; z-index: 1; animation: fadeUp 1s ease forwards; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+.cover-eyebrow {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); font-weight: 600; margin-bottom: 28px;
+}
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 900; color: #fff; line-height: 1.0;
+  text-shadow: 0 2px 30px rgba(80,30,20,0.22); margin-bottom: 10px;
+}
+.cover-title em { font-style: italic; color: rgba(255,255,255,0.8); }
+.cover-sub {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(18px, 2.5vw, 26px); color: rgba(255,255,255,0.78);
+  margin-bottom: 36px; font-weight: 400; line-height: 1.4;
+}
+.cover-desc {
+  font-size: 15px; color: rgba(255,255,255,0.68); font-weight: 300;
+  line-height: 1.75; max-width: 520px; margin: 0 auto 48px;
+}
+.cover-chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 52px; }
+.cover-chip {
+  background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+  padding: 8px 20px; font-size: 12px; color: #fff; font-weight: 500; letter-spacing: 0.3px;
+}
+.cover-divider {
+  width: 48px; height: 2px; background: rgba(255,255,255,0.4);
+  margin: 0 auto 40px; border-radius: 2px;
+}
+.cover-author {
+  font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 1px; text-transform: uppercase; font-weight: 400;
+}
+.cover-enter {
+  margin-top: 52px; display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.22); border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 999px; padding: 12px 28px; font-size: 12px; font-weight: 600;
+  color: #fff; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+  transition: all 0.2s;
+}
+.cover-enter:hover { background: rgba(255,255,255,0.32); transform: translateY(-2px); }
+
+/* ── NAV ── */
+nav {
+  background: #fff; border-bottom: 1px solid var(--border);
+  padding: 0 60px; display: flex; gap: 0; overflow-x: auto;
+  scrollbar-width: none; position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 12px rgba(100,60,40,0.06);
+}
+nav::-webkit-scrollbar { display: none; }
+.tab {
+  padding: 16px 22px; font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; font-weight: 600; cursor: pointer;
+  color: var(--ink-faint); border-bottom: 3px solid transparent;
+  white-space: nowrap; transition: all 0.2s; position: relative; bottom: -1px;
+}
+.tab:hover { color: var(--coral); }
+.tab.active { color: var(--coral); border-bottom-color: var(--coral); }
+
+/* ── MAIN ── */
+main { max-width: 1100px; margin: 0 auto; padding: 48px 60px 100px; }
+@media(max-width:900px) {
+  nav { padding: 0 16px; }
+  main { padding: 32px 20px 60px; }
+  .g2, .g3 { grid-template-columns: 1fr !important; }
+}
+
+.sec { display: none; animation: fadeUp 0.35s ease; }
+.sec.active { display: block; }
+
+/* ── SECTION HEADS ── */
+.section-head { margin-bottom: 36px; }
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; color: var(--ink); margin-bottom: 5px;
+}
+.section-head p { font-size: 13px; color: var(--ink-faint); font-weight: 300; }
+
+/* ── GRIDS ── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 24px; }
+
+/* ── CARD ── */
+.card {
+  background: #fff; border-radius: 14px; padding: 28px 30px;
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.card-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 10px;
+}
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 10px;
+}
+.card p { font-size: 13.5px; line-height: 1.75; color: var(--ink-light); font-weight: 300; }
+
+/* ── INSIGHT ── */
+.insight {
+  background: linear-gradient(135deg, #FDF0E8 0%, #F5EAF5 50%, #EAEeF8 100%);
+  border: 1px solid rgba(200,160,150,0.2); border-radius: 14px;
+  padding: 32px 36px; margin-bottom: 28px; position: relative; overflow: hidden;
+}
+.insight::before {
+  content: '"'; font-family: 'Playfair Display', serif; font-size: 200px;
+  color: rgba(232,115,90,0.07); position: absolute; top: -30px; left: 10px;
+  line-height: 1; pointer-events: none;
+}
+.insight-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 700; color: var(--coral); margin-bottom: 10px; position: relative; z-index:1;
+}
+.insight-text {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(16px, 2vw, 22px); color: var(--ink); line-height: 1.55;
+  position: relative; z-index: 1; margin-bottom: 12px;
+}
+.insight-body {
+  font-size: 13.5px; color: var(--ink-light); line-height: 1.75;
+  font-weight: 300; position: relative; z-index: 1;
+}
+
+/* ── STAT PILLS ── */
+.stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 28px; }
+@media(max-width:700px) { .stat-grid { grid-template-columns: 1fr 1fr; } }
+.stat-pill {
+  background: #fff; border-radius: 12px; padding: 20px;
+  border: 1px solid var(--border); text-align: center;
+}
+.stat-n {
+  font-family: 'Playfair Display', serif; font-size: 32px;
+  font-weight: 900; line-height: 1; margin-bottom: 6px;
+}
+.stat-l { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); }
+
+/* ── PHASE BLOCKS ── */
+.phase {
+  background: #fff; border-radius: 16px; margin-bottom: 20px;
+  border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden;
+}
+.phase-header {
+  padding: 20px 28px; display: flex; align-items: center; gap: 18px;
+  border-bottom: 1px solid var(--border); cursor: pointer;
+  transition: background 0.2s;
+}
+.phase-header:hover { background: var(--warm-white); }
+.phase-num {
+  font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900;
+  color: var(--soft-grey); line-height: 1; min-width: 48px;
+}
+.phase-meta { flex: 1; }
+.phase-tag {
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 4px;
+}
+.phase-title {
+  font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--ink);
+}
+.phase-timing {
+  font-size: 12px; color: var(--ink-faint); margin-top: 2px;
+}
+.phase-toggle { font-size: 18px; color: var(--ink-faint); transition: transform 0.25s; }
+.phase-toggle.open { transform: rotate(180deg); }
+.phase-body { padding: 24px 28px; display: none; }
+.phase-body.open { display: block; animation: fadeUp 0.25s ease; }
+
+/* ── MODULE ITEMS ── */
+.module {
+  padding: 16px 0; border-bottom: 1px solid var(--soft-grey);
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.module:last-child { border-bottom: none; padding-bottom: 0; }
+.mod-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.mod-content h5 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+.mod-content p { font-size: 13px; color: var(--ink-faint); line-height: 1.6; font-weight: 300; }
+.mod-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.mod-tag {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
+  padding: 3px 10px; border-radius: 999px;
+}
+
+/* ── WORKBOOK PAGES ── */
+.wb-page {
+  background: #fff; border-radius: 16px; padding: 36px 40px;
+  border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 28px;
+  position: relative; overflow: hidden;
+}
+.wb-page::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; border-radius: 4px 0 0 4px;
+}
+.wb-page-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 6px;
+}
+.wb-page h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 8px;
+}
+.wb-page .purpose {
+  font-size: 13px; color: var(--ink-faint); font-style: italic;
+  margin-bottom: 24px; font-weight: 300; line-height: 1.6; padding-bottom: 16px;
+  border-bottom: 1px solid var(--soft-grey);
+}
+.wb-prompt {
+  margin-bottom: 16px;
+}
+.wb-prompt label {
+  font-size: 12px; font-weight: 600; color: var(--ink-light); letter-spacing: 0.5px;
+  display: block; margin-bottom: 6px;
+}
+.wb-prompt .lines {
+  border-bottom: 1px solid var(--soft-grey);
+  height: 36px; margin-bottom: 4px; width: 100%;
+  position: relative;
+}
+.wb-prompt .lines-lg { height: 80px; }
+.wb-prompt .lines-xl { height: 120px; }
+
+.wb-prompt .hint {
+  font-size: 11px; color: var(--ink-faint); font-weight: 300; font-style: italic;
+}
+
+/* Reflection boxes */
+.reflect-box {
+  background: var(--warm-white); border-radius: 10px; padding: 16px 20px;
+  border: 1px solid var(--soft-grey); margin-bottom: 16px;
+}
+.reflect-box h6 {
+  font-size: 12px; font-weight: 600; color: var(--ink-light); margin-bottom: 8px; letter-spacing: 0.3px;
+}
+.reflect-lines { display: flex; flex-direction: column; gap: 12px; }
+.reflect-line {
+  border-bottom: 1px solid var(--soft-grey); height: 28px;
+}
+
+/* Checkboxes */
+.checklist { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 14px; background: var(--warm-white);
+  border-radius: 8px; border: 1px solid var(--soft-grey); cursor: pointer;
+  transition: all 0.15s;
+}
+.check-item:hover { border-color: rgba(232,115,90,0.3); }
+.check-item.checked { background: rgba(232,115,90,0.06); border-color: rgba(232,115,90,0.3); }
+.check-box {
+  width: 18px; height: 18px; border: 2px solid var(--soft-grey); border-radius: 4px;
+  flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.check-item.checked .check-box { background: var(--coral); border-color: var(--coral); }
+.check-mark { color: #fff; font-size: 11px; display: none; }
+.check-item.checked .check-mark { display: block; }
+.check-text { font-size: 13px; color: var(--ink-light); line-height: 1.5; font-weight: 300; }
+
+/* Rating scale */
+.rating-scale {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;
+}
+.rating-label { font-size: 12px; color: var(--ink-faint); font-weight: 300; }
+.rating-nums { display: flex; gap: 6px; }
+.rating-num {
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--soft-grey);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 500; color: var(--ink-faint); cursor: pointer;
+  transition: all 0.15s; background: var(--warm-white);
+}
+.rating-num:hover, .rating-num.selected { background: var(--coral); border-color: var(--coral); color: #fff; }
+
+/* ── COMPETENCY FRAMEWORK ── */
+.competency {
+  background: #fff; border-radius: 14px; padding: 24px 28px;
+  border: 1px solid var(--border); margin-bottom: 16px;
+}
+.comp-row-fw { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 10px; }
+.comp-dot-fw { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.comp-text-fw { font-size: 13.5px; color: var(--ink-light); line-height: 1.65; font-weight: 300; }
+.comp-text-fw strong { color: var(--ink); font-weight: 600; }
+
+/* ── PRICING ── */
+.pricing-tier {
+  border-radius: 16px; padding: 28px 32px; margin-bottom: 16px;
+  border: 2px solid;
+}
+.price-badge {
+  font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; line-height: 1;
+  margin-bottom: 4px;
+}
+.price-desc { font-size: 13px; color: var(--ink-faint); margin-bottom: 18px; font-weight: 300; }
+.price-includes { display: flex; flex-direction: column; gap: 8px; }
+.price-include {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13px; color: var(--ink-light); line-height: 1.5;
+}
+.price-check { color: var(--sage); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── TIMELINE ── */
+.tl { position: relative; padding-left: 36px; }
+.tl::before {
+  content: ''; position: absolute; left: 12px; top: 10px; bottom: 10px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--coral), var(--lavender));
+  border-radius: 2px;
+}
+.tl-item { position: relative; margin-bottom: 28px; }
+.tl-dot {
+  position: absolute; left: -28px; top: 5px;
+  width: 16px; height: 16px; border-radius: 50%; border: 3px solid #fff;
+  box-shadow: 0 0 0 2px;
+}
+.tl-tag {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 5px;
+}
+.tl-item h4 {
+  font-family: 'Playfair Display', serif; font-size: 17px;
+  font-weight: 700; color: var(--ink); margin-bottom: 5px;
+}
+.tl-item p { font-size: 13px; color: var(--ink-faint); line-height: 1.65; font-weight: 300; }
+
+/* ── FAQ ── */
+.faq-item {
+  border-radius: 12px; background: #fff; margin-bottom: 12px;
+  border: 1px solid var(--border); overflow: hidden;
+}
+.faq-q {
+  padding: 16px 20px; font-size: 14px; font-weight: 500; color: var(--ink);
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.15s;
+}
+.faq-q:hover { background: var(--warm-white); }
+.faq-a {
+  padding: 0 20px 16px; font-size: 13.5px; color: var(--ink-light);
+  line-height: 1.75; font-weight: 300; display: none;
+}
+.faq-a.open { display: block; animation: fadeUp 0.2s ease; }
+.faq-icon { font-size: 18px; color: var(--coral); transition: transform 0.2s; flex-shrink: 0; margin-left: 12px; }
+.faq-icon.open { transform: rotate(45deg); }
+
+/* ── FACILITATOR GUIDE ── */
+.guide-block {
+  background: #fff; border-radius: 14px; padding: 26px 30px;
+  border: 1px solid var(--border); margin-bottom: 16px;
+}
+.guide-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 8px;
+}
+.guide-block h4 {
+  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700;
+  color: var(--ink); margin-bottom: 12px;
+}
+.guide-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.04);
+  font-size: 13px; color: var(--ink-light); line-height: 1.6; font-weight: 300;
+}
+.guide-item:last-child { border-bottom: none; padding-bottom: 0; }
+.guide-bullet { color: var(--coral); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+/* Banner alert */
+.alert {
+  border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;
+  display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.6;
+}
+.alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+</style>
+</head>
+<body>
+
+<!-- ── COVER ── -->
+<div class="cover" id="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Mind Magic Inc. — Professional Development</div>
+    <div class="cover-title">Certified<br><em>Trainer</em><br>Programme</div>
+    <div class="cover-sub">Train the Trainer Workbook & Facilitation Guide</div>
+    <div class="cover-divider"></div>
+    <div class="cover-desc">An eight-week certification for coaches and therapists who have completed the MM Core Programme and are ready to bring the methodology to their own clients and communities.</div>
+    <div class="cover-chips">
+      <span class="cover-chip">8 Weeks</span>
+      <span class="cover-chip">3 Phases</span>
+      <span class="cover-chip">Cohorts of 10</span>
+      <span class="cover-chip">Stanford-Backed Science</span>
+      <span class="cover-chip">Assessed Practicum</span>
+    </div>
+    <div class="cover-author">Dr James Doty · Mind Magic Inc. · 2026</div>
+    <div class="cover-enter" onclick="enterProgramme()">Enter Programme ↓</div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="mainnav" style="display:none;">
+  <div class="tab active" onclick="show('overview',this)">Overview</div>
+  <div class="tab" onclick="show('programme',this)">Programme</div>
+  <div class="tab" onclick="show('workbook',this)">Workbook</div>
+  <div class="tab" onclick="show('facilitation',this)">Facilitation Guide</div>
+  <div class="tab" onclick="show('competency',this)">Competency Framework</div>
+  <div class="tab" onclick="show('pricing',this)">Pricing & Licensing</div>
+  <div class="tab" onclick="show('faq',this)">FAQs</div>
+</nav>
+
+<main id="mainbody" style="display:none;">
+
+<!-- ═══════════════════════════════════════════════
+     OVERVIEW
+═══════════════════════════════════════════════ -->
+<section class="sec active" id="overview">
+  <div class="section-head">
+    <h2>Programme Overview</h2>
+    <p>What the MM Certified Trainer Programme is, who it's for, and why it matters</p>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">The Purpose</div>
+    <div class="insight-text">The Mind Magic Certified Trainer Programme exists to scale a global compassion movement — one exceptional trainer at a time.</div>
+    <div class="insight-body">Helena built something that works. The methodology creates measurable transformation. But the world needs more than one person who can deliver it. This programme trains coaches and therapists to bring the Mind Magic methodology to their existing clients — with the scientific credibility of Jim's Stanford neuroscience research behind every session. Every certified trainer becomes a brand ambassador, a revenue stream, and a node in a growing movement. This is how MM reaches millions without Helena being in a million rooms.</div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-pill">
+      <div class="stat-n" style="color:var(--coral)">8</div>
+      <div class="stat-l">Weeks to Certify</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-n" style="color:var(--lavender)">10</div>
+      <div class="stat-l">Per Cohort (max)</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-n" style="color:var(--amber)">3</div>
+      <div class="stat-l">Programme Phases</div>
+    </div>
+    <div class="stat-pill">
+      <div class="stat-n" style="color:var(--sage)">£5,000</div>
+      <div class="stat-l">Programme Fee</div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card" style="border-top:4px solid var(--coral);">
+      <div class="card-label" style="color:var(--coral);">Who This Is For</div>
+      <h3>The Ideal Certified Trainer</h3>
+      <p>Coaches and therapists who have completed the MM Core Programme and felt the methodology shift something in their own lives. They have an existing client base and a genuine desire to share what they've experienced — not just learn a new technique, but become part of a movement that reframes how compassion and the mind intersect.<br><br>
+      Prerequisites: completion of the full MM Core Programme, active client-facing practice, and a letter of intent describing how they plan to use the certification.</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--lavender);">
+      <div class="card-label" style="color:#8B6FAA;">What They Leave With</div>
+      <h3>Certification & Licence to Practice</h3>
+      <p>Upon successful assessment, graduates receive the <strong>Mind Magic Certified Trainer</strong> credential — a licence to deliver MM programmes under the brand, inclusion in the official MM Certified Trainer Directory, annual renewal membership (£400), and access to ongoing CPD, methodology updates, and a private global community of certified trainers.<br><br>
+      Certification is awarded on demonstrated competence, not just completion.</p>
+    </div>
+  </div>
+
+  <div class="g3">
+    <div class="card">
+      <div class="card-label" style="color:var(--coral);">Structural Insight</div>
+      <h3>The Prerequisite Funnel</h3>
+      <p>The MM Core Programme is the gateway. Every TTT applicant has already paid for and completed the core offering. This means the methodology arrives not as theory but as lived experience — and it creates a monetised pipeline before the TTT even begins.</p>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--amber);">Structural Insight</div>
+      <h3>Cohorts of Ten</h3>
+      <p>Maximum ten trainees per cohort, each with a dedicated mentor. Intimacy at scale: small enough for real transformation, structured enough to run multiple cohorts simultaneously. Kornfield and Brach trained 4,000+ this way.</p>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--lavender);">Structural Insight</div>
+      <h3>Stanford Credibility</h3>
+      <p>Jim's CCARE research and Stanford background provide what no competitor can replicate: rigorous peer-reviewed neuroscience behind every compassion practice. This is the moat. Trainers carry it with them.</p>
+    </div>
+  </div>
+
+  <!-- Revenue projection -->
+  <div class="card" style="background:linear-gradient(135deg,#FDEDE8 0%,#F5EAF5 100%);border-color:rgba(232,115,90,0.25);">
+    <div class="card-label" style="color:var(--coral);">Year 1 Revenue Projection</div>
+    <h3>What Two Cohorts Generates</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:18px;">
+      <div style="background:rgba(255,255,255,0.75);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:var(--ink-light);">2 cohorts × 10 × £5,000</span>
+        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--coral);">£100,000</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.75);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:var(--ink-light);">Prerequisites: 20 × MM Core (£600)</span>
+        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--amber);">£12,000</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.75);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:var(--ink-light);">Year 2 renewals: 20 × £400</span>
+        <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--lavender);">£8,000</span>
+      </div>
+      <div style="background:var(--coral);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;color:rgba(255,255,255,0.85);font-weight:600;">TTT Year 1 Total</span>
+        <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:#fff;">£120,000</span>
+      </div>
+    </div>
+    <p style="margin-top:16px;font-size:12.5px;color:var(--ink-faint);">20 certified trainers each reaching 20–50 clients = MM methodology reaching 400–1,000 additional people, without Helena delivering a single additional session.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PROGRAMME STRUCTURE
+═══════════════════════════════════════════════ -->
+<section class="sec" id="programme">
+  <div class="section-head">
+    <h2>Programme Structure</h2>
+    <p>Three phases across eight weeks — from deep immersion to assessed practicum</p>
+  </div>
+
+  <div class="alert" style="background:rgba(184,164,201,0.1);border:1px solid rgba(184,164,201,0.3);">
+    <span class="alert-icon">✦</span>
+    <span style="font-size:13px;color:var(--ink-light);line-height:1.6;"><strong style="color:var(--ink);">Format:</strong> Live online sessions (3 hrs/week) + asynchronous practice tasks. Mentor groups of 10. Each phase builds on the last. Certification awarded on assessed competence — not just attendance.</span>
+  </div>
+
+  <!-- GATE -->
+  <div class="card" style="border-left:4px solid var(--coral);margin-bottom:20px;">
+    <div class="card-label" style="color:var(--coral);">Before Application — Gate</div>
+    <h3>Prerequisite: MM Core Programme</h3>
+    <p>All applicants must have completed the full Mind Magic Core Programme as a participant. This is non-negotiable. The methodology cannot be taught by someone who hasn't lived it. The Core Programme completion becomes the first revenue step — and the best selection filter for commitment.</p>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase">
+    <div class="phase-header" onclick="togglePhase('p1')">
+      <div class="phase-num" style="color:rgba(232,115,90,0.18);">1</div>
+      <div class="phase-meta">
+        <div class="phase-tag" style="color:var(--coral);">Weeks 1 – 3 · Phase One</div>
+        <div class="phase-title">Deep Methodology Immersion</div>
+        <div class="phase-timing">3 live sessions (3 hrs each) · Daily practice tasks · Reflective journalling</div>
+      </div>
+      <div class="phase-toggle" id="toggle-p1">▾</div>
+    </div>
+    <div class="phase-body" id="p1">
+      <p style="font-size:13.5px;color:var(--ink-light);line-height:1.75;font-weight:300;margin-bottom:20px;">Trainees re-experience the full Mind Magic methodology — but this time through the lens of a trainer, not just a participant. The question shifts from "what am I feeling?" to "why does this work, and how would I create this for someone else?"</p>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(232,115,90,0.1);">🧠</div>
+        <div class="mod-content">
+          <h5>Module 1.1 — The Neuroscience Foundations</h5>
+          <p>Jim's CCARE research and the neuroscience of compassion. Why the methodology works at a biological level. How to explain this to sceptical clients. Practitioner's language: translating science into accessible insight.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(232,115,90,0.1);color:var(--coral);">Live session</span>
+            <span class="mod-tag" style="background:var(--soft-grey);color:var(--ink-faint);">Reading: Dr Doty — Into the Magic Shop excerpts</span>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(184,164,201,0.15);">💜</div>
+        <div class="mod-content">
+          <h5>Module 1.2 — The Methodology Decoded</h5>
+          <p>A complete walkthrough of the MM six-week methodology — its architecture, sequencing rationale, and the psychological mechanics behind each exercise. Why the order matters. What each practice is actually doing to the nervous system and to the narrative self.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(184,164,201,0.2);color:#8B6FAA;">Live session</span>
+            <span class="mod-tag" style="background:var(--soft-grey);color:var(--ink-faint);">Workbook: Session design analysis exercise</span>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(232,184,109,0.15);">🌿</div>
+        <div class="mod-content">
+          <h5>Module 1.3 — Your Personal Practice & Your Story</h5>
+          <p>A trainer's credibility comes partly from their own transformation. Trainees examine their own experience with the methodology, identify their breakthrough moments, and begin to develop their "origin story" as a MM practitioner. Authentic connection to the methodology is non-negotiable.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(232,184,109,0.2);color:#8A6020;">Live session + peer pairs</span>
+            <span class="mod-tag" style="background:var(--soft-grey);color:var(--ink-faint);">Workbook: Personal story framework</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase">
+    <div class="phase-header" onclick="togglePhase('p2')">
+      <div class="phase-num" style="color:rgba(232,184,109,0.18);">2</div>
+      <div class="phase-meta">
+        <div class="phase-tag" style="color:var(--amber);">Weeks 4 – 6 · Phase Two</div>
+        <div class="phase-title">Teaching Craft & Facilitation Skills</div>
+        <div class="phase-timing">3 live sessions + 2 practice teach sessions · Peer feedback · Video review</div>
+      </div>
+      <div class="phase-toggle" id="toggle-p2">▾</div>
+    </div>
+    <div class="phase-body" id="p2">
+      <p style="font-size:13.5px;color:var(--ink-light);line-height:1.75;font-weight:300;margin-bottom:20px;">Understanding the methodology is necessary. Being able to hold space for someone else's transformation through it is a different skill. Phase Two builds the facilitation craft: how to read a room, handle resistance, adapt for different contexts, and bring participants back to the work when they drift.</p>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(154,181,160,0.15);">🎯</div>
+        <div class="mod-content">
+          <h5>Module 2.1 — The Art of Holding Space</h5>
+          <p>Creating psychological safety. Setting the container. Managing the energy of a group versus an individual session. Pacing — when to slow down, when to let silence do the work. Voice, breath, and embodied presence as facilitation tools.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(154,181,160,0.2);color:#4A8A5A;">Live session</span>
+            <span class="mod-tag" style="background:var(--soft-grey);color:var(--ink-faint);">Practice: 10-min guided exercise (recorded)</span>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(168,196,212,0.18);">🔄</div>
+        <div class="mod-content">
+          <h5>Module 2.2 — Adapting MM for Different Contexts</h5>
+          <p>How to run MM sessions for corporate clients, therapy support, individual coaching, and group workshop formats. Ethical boundaries: what a MM trainer does and does not do. When to refer. How to position the methodology without overreaching into clinical territory.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(168,196,212,0.2);color:#4A6A7A;">Live session</span>
+            <span class="mod-tag" style="background:var(--soft-grey);color:var(--ink-faint);">Workbook: Context adaptation worksheet</span>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(212,132,154,0.15);">💬</div>
+        <div class="mod-content">
+          <h5>Module 2.3 — Difficult Questions & Challenging Moments</h5>
+          <p>What to do when a participant dissociates, becomes distressed, or challenges the science. How to handle scepticism, trauma responses, and unexpected emotional releases with care and competence. The role of the trainer as a compassionate container — not a therapist.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(212,132,154,0.18);color:#8A4060;">Live session + role play</span>
+            <span class="mod-tag" style="background:var(--soft-grey);color:var(--ink-faint);">Workbook: Response frameworks</span>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(232,115,90,0.1);">🏗️</div>
+        <div class="mod-content">
+          <h5>Module 2.4 — Designing Your First MM Programme</h5>
+          <p>Building a full six-week programme for your own client context. Session planning templates. Participant materials. Pre-programme communication. How to position and price MM sessions for your existing client base. The licence agreement explained.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(232,115,90,0.1);color:var(--coral);">Live session</span>
+            <span class="mod-tag" style="background:var(--soft-grey);color:var(--ink-faint);">Deliverable: Full session plan (reviewed by mentor)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase">
+    <div class="phase-header" onclick="togglePhase('p3')">
+      <div class="phase-num" style="color:rgba(184,164,201,0.2);">3</div>
+      <div class="phase-meta">
+        <div class="phase-tag" style="color:var(--lavender);">Weeks 7 – 8 + 30-day practicum · Phase Three</div>
+        <div class="phase-title">Assessed Practicum & Certification</div>
+        <div class="phase-timing">Live teach session · Mentor debrief · Written facilitation plan · Certification assessment</div>
+      </div>
+      <div class="phase-toggle" id="toggle-p3">▾</div>
+    </div>
+    <div class="phase-body" id="p3">
+      <p style="font-size:13.5px;color:var(--ink-light);line-height:1.75;font-weight:300;margin-bottom:20px;">The certification is earned, not given. Completion of the programme is necessary but not sufficient. Each trainee must demonstrate real competence in live delivery before receiving the MM Certified Trainer credential.</p>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(184,164,201,0.15);">🎥</div>
+        <div class="mod-content">
+          <h5>Assessment 1 — Live Teach Session (Week 7)</h5>
+          <p>Deliver a 45-minute MM session to a small group (3–5 people, can include fellow trainees). Session is recorded. Assessed by MM mentor on the five competency domains. Real-time verbal debrief follows the session.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(184,164,201,0.2);color:#8B6FAA;">Assessed</span>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(154,181,160,0.15);">📋</div>
+        <div class="mod-content">
+          <h5>Assessment 2 — Written Facilitation Plan (Week 8)</h5>
+          <p>Submit a complete facilitation plan for a 6-session MM programme tailored to a specific client group. Must include: session objectives, adaptations for context, safeguarding considerations, and a personal reflection on their journey through the training.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(154,181,160,0.2);color:#4A8A5A;">Assessed · 1,500–2,000 words</span>
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="mod-icon" style="background:rgba(232,184,109,0.15);">🌟</div>
+        <div class="mod-content">
+          <h5>30-Day Practicum — Real Delivery (post Week 8)</h5>
+          <p>Deliver one complete MM session to their own clients within 30 days of completing the taught programme. Submit a reflective log and one piece of participant feedback. Certification is formally issued after successful practicum sign-off by mentor.</p>
+          <div class="mod-tags">
+            <span class="mod-tag" style="background:rgba(232,184,109,0.2);color:#8A6020;">Certification gate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post-cert -->
+  <div class="card" style="border-top:4px solid var(--sage);margin-top:8px;">
+    <div class="card-label" style="color:var(--sage);">Post-Certification — Ongoing</div>
+    <h3>Certified MM Trainer: Annual Licence</h3>
+    <p>Annual licence renewal (£400/year) includes: access to updated MM materials and new content as the methodology evolves, ongoing CPD sessions (4 per year), private global community of certified trainers, listing in the MM Certified Trainer Directory, and preferential rates on advanced MM programmes and retreats.<br><br>
+    Trainers who let their licence lapse may not use the MM branding or deliver programmes as MM-certified. This protects the quality of the movement.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     WORKBOOK
+═══════════════════════════════════════════════ -->
+<section class="sec" id="workbook">
+  <div class="section-head">
+    <h2>Trainer Workbook</h2>
+    <p>Reflective exercises, planning tools, and self-assessment pages for each phase of the programme</p>
+  </div>
+
+  <div class="alert" style="background:rgba(232,115,90,0.07);border:1px solid rgba(232,115,90,0.2);">
+    <span class="alert-icon">📖</span>
+    <span style="font-size:13px;color:var(--ink-light);line-height:1.6;">This workbook accompanies each phase of the programme. Complete the exercises before each live session where indicated. Your entries are private — share only what feels right in your mentor group.</span>
+  </div>
+
+  <!-- PHASE 1 WORKBOOK -->
+  <div style="margin-bottom:12px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--coral);padding:20px 0 10px;">Phase One Workbook — Methodology Immersion</div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--coral);">
+    <div class="wb-page-label" style="color:var(--coral);">Exercise 1.1 — Before Week 1</div>
+    <h3>Your Relationship with the Methodology</h3>
+    <p class="purpose">Before you learn to teach it, revisit your experience as a participant. This grounds your teaching in lived truth, not performance.</p>
+    <div class="wb-prompt">
+      <label>When did you first feel the methodology actually working in your own body or mind? Describe the moment as specifically as you can.</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>What changed in you as a result of the MM Core Programme?</label>
+      <div class="lines lines-lg"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>When you imagine sharing this with a client, what feels exciting? What feels uncertain?</label>
+      <div class="lines lines-lg"></div>
+      <div class="lines"></div>
+    </div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--peach);">
+    <div class="wb-page-label" style="color:var(--peach);">Exercise 1.2 — After Module 1.1</div>
+    <h3>Translating the Science</h3>
+    <p class="purpose">A trainer's credibility rests on being able to explain the neuroscience simply, without losing the rigour. This exercise builds that translation muscle.</p>
+    <div class="wb-prompt">
+      <label>In your own words, explain in 3–4 sentences why compassion practice changes the brain. (Write it as if talking to a sceptical corporate client.)</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>What is one piece of Jim's research that genuinely surprised or moved you? Why does it matter to your work?</label>
+      <div class="lines lines-lg"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="reflect-box">
+      <h6>Concepts I still need to deepen my understanding of:</h6>
+      <div class="reflect-lines">
+        <div class="reflect-line"></div>
+        <div class="reflect-line"></div>
+        <div class="reflect-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--amber);">
+    <div class="wb-page-label" style="color:var(--amber);">Exercise 1.3 — Your Practitioner Origin Story</div>
+    <h3>Why You Teach This</h3>
+    <p class="purpose">Every great teacher has a story that connects them to their work. This isn't performance — it's the honest account of why the methodology matters to you. Draft it here before sharing it in Session 3.</p>
+    <div class="wb-prompt">
+      <label>The before: What was happening in my life or work before I found MM?</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>The shift: What did the methodology actually do? What changed?</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>The now: Why do I want others to experience this? Who do I most want to reach?</label>
+      <div class="lines lines-lg"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>Distil it: In one sentence, what is the heart of why I teach Mind Magic?</label>
+      <div class="lines"></div>
+      <div class="lines"></div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 WORKBOOK -->
+  <div style="margin-bottom:12px;margin-top:20px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--amber);padding:20px 0 10px;">Phase Two Workbook — Teaching Craft</div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--amber);">
+    <div class="wb-page-label" style="color:var(--amber);">Exercise 2.1 — After Module 2.1</div>
+    <h3>How You Hold Space</h3>
+    <p class="purpose">Facilitation is a physical and energetic act as much as a cognitive one. This exercise builds self-awareness about how your presence affects a room.</p>
+    <div class="wb-prompt">
+      <label>When you are at your most settled and grounded, what does it feel like in your body? What are you doing (or not doing)?</label>
+      <div class="lines lines-lg"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>When you feel uncertain or exposed (as a facilitator or in life), what does that feel like? How does it show up in your body or voice?</label>
+      <div class="lines lines-lg"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>What is your personal practice for settling yourself before you facilitate? (Describe it in enough detail to actually do it.)</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--sky);">
+    <div class="wb-page-label" style="color:var(--sky);">Exercise 2.2 — Context Adaptation Planning</div>
+    <h3>Who Are Your Clients?</h3>
+    <p class="purpose">The methodology stays the same. The language, pacing, and framing must flex to meet each context. Map your primary client group here.</p>
+    <div class="wb-prompt">
+      <label>Primary client group (describe them in detail — profession, age range, typical presenting challenge):</label>
+      <div class="lines lines-xl"></div>
+    </div>
+    <div class="g2" style="gap:12px;margin-bottom:16px;">
+      <div class="reflect-box">
+        <h6>What language will land with them? (How do they talk about their inner life?)</h6>
+        <div class="reflect-lines"><div class="reflect-line"></div><div class="reflect-line"></div><div class="reflect-line"></div></div>
+      </div>
+      <div class="reflect-box">
+        <h6>What language will NOT land? (What should I avoid, reframe, or replace?)</h6>
+        <div class="reflect-lines"><div class="reflect-line"></div><div class="reflect-line"></div><div class="reflect-line"></div></div>
+      </div>
+    </div>
+    <div class="wb-prompt">
+      <label>Which elements of the MM methodology will be most powerful for this group? Which may need the most careful introduction?</label>
+      <div class="lines lines-xl"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>Are there any ethical considerations specific to this client group? (Mental health history, trauma, power dynamics, etc.)</label>
+      <div class="lines lines-lg"></div>
+      <div class="lines"></div>
+    </div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--rose);">
+    <div class="wb-page-label" style="color:var(--rose);">Exercise 2.3 — Difficult Moments Preparation</div>
+    <h3>What Will You Do When It Gets Hard?</h3>
+    <p class="purpose">Every facilitator faces unexpected moments. Pre-thinking your responses means you won't freeze. Write your honest answers — there are no wrong ones here.</p>
+    <div class="checklist">
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"><span class="check-mark">✓</span></div><div class="check-text">I have read and understood the MM safeguarding guidelines</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"><span class="check-mark">✓</span></div><div class="check-text">I know when to pause a session and how to do it gracefully</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"><span class="check-mark">✓</span></div><div class="check-text">I have at least three referral options to hand for participants who need more support than MM offers</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"><span class="check-mark">✓</span></div><div class="check-text">I can explain the difference between what MM does and what therapy does</div></div>
+    </div>
+    <div class="wb-prompt">
+      <label>Scenario: A participant begins to cry deeply during a compassion exercise and says "I don't think I'm capable of love." How do you respond in the moment?</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>Scenario: A sceptical participant challenges you: "This is pseudoscience. Show me the evidence." What do you say?</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--sage);">
+    <div class="wb-page-label" style="color:var(--sage);">Exercise 2.4 — Your First Programme Design</div>
+    <h3>Session Plan Outline</h3>
+    <p class="purpose">Before the live Module 2.4 session, draft your initial programme outline. Your mentor will review and give feedback in the session.</p>
+    <div class="wb-prompt">
+      <label>Programme title (what will you call this for your clients):</label>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>Client group & context:</label>
+      <div class="lines"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+      <div style="font-size:12px;font-weight:600;color:var(--ink-light);margin-bottom:4px;">Session-by-session outline (6 sessions):</div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:start;">
+        <span style="font-size:12px;font-weight:600;color:var(--ink-faint);padding-top:2px;">Session 1</span><div class="lines"></div>
+        <span style="font-size:12px;font-weight:600;color:var(--ink-faint);padding-top:2px;">Session 2</span><div class="lines"></div>
+        <span style="font-size:12px;font-weight:600;color:var(--ink-faint);padding-top:2px;">Session 3</span><div class="lines"></div>
+        <span style="font-size:12px;font-weight:600;color:var(--ink-faint);padding-top:2px;">Session 4</span><div class="lines"></div>
+        <span style="font-size:12px;font-weight:600;color:var(--ink-faint);padding-top:2px;">Session 5</span><div class="lines"></div>
+        <span style="font-size:12px;font-weight:600;color:var(--ink-faint);padding-top:2px;">Session 6</span><div class="lines"></div>
+      </div>
+    </div>
+    <div class="wb-prompt">
+      <label>How will you price and position this programme for your clients?</label>
+      <div class="lines lines-lg"></div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 WORKBOOK -->
+  <div style="margin-bottom:12px;margin-top:20px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--lavender);padding:20px 0 10px;">Phase Three Workbook — Practicum & Certification</div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--lavender);">
+    <div class="wb-page-label" style="color:#8B6FAA;">Post-Teach Reflection — After Assessment 1</div>
+    <h3>Your First Assessed Teach Session</h3>
+    <p class="purpose">Honest self-assessment is the mark of a skilled practitioner. Complete this within 24 hours of your teach session.</p>
+    <div class="wb-prompt">
+      <label>What went well? (Be specific — identify exact moments, not general impressions)</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>What did you notice in the room? (How were participants responding — bodies, breath, engagement?)</label>
+      <div class="lines lines-lg"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>What would you do differently? (Be honest — this is just for you.)</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <label style="font-size:12px;font-weight:600;color:var(--ink-light);display:block;margin-bottom:12px;">Rate your own performance across the five competency domains (1 = needs development, 5 = strong):</label>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-light);">
+          <span>Methodology knowledge</span>
+          <div class="rating-nums" id="r1">
+            <div class="rating-num" onclick="rate('r1',1)">1</div>
+            <div class="rating-num" onclick="rate('r1',2)">2</div>
+            <div class="rating-num" onclick="rate('r1',3)">3</div>
+            <div class="rating-num" onclick="rate('r1',4)">4</div>
+            <div class="rating-num" onclick="rate('r1',5)">5</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-light);">
+          <span>Holding space / presence</span>
+          <div class="rating-nums" id="r2">
+            <div class="rating-num" onclick="rate('r2',1)">1</div>
+            <div class="rating-num" onclick="rate('r2',2)">2</div>
+            <div class="rating-num" onclick="rate('r2',3)">3</div>
+            <div class="rating-num" onclick="rate('r2',4)">4</div>
+            <div class="rating-num" onclick="rate('r2',5)">5</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-light);">
+          <span>Language & communication</span>
+          <div class="rating-nums" id="r3">
+            <div class="rating-num" onclick="rate('r3',1)">1</div>
+            <div class="rating-num" onclick="rate('r3',2)">2</div>
+            <div class="rating-num" onclick="rate('r3',3)">3</div>
+            <div class="rating-num" onclick="rate('r3',4)">4</div>
+            <div class="rating-num" onclick="rate('r3',5)">5</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-light);">
+          <span>Responsiveness to participants</span>
+          <div class="rating-nums" id="r4">
+            <div class="rating-num" onclick="rate('r4',1)">1</div>
+            <div class="rating-num" onclick="rate('r4',2)">2</div>
+            <div class="rating-num" onclick="rate('r4',3)">3</div>
+            <div class="rating-num" onclick="rate('r4',4)">4</div>
+            <div class="rating-num" onclick="rate('r4',5)">5</div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-light);">
+          <span>Ethical boundary clarity</span>
+          <div class="rating-nums" id="r5">
+            <div class="rating-num" onclick="rate('r5',1)">1</div>
+            <div class="rating-num" onclick="rate('r5',2)">2</div>
+            <div class="rating-num" onclick="rate('r5',3)">3</div>
+            <div class="rating-num" onclick="rate('r5',4)">4</div>
+            <div class="rating-num" onclick="rate('r5',5)">5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wb-prompt">
+      <label>Before my practicum session, the one thing I most want to work on is:</label>
+      <div class="lines lines-lg"></div>
+    </div>
+  </div>
+
+  <div class="wb-page" style="border-left:4px solid var(--sage);">
+    <div class="wb-page-label" style="color:var(--sage);">30-Day Practicum Log</div>
+    <h3>Real-World Delivery Record</h3>
+    <p class="purpose">Log your practicum session here. This forms part of your certification submission.</p>
+    <div class="g2" style="gap:12px;margin-bottom:16px;">
+      <div class="wb-prompt" style="margin-bottom:0;">
+        <label>Date of session:</label><div class="lines"></div>
+      </div>
+      <div class="wb-prompt" style="margin-bottom:0;">
+        <label>Number of participants:</label><div class="lines"></div>
+      </div>
+    </div>
+    <div class="wb-prompt">
+      <label>Client context (setting, purpose of session, group composition — no names):</label>
+      <div class="lines lines-lg"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>What adaptations did you make to the methodology for this specific group?</label>
+      <div class="lines lines-lg"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>What feedback did you receive from participants? (Summarise key themes):</label>
+      <div class="lines lines-xl"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>Personal reflection: What did you learn about yourself as a trainer in this session?</label>
+      <div class="lines lines-xl"></div>
+      <div class="lines"></div>
+    </div>
+    <div class="wb-prompt">
+      <label>Mentor sign-off name:</label>
+      <div class="lines"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FACILITATION GUIDE
+═══════════════════════════════════════════════ -->
+<section class="sec" id="facilitation">
+  <div class="section-head">
+    <h2>Facilitation Guide</h2>
+    <p>Practical guidance for mentors delivering the TTT programme, and for new trainers running their first MM sessions</p>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">The Facilitation Philosophy</div>
+    <div class="insight-text">The role of a MM trainer is not to perform expertise. It is to create the conditions under which someone else can encounter their own capacity for compassion.</div>
+    <div class="insight-body">This distinction matters. Expertise without warmth creates distance. Warmth without rigour creates a lovely experience that doesn't stick. Mind Magic holds both: the scientific backbone gives confidence, the compassion methodology gives warmth, and the trainer's job is to embody that synthesis.</div>
+  </div>
+
+  <div class="g2">
+    <!-- Session opening -->
+    <div class="guide-block">
+      <div class="guide-label" style="color:var(--coral);">For Every Session — The Opening</div>
+      <h4>How to Begin</h4>
+      <div class="guide-item"><span class="guide-bullet">→</span>Arrive settled before participants. Your nervous system sets the room's baseline.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Begin with 2–3 minutes of breath or body awareness — no explanation needed, just lead it.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Name the purpose of the session simply and honestly. No oversell.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Acknowledge where participants are coming from (busy day, commute, whatever the group shares).</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Establish the container: what this space is for, and what stays in the room.</div>
+    </div>
+
+    <!-- Session closing -->
+    <div class="guide-block">
+      <div class="guide-label" style="color:var(--lavender);">For Every Session — The Closing</div>
+      <h4>How to End</h4>
+      <div class="guide-item"><span class="guide-bullet">→</span>Leave 10 minutes for integration. Never end in practice — end in reflection.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Invite one word or one sentence from the group. Don't require it.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Signpost what comes next — participants feel safer knowing the arc.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>End with something that honours what happened: a line, a breath, a bow. Make it yours.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Stay available for 5 minutes after. People often need a quiet word they couldn't say in the group.</div>
+    </div>
+  </div>
+
+  <div class="guide-block">
+    <div class="guide-label" style="color:var(--amber);">Handling the Hard Moments</div>
+    <h4>When Someone Is Overwhelmed</h4>
+    <div class="guide-item"><span class="guide-bullet">→</span><strong style="color:var(--ink);">Slow down first.</strong> Don't rush in. A calm, unhurried presence is the most powerful intervention.</div>
+    <div class="guide-item"><span class="guide-bullet">→</span><strong style="color:var(--ink);">Name it gently.</strong> "I notice something's moving for you — take whatever space you need."</div>
+    <div class="guide-item"><span class="guide-bullet">→</span><strong style="color:var(--ink);">Offer an anchor.</strong> A hand on the chest, a long exhale, feet on the floor — bring them into the body.</div>
+    <div class="guide-item"><span class="guide-bullet">→</span><strong style="color:var(--ink);">Don't interpret.</strong> You're not their therapist. You don't need to know what it means — you just need to keep them safe.</div>
+    <div class="guide-item"><span class="guide-bullet">→</span><strong style="color:var(--ink);">Check in after.</strong> A private message or a moment at the close of the session matters enormously.</div>
+    <div class="guide-item"><span class="guide-bullet">→</span><strong style="color:var(--ink);">Know your referral pathway.</strong> Have three contacts ready for anyone who needs more than MM offers.</div>
+  </div>
+
+  <div class="g2">
+    <div class="guide-block">
+      <div class="guide-label" style="color:var(--sky);">Handling Scepticism</div>
+      <h4>The Science Question</h4>
+      <div class="guide-item"><span class="guide-bullet">→</span>Scepticism is a gift — it means someone's paying attention. Welcome it.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>You don't need to win the argument. You need to open a door: "That's a fair challenge. Here's what the research shows — and I invite you to experience it yourself and draw your own conclusions."</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Jim's peer-reviewed research is your foundation — be specific, not vague. "CCARE studies at Stanford found that compassion training over 8 weeks produced measurable changes in empathic response and reduced physiological stress markers."</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Never oversell. The methodology speaks for itself when delivered with integrity.</div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-label" style="color:var(--sage);">Maintaining Your Own Practice</div>
+      <h4>The Trainer's Practice</h4>
+      <div class="guide-item"><span class="guide-bullet">→</span>You cannot reliably take people somewhere you haven't been yourself today — not years ago, today.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Minimum: 15 minutes of personal practice on any day you deliver a session.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Attend at least one MM group session per quarter as a participant, not a trainer.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>Use the MM community — other certified trainers are your best source of support, challenge, and inspiration.</div>
+      <div class="guide-item"><span class="guide-bullet">→</span>If you notice yourself delivering on autopilot, stop. Refresh before you deliver again.</div>
+    </div>
+  </div>
+
+  <!-- Session Arc for Corporate -->
+  <div class="card" style="border-top:4px solid var(--amber);">
+    <div class="card-label" style="color:var(--amber);">Sample Session Architecture — 90 Minutes (Corporate Context)</div>
+    <h3>The 90-Minute MM Session</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:18px;">
+      <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:flex-start;">
+        <span style="background:rgba(232,115,90,0.1);border-radius:8px;padding:6px 10px;text-align:center;font-size:12px;font-weight:600;color:var(--coral);">0–10 min</span>
+        <div><strong style="font-size:13px;">Arrival & Grounding</strong><p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px;line-height:1.5;">Silent arrival, brief breath practice. No screens, no introductions yet. Let the room settle.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:flex-start;">
+        <span style="background:rgba(184,164,201,0.15);border-radius:8px;padding:6px 10px;text-align:center;font-size:12px;font-weight:600;color:#8B6FAA;">10–20 min</span>
+        <div><strong style="font-size:13px;">Frame & Science</strong><p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px;line-height:1.5;">Brief context: what we're doing and why it works. Neuroplasticity, compassion, the evidence. Keep it light — plant the seed, don't lecture.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:flex-start;">
+        <span style="background:rgba(232,184,109,0.15);border-radius:8px;padding:6px 10px;text-align:center;font-size:12px;font-weight:600;color:#8A6020;">20–55 min</span>
+        <div><strong style="font-size:13px;">Core Practice Sequence</strong><p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px;line-height:1.5;">The heart of the session. Guided body awareness → self-compassion practice → outward-directed compassion. Uninterrupted. Slow. Hold the silence.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:flex-start;">
+        <span style="background:rgba(154,181,160,0.15);border-radius:8px;padding:6px 10px;text-align:center;font-size:12px;font-weight:600;color:#4A8A5A;">55–75 min</span>
+        <div><strong style="font-size:13px;">Reflective Integration</strong><p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px;line-height:1.5;">Individual journalling (5 min), then optional sharing in pairs, then whole group. Facilitate, don't lead. Let the practice speak.</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:flex-start;">
+        <span style="background:rgba(168,196,212,0.18);border-radius:8px;padding:6px 10px;text-align:center;font-size:12px;font-weight:600;color:#4A6A7A;">75–90 min</span>
+        <div><strong style="font-size:13px;">Close & Carry-Forward</strong><p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px;line-height:1.5;">One word from the group. Practical home practice (2 min per day until next session). Gratitude close. Stay available.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     COMPETENCY FRAMEWORK
+═══════════════════════════════════════════════ -->
+<section class="sec" id="competency">
+  <div class="section-head">
+    <h2>Competency Framework</h2>
+    <p>The five domains assessed for MM Certified Trainer certification — and what mastery looks like in each</p>
+  </div>
+
+  <div class="alert" style="background:rgba(154,181,160,0.1);border:1px solid rgba(154,181,160,0.3);">
+    <span class="alert-icon">✦</span>
+    <span style="font-size:13px;color:var(--ink-light);line-height:1.6;">Certification is awarded when a trainee demonstrates competence across all five domains. Each domain is assessed through a combination of the live teach session, the written facilitation plan, and practicum feedback. <strong style="color:var(--ink);">Completion of the programme is not sufficient — demonstrated competence is required.</strong></span>
+  </div>
+
+  <!-- Domain 1 -->
+  <div class="competency">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--soft-grey);">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(232,115,90,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🧠</div>
+      <div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--coral);margin-bottom:2px;">Domain 1</div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);">Methodology Knowledge & Scientific Fluency</div>
+      </div>
+    </div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Can explain the six-week MM methodology in sequence and articulate why each element is ordered as it is.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Can describe the neuroscience of compassion and mindfulness practice in accessible language with reference to Jim's research at CCARE.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Can respond to sceptical questions about the science with clarity, confidence, and appropriate humility — without overreaching into clinical claims.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Can articulate what makes MM distinct from MBSR, Dispenza-style neuroscience coaching, and generic mindfulness — and why that distinction matters.</div></div>
+  </div>
+
+  <!-- Domain 2 -->
+  <div class="competency">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--soft-grey);">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(184,164,201,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">💜</div>
+      <div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--lavender);margin-bottom:2px;">Domain 2</div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);">Holding Space & Facilitation Presence</div>
+      </div>
+    </div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Arrives settled and creates a grounded, safe container for participants from the first moment of a session.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Paces delivery with awareness — slows down in moments of depth, holds silence without anxiety, resists the urge to fill every space with words.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Responds to visible emotional activation in the room (tears, tension, resistance) with calm presence, appropriate acknowledgement, and skill — without projecting, interpreting, or over-managing.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Their own embodied practice is visible in the quality of how they lead — not just in what they say, but in how they are.</div></div>
+  </div>
+
+  <!-- Domain 3 -->
+  <div class="competency">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--soft-grey);">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(232,184,109,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🎯</div>
+      <div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--amber);margin-bottom:2px;">Domain 3</div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);">Language, Communication & Contextual Adaptation</div>
+      </div>
+    </div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Uses clear, warm, non-jargon language that meets participants where they are — adjusting vocabulary for different audiences without losing the essence of the methodology.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Has produced a full facilitation plan adapted for their primary client group, demonstrating thoughtful contextual awareness.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Can explain the MM methodology compellingly in under 60 seconds for a sceptical corporate audience, and in a completely different register for a therapeutic or personal development context.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Knows what to flex in the methodology and what must remain fixed — and can articulate the reasoning for both.</div></div>
+  </div>
+
+  <!-- Domain 4 -->
+  <div class="competency">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--soft-grey);">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(168,196,212,0.18);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🔄</div>
+      <div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--sky);margin-bottom:2px;">Domain 4</div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);">Responsiveness & Group Dynamics</div>
+      </div>
+    </div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Reads the room accurately — can identify when energy is low, resistance is present, or a participant needs particular attention.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Adjusts the session in real time when needed — slowing down, offering alternatives, checking in — without losing the thread of the programme.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Can facilitate a group debrief that deepens the practice rather than flattening it into intellectual discussion — holding both the felt experience and the cognitive reflection at once.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Has a clear and demonstrable plan for when things go unexpectedly — participant distress, technical failure, group resistance — and can respond without destabilising themselves or the room.</div></div>
+  </div>
+
+  <!-- Domain 5 -->
+  <div class="competency">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--soft-grey);">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(154,181,160,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">⚖️</div>
+      <div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--sage);margin-bottom:2px;">Domain 5</div>
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink);">Ethics, Boundaries & Safeguarding</div>
+      </div>
+    </div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Can clearly articulate the difference between what a MM certified trainer does and what a therapist, counsellor, or clinical practitioner does — and observes that boundary in practice.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--sage);"></div><div class="comp-text-fw"><strong>Foundation:</strong> Has at least three appropriate referral contacts and knows when and how to use them.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Delivers sessions with the MM brand accurately represented — neither underselling the science nor overclaiming outcomes. Protects the integrity of the methodology and the brand.</div></div>
+    <div class="comp-row-fw"><div class="comp-dot-fw" style="background:var(--amber);"></div><div class="comp-text-fw"><strong>Mastery:</strong> Understands and honours the licence agreement, including what can and cannot be adapted, and how the MM trademark must be used.</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PRICING & LICENSING
+═══════════════════════════════════════════════ -->
+<section class="sec" id="pricing">
+  <div class="section-head">
+    <h2>Pricing & Licensing</h2>
+    <p>Investment structure for the programme and the ongoing licence to practise as an MM Certified Trainer</p>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div class="pricing-tier" style="border-color:rgba(232,115,90,0.3);background:rgba(232,115,90,0.04);">
+        <div class="card-label" style="color:var(--coral);">Programme Investment</div>
+        <div class="price-badge" style="color:var(--coral);">£5,000</div>
+        <div class="price-desc">Full 8-week MM Certified Trainer Programme</div>
+        <div class="price-includes">
+          <div class="price-include"><span class="price-check">✦</span>3 phases of live training (3 hrs/week)</div>
+          <div class="price-include"><span class="price-check">✦</span>Dedicated mentor group of max 10</div>
+          <div class="price-include"><span class="price-check">✦</span>Full trainer workbook and facilitation guides</div>
+          <div class="price-include"><span class="price-check">✦</span>Two formal assessments (live teach + written plan)</div>
+          <div class="price-include"><span class="price-check">✦</span>30-day assessed practicum</div>
+          <div class="price-include"><span class="price-check">✦</span>MM Certified Trainer credential on completion</div>
+          <div class="price-include"><span class="price-check">✦</span>First year's licence (see annual renewal)</div>
+          <div class="price-include"><span class="price-check">✦</span>Listing in MM Certified Trainer Directory</div>
+        </div>
+      </div>
+      <div class="alert" style="background:rgba(232,184,109,0.1);border:1px solid rgba(232,184,109,0.3);">
+        <span class="alert-icon">📋</span>
+        <span style="font-size:13px;color:var(--ink-light);line-height:1.6;"><strong style="color:var(--ink);">Early-bird pricing:</strong> £4,400 for applications received 6+ weeks before cohort start. Kornfield/Brach model: early-bird generates commitment and planning certainty.</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="pricing-tier" style="border-color:rgba(184,164,201,0.35);background:rgba(184,164,201,0.04);margin-bottom:16px;">
+        <div class="card-label" style="color:var(--lavender);">Annual Licence Renewal</div>
+        <div class="price-badge" style="color:var(--lavender);">£400</div>
+        <div class="price-desc">Per year, from Year 2 onwards</div>
+        <div class="price-includes">
+          <div class="price-include"><span class="price-check">✦</span>Continued use of MM Certified Trainer branding</div>
+          <div class="price-include"><span class="price-check">✦</span>Access to updated MM materials as methodology evolves</div>
+          <div class="price-include"><span class="price-check">✦</span>4 CPD sessions per year (live, with MM team)</div>
+          <div class="price-include"><span class="price-check">✦</span>Private global trainer community access</div>
+          <div class="price-include"><span class="price-check">✦</span>Ongoing listing in MM Trainer Directory</div>
+          <div class="price-include"><span class="price-check">✦</span>Preferential rates on retreats and advanced programmes</div>
+        </div>
+      </div>
+
+      <div class="card" style="background:var(--warm-white);">
+        <div class="card-label" style="color:var(--sage);">Prerequisite</div>
+        <h3>MM Core Programme</h3>
+        <p style="font-size:13px;">All TTT applicants must have completed the MM Core Programme. At £600 (indicative), this represents a monetised first step that self-selects for genuine commitment — and means every TTT trainer has lived the methodology before learning to teach it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Licence agreement summary -->
+  <div class="card" style="border-top:4px solid var(--sky);margin-top:8px;">
+    <div class="card-label" style="color:var(--sky);">Licence Agreement — Key Terms</div>
+    <h3>What the Certification Allows & Requires</h3>
+    <div class="g2" style="gap:14px;margin-top:16px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);margin-bottom:10px;">Certified Trainers MAY:</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="price-include"><span class="price-check">✓</span>Deliver MM sessions to their own clients under the MM brand</div>
+          <div class="price-include"><span class="price-check">✓</span>Use "MM Certified Trainer" in their professional materials</div>
+          <div class="price-include"><span class="price-check">✓</span>Charge their own fees for MM-branded sessions</div>
+          <div class="price-include"><span class="price-check">✓</span>Adapt session language and framing for their context</div>
+          <div class="price-include"><span class="price-check">✓</span>Use the provided participant workbooks and materials</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Certified Trainers MAY NOT:</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="price-include"><span class="price-check" style="color:var(--coral);">✗</span>Train others to deliver MM (TTT trainers are not licensed to certify sub-trainers)</div>
+          <div class="price-include"><span class="price-check" style="color:var(--coral);">✗</span>Remove MM branding from materials or claim independent authorship of the methodology</div>
+          <div class="price-include"><span class="price-check" style="color:var(--coral);">✗</span>Deliver MM after licence lapse without renewal</div>
+          <div class="price-include"><span class="price-check" style="color:var(--coral);">✗</span>Make clinical or therapeutic claims on behalf of the programme</div>
+          <div class="price-include"><span class="price-check" style="color:var(--coral);">✗</span>Use Jim's name or image without written permission</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FAQS
+═══════════════════════════════════════════════ -->
+<section class="sec" id="faq">
+  <div class="section-head">
+    <h2>Frequently Asked Questions</h2>
+    <p>Answers to the questions applicants and trainers most commonly ask</p>
+  </div>
+
+  <div style="margin-bottom:20px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--coral);padding-bottom:12px;">Before the Programme</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>Do I need to have completed the full MM Core Programme to apply?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Yes. This is a non-negotiable prerequisite. The methodology cannot be taught by someone who hasn't lived it. Completing the Core Programme is not just a gate — it's the first step of your trainer formation. It means that when you lead a practice, you're speaking from experience, not instruction. This also means every applicant arrives with shared foundations, which makes the cohort experience richer for everyone.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>I'm a therapist — do I need to adjust how I work with MM?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">The MM certification trains you as a mindfulness and compassion practitioner, not as a therapist using MM techniques in therapy. The distinction matters ethically and legally. Module 2.2 specifically addresses contextual adaptation for therapeutic settings, and we'll discuss how to hold the boundary between the two clearly and carefully. Many therapists find that offering MM as a separate, structured programme alongside their therapeutic work is more effective than attempting to integrate it within sessions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>What if I can't attend a live session?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">All live sessions are recorded. You may miss a maximum of one session per phase, provided you watch the recording and complete the associated workbook exercises before the next session. Attendance at the assessed practicum sessions in Phase 3 is mandatory and cannot be made up by recording. If you anticipate significant scheduling challenges, please discuss this with your mentor before the programme begins.</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:20px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--amber);padding-bottom:12px;">During the Programme</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>What happens if I don't pass the assessment?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">If you don't meet the competency standard in your first assessed teach session or written plan, you'll receive detailed written feedback from your mentor and one opportunity to resubmit or re-deliver within 60 days. This isn't a failure — it's the programme working as designed. Certification means something precisely because not everyone passes on the first attempt. If the resubmission is also unsuccessful, we'll have a conversation about whether additional support and a deferred cohort makes sense.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>How much time should I expect to spend outside of live sessions?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Plan for 4–6 hours per week during the 8-week programme: the 3-hour live session plus approximately 2–3 hours for workbook exercises, practice tasks, reading, and your own daily practice. The programme is designed for people already working full time — it is intensive, but structured to be manageable. The 30-day practicum period after the taught programme typically requires around 4 hours total preparation and delivery.</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:20px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--lavender);padding-bottom:12px;">After Certification</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>Can I run my own TTT programme and certify my own trainers?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">No. The MM Certified Trainer licence allows you to deliver MM programmes to participants — it does not authorise you to certify others. The right to train and certify MM trainers sits exclusively with Mind Magic Inc. This protects the quality and consistency of the methodology globally, and preserves the value of the certification you've earned. If demand in your region grows to a point where a regional trainer hub makes sense, that's a conversation for MM leadership.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>What happens if I let my licence lapse?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">If your annual licence is not renewed, you may no longer use the MM Certified Trainer credential or deliver sessions under the MM brand. You retain the learning and your own practice. To reinstate the licence, there's a £200 reinstatement fee and a short catch-up CPD module to bring you up to date with any methodology updates. If your licence lapses for more than two years, you'll be required to complete a re-certification pathway.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>How much should I charge my own clients for MM programmes?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Pricing is your decision — the licence does not set minimum or maximum prices. We provide benchmark guidance: comparable 6-week programmes in your market, the value of the credential, and the typical price range of your existing work. Most certified trainers integrate MM as either a standalone offering (typically £600–1,200 per participant for a 6-week programme) or as a premium add-on to their existing coaching or therapy practice. The annual CPD sessions include a session specifically on marketing and pricing MM for your context.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>Is there a community for certified trainers?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Yes — and it's one of the most valued parts of the licence. The MM Certified Trainer community is a private network of practitioners who share the same credential and commitment. It's a space for support, peer supervision, resource sharing, and collective development of the methodology. MM runs four live CPD sessions per year for certified trainers, plus regular community events. Isolation is the enemy of a good practice — the community exists to make sure no certified trainer has to figure this out alone.</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+function enterProgramme() {
+  document.getElementById('cover').style.display = 'none';
+  document.getElementById('mainnav').style.display = 'flex';
+  document.getElementById('mainbody').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function show(id, el) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function togglePhase(id) {
+  const body = document.getElementById(id);
+  const toggle = document.getElementById('toggle-' + id);
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  toggle.classList.toggle('open', !isOpen);
+}
+
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const icon = el.querySelector('.faq-icon');
+  const isOpen = answer.classList.contains('open');
+  answer.classList.toggle('open', !isOpen);
+  icon.classList.toggle('open', !isOpen);
+}
+
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+}
+
+function rate(groupId, value) {
+  const group = document.getElementById(groupId);
+  group.querySelectorAll('.rating-num').forEach((n, i) => {
+    n.classList.toggle('selected', i < value);
+  });
+}
+</script>
+</body>
+</html>
