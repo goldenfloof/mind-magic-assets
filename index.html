@@ -24,7 +24,7 @@
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'DM Sans',sans-serif; background:var(--off-white); color:var(--ink); min-height:100vh; }
-
+ 
 header {
   background: linear-gradient(135deg, #F2C27A 0%, #EFA07A 20%, #E8735A 38%, #C97090 55%, #B09AC8 72%, #9AB8D8 88%, #A8C8E0 100%);
   padding: 72px 60px 64px;
@@ -47,15 +47,15 @@ header h1 { font-family:'Playfair Display',serif; font-size:clamp(42px,7vw,72px)
 header h1 em { font-style:italic; color:rgba(255,255,255,0.85); }
 header .tagline { font-size:15px; color:rgba(255,255,255,0.75); font-weight:300; line-height:1.6; max-width:500px; margin:0 auto; position:relative; z-index:1; }
 .divider { width:48px; height:2px; background:rgba(255,255,255,0.4); margin:28px auto 0; border-radius:2px; position:relative; z-index:1; }
-
+ 
 main { max-width:960px; margin:0 auto; padding:60px 40px 100px; }
 @media(max-width:700px) { header{padding:48px 24px;} main{padding:40px 20px 80px;} }
-
+ 
 .section-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; font-weight:600; color:var(--coral); margin-bottom:24px; }
-
+ 
 .assets-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:60px; }
 @media(max-width:640px) { .assets-grid { grid-template-columns:1fr; } }
-
+ 
 .asset-card {
   background:#fff;
   border:1px solid var(--border);
@@ -87,7 +87,7 @@ main { max-width:960px; margin:0 auto; padding:60px 40px 100px; }
 .asset-card p { font-size:13px; line-height:1.7; color:var(--ink-light); font-weight:300; }
 .card-arrow { position:absolute; bottom:22px; right:24px; font-size:18px; color:var(--soft-grey); transition:all 0.2s; }
 .asset-card:hover .card-arrow { color:var(--coral); transform:translateX(3px); }
-
+ 
 /* Colour accents per card */
 .c1::before { background:linear-gradient(90deg,var(--coral),var(--peach)); }
 .c1 .card-tag { color:var(--coral); }
@@ -99,7 +99,7 @@ main { max-width:960px; margin:0 auto; padding:60px 40px 100px; }
 .c4 .card-tag { color:#A85878; }
 .c5::before { background:linear-gradient(90deg,var(--sky),var(--lavender)); }
 .c5 .card-tag { color:#4A7A9B; }
-
+ 
 .footer-note {
   text-align:center;
   font-size:12px;
@@ -112,65 +112,73 @@ main { max-width:960px; margin:0 auto; padding:60px 40px 100px; }
 </style>
 </head>
 <body>
-
+ 
 <header>
   <div class="eyebrow">Internal Project Hub · 2026</div>
   <h1>Mind <em>Magic</em> Inc.</h1>
   <p class="tagline">Science-backed compassion transformation. All project assets in one place.</p>
   <div class="divider"></div>
 </header>
-
+ 
 <main>
   <div class="section-label">Project Assets</div>
-
+ 
   <div class="assets-grid">
-
+ 
     <a href="mind-magic-dashboard.html" class="asset-card c1">
       <div class="card-icon">🧭</div>
       <div class="card-tag">Strategy</div>
       <h3>Strategy Dashboard</h3>
-      <p>Central hub — vision, 13 verticals, priorities, roadmap, open items and decisions. The single source of truth for all founders.</p>
+      <p>Central hub — vision, 13 applications, priorities, roadmap, open items and decisions. The single source of truth for all founders.</p>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="mm-chat-synthesis.html" class="asset-card c2">
+ 
+    <a href="mind-magic-investor-analysis.html" class="asset-card c2">
+      <div class="card-icon">💰</div>
+      <div class="card-tag">Investor</div>
+      <h3>Market & Competitive Analysis</h3>
+      <p>Investor landscape, funding strategy, market sizing and competitive positioning. The case for Mind Magic as a category-defining opportunity.</p>
+      <div class="card-arrow">→</div>
+    </a>
+ 
+    <a href="mm-chat-synthesis.html" class="asset-card c3">
       <div class="card-icon">✦</div>
       <div class="card-tag">Synthesis</div>
       <h3>Strategic Synthesis</h3>
       <p>Deep synthesis of the March 2026 founders' WhatsApp chat. Brand narrative, action items, operating principles and key decisions.</p>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="mind-magic-workbook.html" class="asset-card c3">
+ 
+    <a href="mind-magic-workbook.html" class="asset-card c4">
       <div class="card-icon">📖</div>
       <div class="card-tag">Programme</div>
       <h3>Participant Workbook</h3>
       <p>The core MM programme workbook for participants going through the Mind Magic method.</p>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="mm-ttt-programme-workbook.html" class="asset-card c4">
+ 
+    <a href="mm-ttt-programme-workbook.html" class="asset-card c5">
       <div class="card-icon">🎓</div>
       <div class="card-tag">Certification</div>
       <h3>TTT Programme Workbook</h3>
       <p>Full Train the Trainer certification workbook — phases, modules, curriculum structure and workbook pages for TTT candidates.</p>
       <div class="card-arrow">→</div>
     </a>
-
-    <a href="mm-ttt-competitive-analysis.html" class="asset-card c5">
+ 
+    <a href="mm-ttt-competitive-analysis.html" class="asset-card c1">
       <div class="card-icon">📊</div>
       <div class="card-tag">Research</div>
       <h3>TTT Competitive Analysis</h3>
       <p>Benchmarking MM TTT against competitor programmes — pricing, positioning, differentiators and strategic playbook.</p>
       <div class="card-arrow">→</div>
     </a>
-
+ 
   </div>
-
+ 
   <div class="footer-note">
     <strong>Mind Magic Inc.</strong> · Internal use only · Built March 2026
   </div>
 </main>
-
+ 
 </body>
 </html>
