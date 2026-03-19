@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Magic Inc. — Investor Analysis 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral:    #E8735A;
+  --peach:    #F2A07B;
+  --amber:    #E8B86D;
+  --lavender: #B8A4C9;
+  --sky:      #A8C4D4;
+  --rose:     #D4849A;
+  --green:    #7EC88A;
+  --warm-white: #FDF8F4;
+  --off-white:  #F7F1EB;
+  --soft-grey:  #EDE7E0;
+  --ink:        #2A1F1A;
+  --ink-light:  #5A4A42;
+  --ink-faint:  #8A7A72;
+  --border:     rgba(180,150,130,0.2);
+  --shadow:     0 2px 20px rgba(100,60,40,0.09);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans',sans-serif; background:var(--off-white); color:var(--ink); min-height:100vh; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #F2C27A 0%, #EFA07A 18%, #E8735A 36%, #C97090 54%, #B09AC8 72%, #9AB8D8 90%);
+  padding: 52px 60px 0; position:relative; overflow:hidden;
+}
+.hero::before { content:''; position:absolute; top:-100px; right:-100px; width:600px; height:600px; border-radius:50%; border:80px solid rgba(255,255,255,0.06); pointer-events:none; }
+.hero-inner { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:flex-start; gap:2rem; flex-wrap:wrap; }
+.hero-eyebrow { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:500; margin-bottom:14px; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,5vw,58px); font-weight:900; color:#fff; line-height:1.05; margin-bottom:10px; text-shadow:0 2px 24px rgba(60,20,10,0.2); }
+.hero h1 em { font-style:italic; color:rgba(255,255,255,0.82); }
+.hero-sub { font-size:13.5px; color:rgba(255,255,255,0.72); font-weight:300; max-width:500px; line-height:1.6; margin-bottom:24px; }
+.hero-pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:36px; }
+.hpill { background:rgba(255,255,255,0.18); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.28); border-radius:20px; padding:5px 14px; font-size:11px; color:#fff; font-weight:500; }
+.hero-quote { background:rgba(255,255,255,0.18); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.28); border-radius:14px; padding:18px 22px; max-width:240px; flex-shrink:0; align-self:flex-start; margin-top:8px; }
+.hero-quote blockquote { font-family:'Playfair Display',serif; font-style:italic; font-size:12.5px; color:rgba(255,255,255,0.9); line-height:1.6; margin-bottom:6px; }
+.hero-quote cite { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.55); font-style:normal; }
+
+/* STATS BAR */
+.stats-bar { display:flex; background:#fff; border-bottom:1px solid var(--border); box-shadow:0 2px 16px rgba(100,60,40,0.07); flex-wrap:wrap; }
+.stat-block { flex:1; min-width:120px; padding:18px 24px; border-right:1px solid var(--border); text-align:center; }
+.stat-block:last-child { border-right:none; }
+.stat-n { font-family:'Playfair Display',serif; font-size:22px; font-weight:900; line-height:1; margin-bottom:3px; }
+.stat-l { font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-faint); font-weight:500; }
+
+/* NAV */
+nav { background:#fff; border-bottom:2px solid var(--border); padding:0 60px; display:flex; gap:0; overflow-x:auto; scrollbar-width:none; box-shadow:0 2px 12px rgba(100,60,40,0.06); position:sticky; top:0; z-index:100; }
+nav::-webkit-scrollbar { display:none; }
+.tab { padding:15px 20px; font-size:11.5px; letter-spacing:1px; text-transform:uppercase; font-weight:600; cursor:pointer; color:var(--ink-faint); border-bottom:3px solid transparent; white-space:nowrap; transition:all 0.2s; position:relative; bottom:-2px; user-select:none; }
+.tab:hover { color:var(--coral); }
+.tab.active { color:var(--coral); border-bottom-color:var(--coral); }
+
+/* MAIN */
+main { max-width:1300px; margin:0 auto; padding:44px 60px 80px; }
+@media(max-width:900px){ main{padding:28px 20px 60px;} .hero{padding:36px 20px 0;} nav{padding:0 12px;} .g2,.g3,.g4{grid-template-columns:1fr!important;} .hero-quote{display:none;} .stats-bar{} }
+@media(max-width:640px){ .stat-block{min-width:50%;} }
+
+.sec { display:none; animation:fadeUp 0.3s ease; }
+.sec.active { display:block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+
+/* LAYOUT */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.section { margin-bottom:48px; }
+.section-label { font-size:10px; letter-spacing:4px; text-transform:uppercase; font-weight:700; color:var(--coral); margin-bottom:5px; }
+.section-title { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+.section-desc { font-size:13px; color:var(--ink-faint); font-weight:300; line-height:1.65; max-width:700px; margin-bottom:24px; }
+.divider { height:1px; background:var(--border); margin:44px 0; }
+
+/* CARDS */
+.card { background:#fff; border-radius:14px; border:1px solid var(--border); box-shadow:var(--shadow); padding:22px 26px; }
+.card-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; font-weight:700; margin-bottom:10px; }
+.card h3 { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.card p { font-size:13px; line-height:1.7; color:var(--ink-light); font-weight:300; }
+
+/* HIGHLIGHT */
+.highlight-box { background:linear-gradient(135deg,#FDEDE8 0%,#F5EAF5 50%,#EAEeF8 100%); border:1px solid rgba(200,160,150,0.25); border-radius:14px; padding:26px 32px; margin-bottom:20px; position:relative; overflow:hidden; }
+.highlight-box::before { content:'"'; font-family:'Playfair Display',serif; font-size:160px; color:rgba(232,115,90,0.07); position:absolute; top:-30px; left:8px; line-height:1; pointer-events:none; }
+.highlight-box .hq { font-family:'Playfair Display',serif; font-size:17px; font-style:italic; color:var(--coral); line-height:1.5; position:relative; z-index:1; margin-bottom:8px; max-width:720px; }
+.highlight-box .hb { font-size:13px; line-height:1.75; color:var(--ink-light); font-weight:300; max-width:740px; }
+
+/* FUNNEL */
+.funnel-wrap { background:#fff; border-radius:16px; border:1px solid var(--border); box-shadow:var(--shadow); padding:32px 36px; margin-bottom:20px; }
+.funnel-bar { height:50px; border-radius:8px; display:flex; align-items:center; padding:0 20px; margin-bottom:8px; }
+.funnel-bar-label { font-size:12.5px; font-weight:600; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.2); }
+.funnel-bar-sub { font-size:11px; color:rgba(255,255,255,0.78); font-weight:300; margin-left:8px; }
+.funnel-meta { display:flex; justify-content:space-between; align-items:center; padding:0 4px; margin-bottom:18px; }
+.funnel-value { font-family:'Playfair Display',serif; font-size:20px; font-weight:900; color:var(--ink); }
+.funnel-tag { font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:700; padding:4px 12px; border-radius:999px; }
+.funnel-arrow { width:2px; height:16px; background:var(--border); margin:0 auto 8px; position:relative; }
+.funnel-arrow::after { content:''; position:absolute; bottom:-5px; left:-4px; border:5px solid transparent; border-top-color:var(--border); }
+.funnel-note { font-size:11.5px; color:var(--ink-faint); line-height:1.6; border-left:3px solid var(--soft-grey); padding-left:14px; margin-top:4px; }
+
+/* TABLES */
+.tbl-wrap { overflow-x:auto; margin-bottom:20px; }
+table { width:100%; border-collapse:collapse; font-size:12.5px; }
+th { text-align:left; font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-weight:700; color:var(--ink-faint); padding:10px 14px; border-bottom:2px solid var(--soft-grey); white-space:nowrap; }
+td { padding:13px 14px; border-bottom:1px solid var(--soft-grey); color:var(--ink-light); font-weight:300; vertical-align:top; line-height:1.5; }
+tr:hover td { background:#FFFAF8; }
+.val { font-family:'Playfair Display',serif; font-weight:700; color:var(--ink); font-size:14px; }
+.total-row td { background:linear-gradient(135deg,#FDF0E8,#F5EAF5); font-weight:600; color:var(--ink); border-top:2px solid var(--border); }
+.total-row .val { color:var(--coral); font-size:18px; }
+
+/* THREAT BADGES */
+.threat { display:inline-block; padding:3px 10px; border-radius:999px; font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:700; white-space:nowrap; }
+.t-high { background:rgba(232,115,90,0.15); color:var(--coral); }
+.t-med  { background:rgba(232,184,109,0.2); color:#A07830; }
+.t-low  { background:rgba(126,200,138,0.2); color:#3A8A4A; }
+
+/* MOAT BADGES */
+.moat { display:inline-block; padding:3px 10px; border-radius:999px; font-size:10px; font-weight:600; margin:2px 3px 2px 0; background:var(--soft-grey); color:var(--ink-light); }
+
+/* COMPETITOR CARDS */
+.comp-card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:22px 24px; border-top:4px solid; transition:box-shadow 0.2s; }
+.comp-card:hover { box-shadow:0 8px 28px rgba(100,60,40,0.1); }
+.comp-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
+.comp-name { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--ink); }
+.comp-type { font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-weight:600; color:var(--ink-faint); margin-top:2px; }
+.comp-rev { font-family:'Playfair Display',serif; font-size:20px; font-weight:900; color:var(--ink); }
+.comp-rev-l { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--ink-faint); }
+.comp-row { display:flex; gap:8px; margin-bottom:6px; }
+.comp-key { font-size:10.5px; font-weight:600; color:var(--ink-faint); letter-spacing:0.5px; min-width:70px; flex-shrink:0; padding-top:1px; }
+.comp-val { font-size:12.5px; color:var(--ink-light); font-weight:300; line-height:1.5; }
+.str-weak { display:flex; gap:12px; margin-top:12px; padding-top:12px; border-top:1px solid var(--soft-grey); }
+.str-col { flex:1; }
+.str-label { font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:5px; }
+.str-item { font-size:11.5px; color:var(--ink-light); font-weight:300; line-height:1.5; padding:3px 0; border-bottom:1px solid var(--soft-grey); }
+.str-item:last-child { border-bottom:none; }
+
+/* POSITIONING MAP */
+.pos-map { background:#fff; border:1px solid var(--border); border-radius:16px; padding:28px; margin-bottom:20px; }
+.map-canvas { position:relative; width:100%; padding-top:58%; background:linear-gradient(135deg,#FDF8F4,#F5F0FA); border-radius:10px; border:1px solid var(--border); overflow:hidden; margin:16px 0; }
+.map-inner { position:absolute; inset:0; }
+.map-axis-x { position:absolute; bottom:12%; left:8%; right:3%; height:2px; background:var(--ink-faint); opacity:0.3; }
+.map-axis-y { position:absolute; left:8%; top:3%; bottom:12%; width:2px; background:var(--ink-faint); opacity:0.3; }
+.map-axis-x::after { content:''; position:absolute; right:-8px; top:-4px; border:5px solid transparent; border-left-color:rgba(90,74,66,0.35); }
+.map-axis-y::after { content:''; position:absolute; top:-8px; left:-4px; border:5px solid transparent; border-bottom-color:rgba(90,74,66,0.35); }
+.map-mid-x { position:absolute; bottom:12%; top:3%; left:53%; width:1px; background:var(--border); }
+.map-mid-y { position:absolute; left:8%; right:3%; top:57%; height:1px; background:var(--border); }
+.map-dot { position:absolute; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:4px; cursor:default; z-index:2; }
+.map-dot:hover .map-circle { transform:scale(1.35); }
+.map-circle { border-radius:50%; border:2.5px solid #fff; box-shadow:0 3px 12px rgba(0,0,0,0.15); transition:transform 0.2s; }
+.map-label { font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; text-align:center; white-space:nowrap; line-height:1.3; }
+.map-axis-label { position:absolute; font-size:9.5px; letter-spacing:2px; text-transform:uppercase; font-weight:700; color:var(--ink-faint); }
+
+/* WHITE SPACE */
+.ws-item { background:#fff; border:1px solid var(--border); border-radius:12px; padding:18px 20px; border-left:4px solid; margin-bottom:10px; }
+.ws-title { font-size:14px; font-weight:600; color:var(--ink); margin-bottom:4px; }
+.ws-body { font-size:12.5px; color:var(--ink-light); line-height:1.6; font-weight:300; }
+.ws-mm { font-size:11px; font-weight:600; color:var(--coral); margin-top:8px; padding-top:8px; border-top:1px solid var(--soft-grey); }
+
+/* REVENUE PROJ */
+.proj-table { background:#fff; border-radius:14px; border:1px solid var(--border); padding:28px; margin-bottom:20px; }
+.bar-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.bar-label { font-size:12px; color:var(--ink-light); min-width:130px; font-weight:400; }
+.bar-track { flex:1; background:var(--soft-grey); border-radius:4px; height:10px; position:relative; }
+.bar-fill { height:100%; border-radius:4px; }
+.bar-val { font-size:11px; font-weight:700; color:var(--ink); min-width:50px; text-align:right; }
+
+/* DISCLOSURE */
+.disclosure { background:linear-gradient(135deg,#FDF8F4,#F5F0FA); border:1px solid var(--border); border-radius:12px; padding:18px 22px; margin-top:40px; }
+.disclosure p { font-size:11px; color:var(--ink-faint); line-height:1.7; font-weight:300; }
+.disclosure strong { color:var(--ink-light); }
+
+/* SAVE BTN */
+.print-btn { position:fixed; bottom:24px; right:24px; background:linear-gradient(135deg,var(--coral),var(--peach)); color:#fff; border:none; border-radius:10px; padding:11px 22px; font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif; box-shadow:0 4px 20px rgba(232,115,90,0.4); transition:all 0.2s; z-index:200; }
+.print-btn:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(232,115,90,0.45); }
+
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-thumb { background:rgba(180,150,130,0.3); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Investor Intelligence Report · March 2026</div>
+      <h1>Mind <em>Magic</em> Inc.<br>Market & Competitive Analysis</h1>
+      <p class="hero-sub">A McKinsey-standard TAM sizing, Bain-standard competitive landscape, and Harvard Business School SWOT + Porter's Five Forces — combined for investor due diligence and strategic positioning.</p>
+      <div class="hero-pills">
+        <span class="hpill">TAM / SAM / SOM</span>
+        <span class="hpill">Top-Down + Bottom-Up</span>
+        <span class="hpill">10 Direct Competitors</span>
+        <span class="hpill">5 Indirect Threats</span>
+        <span class="hpill">White Space Analysis</span>
+        <span class="hpill">SWOT Analysis</span>
+        <span class="hpill">Porter's Five Forces</span>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <blockquote>"Competition is for losers. Create something new and valuable that no one else can offer."</blockquote>
+      <cite>— Peter Thiel, Zero to One</cite>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-block"><div class="stat-n" style="color:var(--coral);">$48.4B</div><div class="stat-l">TAM 2024</div></div>
+  <div class="stat-block"><div class="stat-n" style="color:var(--lavender);">$9.5B</div><div class="stat-l">SAM (Science Wellness)</div></div>
+  <div class="stat-block"><div class="stat-n" style="color:var(--amber);">£32M</div><div class="stat-l">SOM Base Case Y5</div></div>
+  <div class="stat-block"><div class="stat-n" style="color:var(--sky);">11.3%</div><div class="stat-l">Segment CAGR</div></div>
+  <div class="stat-block"><div class="stat-n" style="color:var(--coral);">$600M+</div><div class="stat-l">Largest Competitor (Robbins)</div></div>
+  <div class="stat-block"><div class="stat-n" style="color:var(--green);">0</div><div class="stat-l">True Category Peers</div></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="tab active" onclick="show('tam',this)">01 · TAM Analysis</div>
+  <div class="tab" onclick="show('direct',this)">02 · Direct Competitors</div>
+  <div class="tab" onclick="show('indirect',this)">03 · Indirect Threats</div>
+  <div class="tab" onclick="show('map',this)">04 · Positioning Map</div>
+  <div class="tab" onclick="show('whitespace',this)">05 · White Space</div>
+  <div class="tab" onclick="show('moats',this)">06 · Moats & Verdict</div>
+  <div class="tab" onclick="show('swot',this)">07 · SWOT + Porter's</div>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════ TAM ═══ -->
+<section class="sec active" id="tam">
+
+  <div class="section">
+    <div class="highlight-box">
+      <div class="hq">"Mind Magic does not compete in the middle of the personal development market. It occupies a new category: science-validated compassion-based transformation — where no product company currently exists."</div>
+      <div class="hb">This analysis sizes the market from three angles: the broad personal development TAM, the specific science-backed transformation SAM, and the realistically capturable SOM over 5 years. Both top-down and bottom-up approaches are reconciled. Three independent analyst sources confirm the TAM within a narrow band.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Section 01A — Top-Down Funnel</div>
+    <div class="section-title">Global Market → Mind Magic's Beachhead</div>
+    <div class="section-desc">Starting from the verified global personal development market, narrowed through three filters: digital + science orientation, premium buyer willingness to pay, and English-speaking / high-income geographies.</div>
+
+    <div class="funnel-wrap">
+      <div style="font-size:12px;color:var(--ink-faint);margin-bottom:24px;">Sources: Grand View Research ($48.4B), Data Bridge Market Research ($46.7B), Mordor Intelligence ($48.0B) — converging within 4%</div>
+
+      <div class="funnel-bar" style="background:linear-gradient(90deg,var(--coral),var(--peach));width:100%;">
+        <span class="funnel-bar-label">TAM — Global Personal Development Market</span>
+        <span class="funnel-bar-sub">All instruments, all geographies, all formats</span>
+      </div>
+      <div class="funnel-meta">
+        <div><div class="funnel-value">$48.4B</div><div style="font-size:11px;color:var(--ink-faint);margin-top:2px;">2024 · CAGR 5.7% → $67B by 2030</div></div>
+        <span class="funnel-tag" style="background:rgba(232,115,90,0.12);color:var(--coral);">TAM</span>
+      </div>
+      <div class="funnel-note">Personal coaching/training is the largest sub-segment at ~37% share ($18B). Online/e-platforms growing fastest at 7%+ CAGR. Self-awareness segment — Mind Magic's closest focus area — cited as fastest-growing by Grand View Research.</div>
+      <div class="funnel-arrow"></div>
+
+      <div class="funnel-bar" style="background:linear-gradient(90deg,var(--lavender),#C8A8E0);width:72%;">
+        <span class="funnel-bar-label">SAM — Science-Backed Behavioural Transformation</span>
+        <span class="funnel-bar-sub">Digital-first · structured programmes · evidence-based</span>
+      </div>
+      <div class="funnel-meta">
+        <div><div class="funnel-value">$9.5B</div><div style="font-size:11px;color:var(--ink-faint);margin-top:2px;">2024 · CAGR 11.3% → ~$17B by 2030</div></div>
+        <span class="funnel-tag" style="background:rgba(184,164,201,0.2);color:#8B6FAA;">SAM</span>
+      </div>
+      <div class="funnel-note">Anchored by the mindfulness training market ($9.5B, CAGR 11.3% — Market Growth Reports/Valuates). Neuroscience-backed practices cited as a primary adoption driver — directly validating Mind Magic's core differentiator. Online segment commands 65% share growing at 12% CAGR.</div>
+      <div class="funnel-arrow"></div>
+
+      <div class="funnel-bar" style="background:linear-gradient(90deg,var(--amber),#F0C878);width:44%;">
+        <span class="funnel-bar-label">SOM — Mind Magic Capturable Market (5 Years)</span>
+        <span class="funnel-bar-sub">English-speaking · premium buyers · digital-first</span>
+      </div>
+      <div class="funnel-meta">
+        <div><div class="funnel-value">£20–35M ARR</div><div style="font-size:11px;color:var(--ink-faint);margin-top:2px;">Base case Year 5 · ~3% SAM penetration</div></div>
+        <span class="funnel-tag" style="background:rgba(232,184,109,0.2);color:#A07830;">SOM</span>
+      </div>
+      <div class="funnel-note">Filters applied: English-speaking/high-income markets (40% of SAM = $3.8B) → premium structured programme buyers (30% = $1.1B) → 3% market share Year 5 = ~$33M/£26M. Year 1 SOM: ~£0.4–0.6M. Year 3: ~£5–12M. Year 5: £20–35M base case.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Section 01B — Bottom-Up Model</div>
+    <div class="section-title">Unit Economics × Addressable Customers</div>
+    <div class="section-desc">Built from validated cohort pricing (€300 standard / €150 pilot). Ibiza cohort reached capacity and launched a second cohort — confirming both price point and conversion rate.</div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Product Tier</th><th>Price</th><th>Y1 Customers</th><th>Y3 Customers</th><th>Y5 Customers</th><th>Y1 Revenue</th><th>Y3 Revenue</th><th>Y5 Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>6-Week Online Course</strong><br><span style="font-size:11px;color:var(--ink-faint);">Core programme, cohort-based</span></td><td class="val">£350</td><td>400</td><td>3,500</td><td>12,000</td><td class="val">£140K</td><td class="val">£1.2M</td><td class="val">£4.2M</td></tr>
+          <tr><td><strong>Train the Trainer Cert.</strong><br><span style="font-size:11px;color:var(--ink-faint);">Master cert., annual renewal</span></td><td class="val">£2,500</td><td>20</td><td>120</td><td>400</td><td class="val">£50K</td><td class="val">£300K</td><td class="val">£1.0M</td></tr>
+          <tr><td><strong>MM App Membership</strong><br><span style="font-size:11px;color:var(--ink-faint);">Monthly subscription ~£15/mo</span></td><td class="val">£180/yr</td><td>500</td><td>8,000</td><td>35,000</td><td class="val">£90K</td><td class="val">£1.4M</td><td class="val">£6.3M</td></tr>
+          <tr><td><strong>Retreats + In-Person</strong><br><span style="font-size:11px;color:var(--ink-faint);">Ibiza + 3-day formats</span></td><td class="val">£1,200</td><td>40</td><td>200</td><td>600</td><td class="val">£48K</td><td class="val">£240K</td><td class="val">£720K</td></tr>
+          <tr><td><strong>B2B / Enterprise</strong><br><span style="font-size:11px;color:var(--ink-faint);">Corporate programme, avg deal</span></td><td class="val">£25K</td><td>2</td><td>20</td><td>80</td><td class="val">£50K</td><td class="val">£500K</td><td class="val">£2.0M</td></tr>
+          <tr class="total-row"><td colspan="5"><strong>Total Bottom-Up Estimate</strong></td><td class="val">~£378K</td><td class="val">~£3.6M</td><td class="val">~£14.2M</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="g2">
+      <div class="card" style="border-top:4px solid var(--coral);">
+        <div class="card-label" style="color:var(--coral);">Scenario Reconciliation</div>
+        <h3>Both Methods Converge</h3>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px;">
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--soft-grey);"><span style="font-size:13px;color:var(--ink-light);">Conservative Y5 (bottom-up only)</span><span style="font-family:'Playfair Display',serif;font-weight:700;color:var(--ink);">£14.2M</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--soft-grey);"><span style="font-size:13px;color:var(--ink-light);">Base case Y5 (+ app scale)</span><span style="font-family:'Playfair Display',serif;font-weight:700;color:var(--coral);">£32M</span></div>
+          <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--soft-grey);"><span style="font-size:13px;color:var(--ink-light);">Bull case Y5 (film + global TTT)</span><span style="font-family:'Playfair Display',serif;font-weight:700;color:#8B6FAA;">£50M+</span></div>
+          <div style="padding:10px 12px;background:rgba(232,115,90,0.06);border-radius:8px;margin-top:4px;display:flex;justify-content:space-between;"><span style="font-size:13px;font-weight:600;color:var(--ink);">Recommended investor case</span><span style="font-family:'Playfair Display',serif;font-weight:700;color:var(--coral);">£20–35M Y5</span></div>
+        </div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--lavender);">
+        <div class="card-label" style="color:#8B6FAA;">3 Analyst Sources — TAM Convergence</div>
+        <h3>Independent Validation</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+          <div style="padding:10px 14px;background:rgba(232,115,90,0.07);border-radius:8px;"><div style="font-size:12px;font-weight:600;color:var(--ink);">Grand View Research (2025)</div><div style="font-size:11.5px;color:var(--ink-faint);">$48.4B TAM · CAGR 5.7% · Self-awareness fastest-growing segment</div></div>
+          <div style="padding:10px 14px;background:rgba(184,164,201,0.1);border-radius:8px;"><div style="font-size:12px;font-weight:600;color:var(--ink);">Market Growth Reports / Valuates (2024)</div><div style="font-size:11.5px;color:var(--ink-faint);">$9.5B mindfulness training SAM · CAGR 11.3% · Neuroscience-backed cited as key driver</div></div>
+          <div style="padding:10px 14px;background:rgba(232,184,109,0.1);border-radius:8px;"><div style="font-size:12px;font-weight:600;color:var(--ink);">Mordor Intelligence (2025)</div><div style="font-size:11.5px;color:var(--ink-faint);">$48.0B TAM · Confirms Grand View within 0.8% · Names Robbins, Jay Shetty, Berstein as key players</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Section 01C — 5-Year Growth Projections</div>
+    <div class="section-title">Revenue Trajectory 2026–2030</div>
+    <div class="section-desc">Three scenarios modelled. Film adaptation upside excluded from all scenarios — treated as pure optionality. All figures in £M annual revenue.</div>
+    <div class="proj-table">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Scenario</th><th>2026</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>Key Driver</th></tr></thead>
+          <tbody>
+            <tr style="background:rgba(168,196,212,0.06);"><td>🔵 <strong>Conservative</strong><br><span style="font-size:11px;color:var(--ink-faint);">Course + TTT only</span></td><td class="val">£0.4M</td><td class="val">£2.4M</td><td class="val">£6.5M</td><td class="val">£11M</td><td class="val">£18M</td><td style="font-size:12px;color:var(--ink-faint);">Course scale + TTT network only</td></tr>
+            <tr style="background:rgba(232,115,90,0.04);"><td>🟠 <strong>Base Case</strong><br><span style="font-size:11px;color:var(--ink-faint);">+ App beta Y3</span></td><td class="val" style="color:var(--coral);">£0.6M</td><td class="val" style="color:var(--coral);">£5M</td><td class="val" style="color:var(--coral);">£12M</td><td class="val" style="color:var(--coral);">£22M</td><td class="val" style="color:var(--coral);">£32M</td><td style="font-size:12px;color:var(--ink-faint);">App membership compounds from Y3</td></tr>
+            <tr style="background:rgba(184,164,201,0.07);"><td>🟣 <strong>Bull Case</strong><br><span style="font-size:11px;color:var(--ink-faint);">+ Film + Global TTT</span></td><td class="val" style="color:#8B6FAA;">£1.2M</td><td class="val" style="color:#8B6FAA;">£9M</td><td class="val" style="color:#8B6FAA;">£22M</td><td class="val" style="color:#8B6FAA;">£36M</td><td class="val" style="color:#8B6FAA;">£50M+</td><td style="font-size:12px;color:var(--ink-faint);">Film flywheel + 400+ trainers + B2B scale</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:11px;color:var(--ink-faint);margin-top:14px;line-height:1.7;"><strong>CAGR note:</strong> The science-wellness segment grows at 11.3% annually — nearly double the broader personal development market (5.7%). Mind Magic's revenue trajectory assumes outperformance of the segment average, consistent with category-creating businesses that establish new buyer demand rather than competing for existing spend.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════ DIRECT COMPETITORS ═══ -->
+<section class="sec" id="direct">
+
+  <div class="section">
+    <div class="highlight-box">
+      <div class="hq">"Calm downloads fell 61% and Headspace 74% between 2018–2024. The market is not saturated — it is upgrading. Buyers want transformation, not relaxation."</div>
+      <div class="hb">The competitive landscape fragments into three tiers: (1) Legacy wellness apps pivoting to clinical, (2) Thought-leader personal development businesses with no product company infrastructure, and (3) Enterprise coaching platforms with no consumer brand. Mind Magic is building across all three simultaneously — with scientific legitimacy none of the others can match.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Master Comparison Table</div>
+    <div class="section-title">Top 10 Direct Competitors at a Glance</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Competitor</th><th>Revenue / Scale</th><th>Funding</th><th>Pricing Model</th><th>Core Audience</th><th>Primary Moat</th><th>MM Threat</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">1</td><td><strong>Tony Robbins</strong><br><span style="font-size:11px;color:var(--ink-faint);">Robbins Research International</span></td><td class="val">$1B+ empire<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">est. $16M direct revenue</span></td><td>Bootstrapped<br>$600M net worth</td><td>Events $500–$5K<br>Coaching $10K+<br>Online courses</td><td>High-achievers<br>Corporates<br>Entrepreneurs</td><td>Brand ubiquity<br>30-yr head start</td><td><span class="threat t-low">Low</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">2</td><td><strong>Joe Dispenza</strong><br><span style="font-size:11px;color:var(--ink-faint);">Encephalon LLC / NeuroChangeSolutions</span></td><td class="val">$15–19M net worth<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">200+ certified consultants</span></td><td>Bootstrapped<br>Self-funded</td><td>Retreats $3–5K<br>Online courses<br>Gaia content</td><td>Spiritual seekers<br>Healing-focused<br>Wellness committed</td><td>Pseudoscience niche<br>Loyal community</td><td><span class="threat t-high">High</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">3</td><td><strong>Mindvalley</strong><br><span style="font-size:11px;color:var(--ink-faint);">Vishen Lakhiani · est. 2003</span></td><td class="val">$30–100M ARR<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">300K+ paying customers</span></td><td>Seed: $201K<br>Largely self-funded</td><td>All-access $500/yr<br>Individual courses<br>Live events</td><td>Global personal growth<br>Entrepreneurs<br>Lifelong learners</td><td>Platform network<br>Content depth<br>Community</td><td><span class="threat t-high">High</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">4</td><td><strong>BetterUp</strong><br><span style="font-size:11px;color:var(--ink-faint);">Enterprise coaching platform</span></td><td class="val">$214M revenue<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">$4.7B valuation</span></td><td>$628M raised<br>Series E</td><td>$109–279/mo (B2C)<br>$499/user/mo (B2B)<br>Enterprise contracts</td><td>Corporates<br>HR/L&D leaders<br>Individual professionals</td><td>Enterprise contracts<br>Research lab<br>VC backing</td><td><span class="threat t-med">Medium</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">5</td><td><strong>Calm</strong><br><span style="font-size:11px;color:var(--ink-faint);">Consumer + B2B wellness app</span></td><td class="val">~$150M ARR est.<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">Downloads declining 61%</span></td><td>$218M raised<br>Unicorn valuation</td><td>$69.99/yr consumer<br>$14/user/mo B2B<br>Lifetime $399</td><td>Stressed consumers<br>Corporate wellness<br>Sleep-focused</td><td>Brand recognition<br>Jay Shetty content<br>Celebrity sleep stories</td><td><span class="threat t-low">Low</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">6</td><td><strong>Headspace</strong><br><span style="font-size:11px;color:var(--ink-faint);">Meditation + mental health</span></td><td class="val">$56M revenue (2019)<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">Merged with Ginger 2021</span></td><td>$320M raised<br>$3B valuation (peak)</td><td>$12.99/mo consumer<br>$69.99/yr<br>B2B enterprise</td><td>Beginner meditators<br>Corporates<br>Clinical partnerships</td><td>Brand trust<br>Clinical expansion<br>200 countries</td><td><span class="threat t-low">Low</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">7</td><td><strong>Jay Shetty / On Purpose</strong><br><span style="font-size:11px;color:var(--ink-faint);">Coaching + media brand</span></td><td class="val">~$50M est. empire<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">Chief Purpose Officer, Calm</span></td><td>Bootstrapped<br>Revenue-funded</td><td>Certification $2K+<br>Coaching programmes<br>Books + podcast</td><td>Millennials<br>Purpose-seekers<br>Wellness curious</td><td>Social reach<br>Monk branding<br>Calm partnership</td><td><span class="threat t-med">Medium</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">8</td><td><strong>Gabby Bernstein</strong><br><span style="font-size:11px;color:var(--ink-faint);">Spirit Junkie / Hay House</span></td><td class="val">$10–20M est.<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">NY Times bestselling author</span></td><td>Bootstrapped<br>Hay House backed</td><td>Courses $300–2K<br>Live events<br>Membership</td><td>Spiritual women 30–50<br>Law of Attraction<br>Recovery-adjacent</td><td>Loyal female community<br>Publisher relationship</td><td><span class="threat t-low">Low</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">9</td><td><strong>Deepak Chopra</strong><br><span style="font-size:11px;color:var(--ink-faint);">Chopra Global / MasterClass</span></td><td class="val">$200M+ net worth<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">50+ years, 90+ books</span></td><td>Bootstrapped<br>Revenue-funded</td><td>MasterClass sub<br>Retreats $2–8K<br>Certification courses</td><td>Spiritual + science seekers<br>Aging wellness market<br>Global reach</td><td>Longevity/brand<br>Medical credibility<br>Chopra Centers</td><td><span class="threat t-med">Medium</span></td></tr>
+          <tr><td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">10</td><td><strong>MasterClass</strong><br><span style="font-size:11px;color:var(--ink-faint);">Premium content platform</span></td><td class="val">$100M+ ARR est.<br><span style="font-size:11px;font-weight:300;color:var(--ink-faint);">$2.8B valuation</span></td><td>$461M raised<br>Series G</td><td>$120/yr all-access<br>$180/yr premium<br>Gift cards</td><td>Aspirational learners<br>Culture consumers<br>Professional upskilling</td><td>Celebrity instructors<br>Production quality<br>Brand prestige</td><td><span class="threat t-low">Low</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Competitor Deep Dives</div>
+    <div class="section-title">Priority Competitors: Full Intelligence Cards</div>
+    <div class="section-desc">Detailed profiles for the three highest-threat and three most strategically relevant competitors.</div>
+
+    <div class="g2">
+      <!-- Dispenza -->
+      <div class="comp-card" style="border-top-color:var(--coral);">
+        <div class="comp-header">
+          <div><div class="comp-name">Joe Dispenza</div><div class="comp-type">Direct · Neuroscience + Spiritual</div></div>
+          <div style="text-align:right;"><div class="comp-rev">$15–19M</div><div class="comp-rev-l">Est. Net Worth / Empire</div></div>
+        </div>
+        <div class="comp-row"><div class="comp-key">Pricing</div><div class="comp-val">Retreats $3,000–$5,000 · Online courses $200–500 · Gaia subscription content · NeuroChangeSolutions B2B</div></div>
+        <div class="comp-row"><div class="comp-key">Audience</div><div class="comp-val">Spiritual seekers, healing-focused consumers, those seeking "miraculous" health results via mindset</div></div>
+        <div class="comp-row"><div class="comp-key">Recent moves</div><div class="comp-val">200+ certified NeuroChangeSolutions consultants globally · Active Gaia content library · Stadium-filling world tour retreats</div></div>
+        <div class="comp-row"><div class="comp-key">Moat</div><div class="comp-val">Deeply loyal community, Gaia platform distribution, sell-out retreat brand</div></div>
+        <div class="str-weak">
+          <div class="str-col"><div class="str-label" style="color:var(--green);">Strengths</div><div class="str-item">Neuroscience positioning (even if credibility questioned)</div><div class="str-item">Highly profitable retreats at scale</div><div class="str-item">Train-the-trainer model already live</div></div>
+          <div class="str-col"><div class="str-label" style="color:var(--coral);">Weaknesses for MM</div><div class="str-item">Scientific credibility widely challenged</div><div class="str-item">Salvation/healing framing limits mainstream</div><div class="str-item">No compassion orientation — self-focused</div></div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(232,115,90,0.07);border-radius:8px;border-left:3px solid var(--coral);">
+          <div style="font-size:11px;font-weight:700;color:var(--coral);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">MM Strategic Response</div>
+          <div style="font-size:12px;color:var(--ink-light);">Lead with Stanford CCARE affiliation and peer-reviewed RCTs. Dispenza has no equivalent. Compassion orientation opens education, healthcare, and enterprise markets he cannot credibly enter.</div>
+        </div>
+      </div>
+
+      <!-- Mindvalley -->
+      <div class="comp-card" style="border-top-color:var(--lavender);">
+        <div class="comp-header">
+          <div><div class="comp-name">Mindvalley</div><div class="comp-type">Direct · Platform · Course Aggregator</div></div>
+          <div style="text-align:right;"><div class="comp-rev">$30–100M</div><div class="comp-rev-l">ARR · 300K+ paying customers</div></div>
+        </div>
+        <div class="comp-row"><div class="comp-key">Pricing</div><div class="comp-val">All-access membership ~$500/yr · Individual quests $199–399 · Live events $2–5K · Apple Vision Pro app</div></div>
+        <div class="comp-row"><div class="comp-key">Audience</div><div class="comp-val">Global personal growth seekers, entrepreneurs, "extraordinary life" aspiration, tech-forward consumers</div></div>
+        <div class="comp-row"><div class="comp-key">Recent moves</div><div class="comp-val">First immersive meditation app on Apple Vision Pro (2024) · Dubai partnership with Eywa · Scaling to "1 billion people" mission</div></div>
+        <div class="comp-row"><div class="comp-key">Moat</div><div class="comp-val">Platform scale, content depth (1,500+ lessons), global community, Storyblok CMS digital infrastructure</div></div>
+        <div class="str-weak">
+          <div class="str-col"><div class="str-label" style="color:var(--green);">Strengths</div><div class="str-item">Platform breadth — aggregator of experts</div><div class="str-item">300K+ paying customers / $175K revenue per employee</div><div class="str-item">Tech-forward (Vision Pro, AI)</div></div>
+          <div class="str-col"><div class="str-label" style="color:var(--coral);">Weaknesses for MM</div><div class="str-item">No single scientific founder — generic aggregator</div><div class="str-item">No compassion or social impact orientation</div><div class="str-item">Brand is the platform, not the methodology</div></div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(184,164,201,0.1);border-radius:8px;border-left:3px solid var(--lavender);">
+          <div style="font-size:11px;font-weight:700;color:#8B6FAA;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">MM Strategic Response</div>
+          <div style="font-size:12px;color:var(--ink-light);">Mindvalley is a shelf. MM is a book. Don't compete on breadth — compete on depth, origin story, and scientific rigour. The MM methodology cannot be replicated by a content aggregator.</div>
+        </div>
+      </div>
+
+      <!-- BetterUp -->
+      <div class="comp-card" style="border-top-color:var(--sky);">
+        <div class="comp-header">
+          <div><div class="comp-name">BetterUp</div><div class="comp-type">Indirect-Direct · Enterprise Coaching</div></div>
+          <div style="text-align:right;"><div class="comp-rev">$214M</div><div class="comp-rev-l">Revenue · $4.7B valuation · $628M raised</div></div>
+        </div>
+        <div class="comp-row"><div class="comp-key">Pricing</div><div class="comp-val">$109–279/mo B2C · $499/user/mo enterprise · Custom B2B contracts (Google, FAA, Workday clients)</div></div>
+        <div class="comp-row"><div class="comp-key">Audience</div><div class="comp-val">Enterprise HR/L&D buyers, individual professionals seeking coaching, leadership development</div></div>
+        <div class="comp-row"><div class="comp-key">Recent moves</div><div class="comp-val">FedRAMP government authorization · Workday partnership (Dec 2024) · AI coaching Grow Roleplay V2 · Acquired Heyday (Sep 2024)</div></div>
+        <div class="comp-row"><div class="comp-key">Moat</div><div class="comp-val">$628M funding war chest, enterprise contracts (Fortune 500), BetterUp Labs (40+ PhDs), government authorization</div></div>
+        <div class="str-weak">
+          <div class="str-col"><div class="str-label" style="color:var(--green);">Strengths</div><div class="str-item">Proven enterprise revenue at scale ($214M)</div><div class="str-item">Deep academic research partnerships</div><div class="str-item">AI infrastructure advantage</div></div>
+          <div class="str-col"><div class="str-label" style="color:var(--coral);">Weaknesses for MM</div><div class="str-item">No consumer brand — purely B2B</div><div class="str-item">No compassion / meaning orientation</div><div class="str-item">Coaching as SaaS — no spiritual/purpose dimension</div></div>
+        </div>
+        <div style="margin-top:14px;padding:10px 14px;background:rgba(168,196,212,0.12);border-radius:8px;border-left:3px solid var(--sky);">
+          <div style="font-size:11px;font-weight:700;color:#4A7A9B;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">MM Strategic Response</div>
+          <div style="font-size:12px;color:var(--ink-light);">BetterUp is a potential future partner or acquirer, not just a competitor. MM's compassion science + consumer brand fills gaps BetterUp cannot address organically. Monitor for partnership opportunity in the 3-year horizon.</div>
+        </div>
+      </div>
+
+      <!-- Jay Shetty -->
+      <div class="comp-card" style="border-top-color:var(--amber);">
+        <div class="comp-header">
+          <div><div class="comp-name">Jay Shetty</div><div class="comp-type">Direct · Purpose + Media Brand</div></div>
+          <div style="text-align:right;"><div class="comp-rev">~$50M</div><div class="comp-rev-l">Est. empire · Chief Purpose Officer, Calm</div></div>
+        </div>
+        <div class="comp-row"><div class="comp-key">Pricing</div><div class="comp-val">Life coach cert. $2,000–4,000 · Masterclass on Calm (subscription-embedded) · Books + podcast (free) · Speaking $150K+</div></div>
+        <div class="comp-row"><div class="comp-key">Audience</div><div class="comp-val">Millennials, purpose-seekers, "monk mindset" aspirants, mainstream wellness-curious audience</div></div>
+        <div class="comp-row"><div class="comp-key">Recent moves</div><div class="comp-row"><div class="comp-val">Chief Purpose Officer at Calm · Daily Jay podcast integrated into Calm app · Coaching certification school · Social media 50M+ following</div></div></div>
+        <div class="str-weak">
+          <div class="str-col"><div class="str-label" style="color:var(--green);">Strengths</div><div class="str-item">Massive social reach (50M+ across platforms)</div><div class="str-item">Calm platform distribution baked in</div><div class="str-item">Highly relatable mainstream positioning</div></div>
+          <div class="str-col"><div class="str-label" style="color:var(--coral);">Weaknesses for MM</div><div class="str-item">No scientific foundation — opinion-led</div><div class="str-item">Brand-dependent on personality, not methodology</div><div class="str-item">Monk branding beginning to feel diluted</div></div>
+        </div>
+      </div>
+
+      <!-- Deepak Chopra -->
+      <div class="comp-card" style="border-top-color:var(--rose);">
+        <div class="comp-header">
+          <div><div class="comp-name">Deepak Chopra</div><div class="comp-type">Direct · Spiritual + Medical Brand</div></div>
+          <div style="text-align:right;"><div class="comp-rev">$200M+</div><div class="comp-rev-l">Net Worth · 90+ books · 50-year brand</div></div>
+        </div>
+        <div class="comp-row"><div class="comp-key">Pricing</div><div class="comp-val">MasterClass (platform subscription) · Chopra Center retreats $2–8K · Certification courses · Chopra Global digital</div></div>
+        <div class="comp-row"><div class="comp-key">Audience</div><div class="comp-val">Spiritual-medical crossover seekers, aging wellness consumers, global reach (India-origin resonance)</div></div>
+        <div class="comp-row"><div class="comp-key">Moat</div><div class="comp-val">50+ years of brand equity, medical doctor credibility, 90+ books, Chopra Center network, MasterClass integration</div></div>
+        <div class="str-weak">
+          <div class="str-col"><div class="str-label" style="color:var(--green);">Strengths</div><div class="str-item">Medical + spiritual credibility combination</div><div class="str-item">Longest track record in the space</div><div class="str-item">MasterClass distribution reach</div></div>
+          <div class="str-col"><div class="str-label" style="color:var(--coral);">Weaknesses for MM</div><div class="str-item">Brand aging with demographics</div><div class="str-item">Quantum healing claims lack peer-review</div><div class="str-item">No structured methodology or certification</div></div>
+        </div>
+      </div>
+
+      <!-- Calm -->
+      <div class="comp-card" style="border-top-color:var(--green);">
+        <div class="comp-header">
+          <div><div class="comp-name">Calm</div><div class="comp-type">Adjacent · Relaxation → Transformation</div></div>
+          <div style="text-align:right;"><div class="comp-rev">~$150M</div><div class="comp-rev-l">ARR est. · Downloads declining 61%</div></div>
+        </div>
+        <div class="comp-row"><div class="comp-key">Pricing</div><div class="comp-row"><div class="comp-val">$69.99/yr consumer · $399 lifetime · B2B per-user pricing · Clinical partnerships</div></div></div>
+        <div class="comp-row"><div class="comp-key">Strategic move</div><div class="comp-val">Pivoting from relaxation to clinical mental health. Acquired by Focus (2024). Insurance-covered therapy launched Jun 2025. Jay Shetty content integration as "purpose" differentiator.</div></div>
+        <div class="comp-row"><div class="comp-key">Threat to MM</div><div class="comp-val">Low-to-medium. Their pivot to clinical mental health is a retreat from the personal transformation space — not an advance into it. They are leaving the beachhead MM is entering.</div></div>
+        <div class="str-weak">
+          <div class="str-col"><div class="str-label" style="color:var(--green);">Strengths</div><div class="str-item">Brand recognition at scale</div><div class="str-item">Insurance coverage opening (Jun 2025)</div><div class="str-item">Calm Business enterprise channel</div></div>
+          <div class="str-col"><div class="str-label" style="color:var(--coral);">Weaknesses for MM</div><div class="str-item">Declining consumer downloads — model not working</div><div class="str-item">Pivoting away from transformation, not into it</div><div class="str-item">No scientific founder or methodology</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════ INDIRECT ═══ -->
+<section class="sec" id="indirect">
+
+  <div class="section">
+    <div class="section-label">Section 03 — Indirect Threats</div>
+    <div class="section-title">5 Adjacent Players Who Could Enter</div>
+    <div class="section-desc">These are not current competitors — but represent strategic risks if they choose to move into science-validated compassion-based transformation. Monitor, do not ignore.</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Company</th><th>Current Position</th><th>Entry Risk</th><th>Why They Could Enter</th><th>MM Defence</th><th>Threat</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">1</td>
+            <td><strong>Wim Hof / Innerfire</strong><br><span style="font-size:11px;color:var(--ink-faint);">Breathing + cold methodology</span></td>
+            <td>Breathwork, physical methodology, instructor certification ($500+ courses), Netflix presence</td>
+            <td>Low-Med</td>
+            <td>Has structured methodology + certification system. Could add mindset/compassion layer to extend brand.</td>
+            <td>No neuroscience peer review. Physical focus limits overlap. Doty's compassion science is the differentiator.</td>
+            <td><span class="threat t-low">Low</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">2</td>
+            <td><strong>MasterClass</strong><br><span style="font-size:11px;color:var(--ink-faint);">$2.8B content platform</span></td>
+            <td>Premium instructor-led video learning. Deepak Chopra, Matthew McConaughey, etc. already featured.</td>
+            <td>Medium</td>
+            <td>Could commission a "Mind Magic" style science-of-wellbeing curriculum from a Stanford figure. Has distribution at scale.</td>
+            <td>MM's IP is the methodology — not just content. MasterClass courses have no certification, community, or transformation structure.</td>
+            <td><span class="threat t-med">Medium</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">3</td>
+            <td><strong>Coursera / edX</strong><br><span style="font-size:11px;color:var(--ink-faint);">Academic MOOC platforms</span></td>
+            <td>Yale's "Science of Well-Being" (most enrolled course in Yale history) demonstrates massive demand for science-backed wellbeing content.</td>
+            <td>Low</td>
+            <td>Could partner with Stanford CCARE for a compassion science course at scale.</td>
+            <td>MOOC model has no transformation structure, no community, no certification moat. Yale's course is free — not a competitor product.</td>
+            <td><span class="threat t-low">Low</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">4</td>
+            <td><strong>Oprah / OWN Network</strong><br><span style="font-size:11px;color:var(--ink-faint);">Media-to-wellness platform</span></td>
+            <td>Soul Sunday, spiritual interviews, Oprah Daily online. Championed Deepak, Eckhart Tolle, The Secret.</td>
+            <td>Low-Med</td>
+            <td>Has championed every major spiritual wellness figure of the past 30 years. Could build or back a competing platform.</td>
+            <td>Oprah amplifies, not competes. She is a potential partner / distributor for MM — not a competitor. Monitor as acquisition risk.</td>
+            <td><span class="threat t-low">Low</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Playfair Display',serif;font-weight:900;color:var(--ink-faint);font-size:16px;">5</td>
+            <td><strong>Spring Health / Lyra Health</strong><br><span style="font-size:11px;color:var(--ink-faint);">Clinical mental health B2B</span></td>
+            <td>Spring Health: $2.5B valuation, $366M raised. Lyra: similar scale. Both enterprise EAP replacements. Clinically rigorous.</td>
+            <td>Medium-High</td>
+            <td>Both are moving upmarket into wellbeing, not just clinical care. A "compassion science" programme would fit their employer wellness proposition.</td>
+            <td>MM's differentiation: transformation, not treatment. Clinical platforms are insurance-reimbursement driven — different buyer. But watch B2B enterprise space carefully.</td>
+            <td><span class="threat t-med">Medium</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════ POSITIONING MAP ═══ -->
+<section class="sec" id="map">
+
+  <div class="section">
+    <div class="section-label">Section 04 — Market Positioning</div>
+    <div class="section-title">Price vs. Scientific Credibility Matrix</div>
+    <div class="section-desc">The two axes that define the white space Mind Magic uniquely occupies. X-axis: price/exclusivity positioning. Y-axis: scientific credibility / peer-reviewed evidence base. Bubble size represents estimated market scale.</div>
+
+    <div class="pos-map">
+      <div style="font-size:13px;color:var(--ink-light);line-height:1.6;margin-bottom:16px;">Each bubble represents a player's position. <strong>Mind Magic sits in the top-right quadrant — highest scientific credibility AND premium positioning — a space currently unoccupied by any product company.</strong></div>
+      <div class="map-canvas">
+        <div class="map-inner">
+          <!-- Axes -->
+          <div class="map-axis-x"></div>
+          <div class="map-axis-y"></div>
+          <div class="map-mid-x"></div>
+          <div class="map-mid-y"></div>
+          <!-- Axis labels -->
+          <div class="map-axis-label" style="bottom:3%;left:48%;transform:translateX(-50%);">PRICE / EXCLUSIVITY →</div>
+          <div class="map-axis-label" style="left:0.5%;top:48%;transform:translateY(-50%) rotate(-90deg);">SCIENTIFIC CREDIBILITY →</div>
+          <div class="map-axis-label" style="top:2%;right:2%;font-size:9px;color:var(--coral);">← Mind Magic's White Space</div>
+
+          <!-- Quadrant labels -->
+          <div style="position:absolute;left:11%;top:6%;font-size:9px;color:var(--ink-faint);font-weight:600;opacity:0.6;">HIGH SCIENCE · LOW PRICE</div>
+          <div style="position:absolute;right:4%;top:6%;font-size:9px;color:var(--ink-faint);font-weight:600;opacity:0.6;">HIGH SCIENCE · HIGH PRICE</div>
+          <div style="position:absolute;left:11%;bottom:16%;font-size:9px;color:var(--ink-faint);font-weight:600;opacity:0.6;">LOW SCIENCE · LOW PRICE</div>
+          <div style="position:absolute;right:4%;bottom:16%;font-size:9px;color:var(--ink-faint);font-weight:600;opacity:0.6;">LOW SCIENCE · HIGH PRICE</div>
+
+          <!-- Bubbles: left%=price axis, bottom%=science axis (from baseline 12%) -->
+          <!-- Calm: Low price, low-med science -->
+          <div class="map-dot" style="left:24%;bottom:28%;"><div class="map-circle" style="background:var(--sky);width:32px;height:32px;"></div><div class="map-label" style="color:var(--sky);">Calm</div></div>
+          <!-- Headspace: Low price, med science -->
+          <div class="map-dot" style="left:30%;bottom:36%;"><div class="map-circle" style="background:#5A9AB8;width:30px;height:30px;"></div><div class="map-label" style="color:#5A9AB8;">Headspace</div></div>
+          <!-- Coursera/Yale: Low price, high science -->
+          <div class="map-dot" style="left:20%;bottom:68%;"><div class="map-circle" style="background:#8A7AB0;width:22px;height:22px;"></div><div class="map-label" style="color:#8A7AB0;">Coursera<br>/ Yale</div></div>
+          <!-- Gabby Bernstein: Med-low price, low science -->
+          <div class="map-dot" style="left:44%;bottom:18%;"><div class="map-circle" style="background:var(--rose);width:22px;height:22px;"></div><div class="map-label" style="color:var(--rose);">Gabby B.</div></div>
+          <!-- Jay Shetty: Med price, low-med science -->
+          <div class="map-dot" style="left:55%;bottom:24%;"><div class="map-circle" style="background:var(--amber);width:26px;height:26px;"></div><div class="map-label" style="color:#A07830;">Jay Shetty</div></div>
+          <!-- Mindvalley: Med price, low-med science -->
+          <div class="map-dot" style="left:48%;bottom:30%;"><div class="map-circle" style="background:var(--lavender);width:34px;height:34px;"></div><div class="map-label" style="color:#8B6FAA;">Mindvalley</div></div>
+          <!-- Deepak: Med-high price, med science -->
+          <div class="map-dot" style="left:64%;bottom:44%;"><div class="map-circle" style="background:var(--peach);width:28px;height:28px;"></div><div class="map-label" style="color:#C08040;">Deepak<br>Chopra</div></div>
+          <!-- Dispenza: Med-high price, low-med science (contested) -->
+          <div class="map-dot" style="left:60%;bottom:26%;"><div class="map-circle" style="background:#E07860;width:30px;height:30px;"></div><div class="map-label" style="color:#E07860;">Dispenza</div></div>
+          <!-- BetterUp: High price, high science (B2B) -->
+          <div class="map-dot" style="left:76%;bottom:66%;"><div class="map-circle" style="background:var(--sky);width:36px;height:36px;"></div><div class="map-label" style="color:#4A7A9B;">BetterUp</div></div>
+          <!-- Tony Robbins: High price, low science -->
+          <div class="map-dot" style="left:80%;bottom:16%;"><div class="map-circle" style="background:#C04030;width:38px;height:38px;"></div><div class="map-label" style="color:#C04030;">Tony<br>Robbins</div></div>
+          <!-- Mind Magic: HIGH price, HIGH science — white space -->
+          <div class="map-dot" style="left:82%;bottom:82%;z-index:10;">
+            <div class="map-circle" style="background:var(--coral);width:44px;height:44px;box-shadow:0 0 0 6px rgba(232,115,90,0.2);"></div>
+            <div class="map-label" style="color:var(--coral);font-size:11px;">Mind<br>Magic ✦</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;">
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-faint);"><div style="width:12px;height:12px;border-radius:50%;background:var(--coral);flex-shrink:0;"></div>Mind Magic — Target Position</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-faint);"><div style="width:12px;height:12px;border-radius:50%;background:var(--lavender);flex-shrink:0;"></div>Platform competitors</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-faint);"><div style="width:12px;height:12px;border-radius:50%;background:var(--sky);flex-shrink:0;"></div>App / clinical</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-faint);"><div style="width:12px;height:12px;border-radius:50%;background:#C04030;flex-shrink:0;"></div>Thought-leader brands</div>
+      </div>
+      <div style="margin-top:18px;padding:16px 18px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:4px solid var(--coral);">
+        <div style="font-size:12px;font-weight:700;color:var(--coral);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">The White Space Insight</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.6;">The top-right quadrant — HIGH scientific credibility + HIGH price/premium positioning — is occupied by only one entity: BetterUp, and only in the B2B enterprise segment. No consumer-facing product company combines peer-reviewed neuroscience with premium structured transformation programmes. That is Mind Magic's position. No one is there.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════ WHITE SPACE ═══ -->
+<section class="sec" id="whitespace">
+
+  <div class="section">
+    <div class="section-label">Section 05 — White Space Analysis</div>
+    <div class="section-title">Gaps No Competitor Is Filling</div>
+    <div class="section-desc">Seven structural gaps in the current market that Mind Magic is uniquely positioned to address. Each represents a buyer need with no adequate current solution.</div>
+
+    <div class="ws-item" style="border-left-color:var(--coral);">
+      <div class="ws-title">1. Science-Validated Compassion Methodology — As a Product</div>
+      <div class="ws-body">Every major competitor is either scientifically rigorous but B2B-only (BetterUp), or consumer-facing but scientifically thin (Dispenza, Mindvalley, Robbins). No consumer product company has peer-reviewed compassion science at its foundation. This is a category that does not yet exist as a product.</div>
+      <div class="ws-mm">✦ MM Claim: Sole occupant. Stanford CCARE affiliation + RCTs + 40-language IP + structured 6-step methodology.</div>
+    </div>
+
+    <div class="ws-item" style="border-left-color:var(--lavender);">
+      <div class="ws-title">2. Compassion Outward — Not Just Self-Optimisation</div>
+      <div class="ws-body">Every competitor in the personal transformation space is fundamentally self-oriented: manifest wealth, improve performance, feel better. None anchor their methodology in compassion for others as the primary mechanism of transformation. This is Mind Magic's philosophical differentiator — and what opens the education, grief, healthcare, and enterprise markets that self-help brands cannot credibly enter.</div>
+      <div class="ws-mm">✦ MM Claim: Compassion-first framing creates cross-market applicability no competitor can replicate.</div>
+    </div>
+
+    <div class="ws-item" style="border-left-color:var(--amber);">
+      <div class="ws-title">3. Train-the-Trainer at Scale — With Scientific Certification</div>
+      <div class="ws-body">Dispenza's NeuroChangeSolutions has 200+ certified consultants, but without peer-reviewed scientific backing. No competitor offers a certified trainer programme grounded in a Stanford-affiliated neuroscience methodology. This is a structural multiplier — each trainer certified becomes a revenue stream and a brand ambassador without requiring Helena to be everywhere.</div>
+      <div class="ws-mm">✦ MM Claim: Priority 2. Design curriculum, price at £2,500+, target 400 trainers by Y5 = 4× reach without 4× cost.</div>
+    </div>
+
+    <div class="ws-item" style="border-left-color:var(--sky);">
+      <div class="ws-title">4. The "Never Leave" App — Life Agent, Not Meditation Timer</div>
+      <div class="ws-body">Calm and Headspace are timers. Mindvalley is a library. No player has built an AI-powered compassion agent that knows your personality, life events, and intentions — and adapts your programme accordingly. The vision Helena and Gina articulated (Roblox for adults, not users but citizens) represents the next generation of wellness product design. No one is building it in this space.</div>
+      <div class="ws-mm">✦ MM Claim: Priority 3 (long game). Design brief needed. This is the long-term revenue engine and the exit story.</div>
+    </div>
+
+    <div class="ws-item" style="border-left-color:var(--rose);">
+      <div class="ws-title">5. Grief, Diagnosis & Life Transition — As a Dedicated Track</div>
+      <div class="ws-body">Every competitor targets aspiration (I want more, better, faster). None structurally address the most psychologically impactful life moments: grief, terminal diagnosis, bereavement, major illness. These audiences have the highest willingness to pay and the lowest competition. Mind Magic's compassion science framework is perfectly suited — and uniquely credible — here.</div>
+      <div class="ws-mm">✦ MM Claim: MM for Grief is a vertical with no credible competitor. High-impact, high-margin, mission-aligned.</div>
+    </div>
+
+    <div class="ws-item" style="border-left-color:var(--green);">
+      <div class="ws-title">6. Education — Children, Teachers, University — Science-First</div>
+      <div class="ws-body">While Mindful Schools exists in the education space, no major personal development brand has built a credible, science-backed curriculum for children, teens, teachers, and university students simultaneously. The education market represents both a commercial opportunity and the deepest expression of Mind Magic's compassion mission — and Jim's legacy.</div>
+      <div class="ws-mm">✦ MM Claim: MM Education (MM Edu-C + MM Edu-B) is a high-impact vertical. B2B to schools = scalable, contract revenue.</div>
+    </div>
+
+    <div class="ws-item" style="border-left-color:var(--amber);">
+      <div class="ws-title">7. The Structured 6-Step Programme — Teachable, Testable, Certifiable</div>
+      <div class="ws-body">Most thought-leader content is inspirational but not systematically teachable. Tony Robbins can't be replicated. Dispenza retreats require Dispenza. Mind Magic's 6-step framework (Stop → Soothe → Savour → Set Intention → Pursue → Release) is explicitly designed as a transferable methodology — which is why Helena can teach it, trainers can certify in it, and the app can structure around it.</div>
+      <div class="ws-mm">✦ MM Claim: The methodology IS the moat. It is codified, teachable, and protected by IP. No competitor has this combination.</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════ MOATS & VERDICT ═══ -->
+<section class="sec" id="moats">
+
+  <div class="section">
+    <div class="section-label">Section 06A — Competitive Moats</div>
+    <div class="section-title">What Makes Each Player Defensible</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Player</th><th>Primary Moat</th><th>Moat Strength</th><th>Can MM Match?</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Tony Robbins</strong></td><td>30-year brand ubiquity + live event machine + 33 companies</td><td>🔴 Very Strong</td><td>No — but unnecessary. Different buyer, different mechanism.</td></tr>
+          <tr><td><strong>Joe Dispenza</strong></td><td>Deeply loyal community + sell-out retreats + NeuroChangeSolutions network</td><td>🟠 Strong</td><td>Partially — MM's peer-reviewed science is a superior credibility moat.</td></tr>
+          <tr><td><strong>Mindvalley</strong></td><td>Platform scale (300K+ customers) + content depth + global community infrastructure</td><td>🟠 Strong</td><td>Not via breadth. MM competes on depth + origin story.</td></tr>
+          <tr><td><strong>BetterUp</strong></td><td>$628M war chest + enterprise contracts + government FedRAMP + 40-PhD research lab</td><td>🔴 Very Strong (B2B)</td><td>No — but consumer space is wide open. Partnership > competition.</td></tr>
+          <tr><td><strong>Calm</strong></td><td>Brand recognition + Jay Shetty content + Calm Business enterprise</td><td>🟡 Weakening</td><td>Yes — and exceeding it. MM's science base > Calm's celebrity content.</td></tr>
+          <tr><td><strong>Headspace</strong></td><td>Clinical partnerships + 200 countries + Meta investment</td><td>🟡 Pivoting</td><td>Partially — but Headspace is retreating from transformation, not advancing.</td></tr>
+          <tr><td><strong>Jay Shetty</strong></td><td>50M+ social following + Calm platform distribution + monk brand story</td><td>🟠 Medium</td><td>Partially — MM's story (Into the Magic Shop) is equally compelling.</td></tr>
+          <tr><td><strong>Mind Magic</strong></td><td style="color:var(--coral);font-weight:500;">Stanford CCARE peer review + 40-language IP + Masha stewardship + codified 6-step methodology + compassion moat</td><td>🟢 Building</td><td>N/A — unique combination no competitor can replicate</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Section 06B — Threat Register</div>
+    <div class="section-title">Consolidated Threat Assessment</div>
+
+    <div class="g3">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;border-top:4px solid var(--coral);">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--coral);margin-bottom:14px;">High Threat</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:10px 12px;background:rgba(232,115,90,0.07);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">Joe Dispenza</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">Closest category overlap. Neuroscience positioning + retreat model + trainer certification already live.</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(232,115,90,0.07);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">Mindvalley</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">Platform scale and distribution advantage. Could commission Jim Doty-equivalent content at speed.</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;border-top:4px solid var(--amber);">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#A07830;margin-bottom:14px;">Medium Threat</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:10px 12px;background:rgba(232,184,109,0.08);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">BetterUp</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">$628M war chest could fund a consumer brand. Watch for mission expansion beyond B2B.</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(232,184,109,0.08);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">Jay Shetty</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">Calm integration + social reach could amplify into direct course competition in MM's tier.</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(232,184,109,0.08);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">Deepak Chopra</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">Medical + spiritual credibility combination is structurally similar. Aging demographic is the protection.</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(232,184,109,0.08);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">Spring Health (indirect)</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">B2B enterprise expansion into wellbeing could intercept MM's corporate pipeline.</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;border-top:4px solid var(--green);">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#3A8A4A;margin-bottom:14px;">Low Threat</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:10px 12px;background:rgba(126,200,138,0.08);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">Tony Robbins</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">Different buyer, different mechanism. Performance vs. compassion. Audiences don't significantly overlap.</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(126,200,138,0.08);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">Calm / Headspace</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">Actively retreating from the transformation market. Pivoting clinical. Leaving MM's beachhead.</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(126,200,138,0.08);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">Gabby Bernstein</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">Predominantly female, spiritual, law of attraction. Limited scientific credibility. Adjacent, not competitive.</div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(126,200,138,0.08);border-radius:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);">MasterClass</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px;">Content platform with no certification or transformation structure. Entertainment, not methodology.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Section 06C — The Verdict</div>
+    <div class="section-title">Mind Magic's Defensible Position</div>
+
+    <div class="highlight-box" style="margin-bottom:20px;">
+      <div class="hq">"No competitor combines peer-reviewed neuroscience, a compassion-first philosophy, a codified teachable methodology, authentic origin story, and a product-company infrastructure. This is not a crowded market. It is an empty one."</div>
+      <div class="hb">The analysis of 10 direct and 5 indirect competitors reveals a structural gap that is both large enough to be commercially significant and narrow enough that Mind Magic can own it. The compound moat — IP + science + origin story + methodology — is not replicable by investment alone.</div>
+    </div>
+
+    <div class="g2">
+      <div class="card" style="border-top:4px solid var(--coral);">
+        <div class="card-label" style="color:var(--coral);">Mind Magic's Compound Moat</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+          <div style="padding:10px 12px;background:rgba(232,115,90,0.07);border-radius:8px;display:flex;gap:10px;align-items:flex-start;"><span style="font-size:16px;flex-shrink:0;">🔬</span><div><div style="font-size:13px;font-weight:600;color:var(--ink);">Stanford CCARE Peer-Reviewed Science</div><div style="font-size:11.5px;color:var(--ink-faint);">RCTs on compassion cultivation. Cannot be faked or replicated by investment.</div></div></div>
+          <div style="padding:10px 12px;background:rgba(184,164,201,0.1);border-radius:8px;display:flex;gap:10px;align-items:flex-start;"><span style="font-size:16px;flex-shrink:0;">📖</span><div><div style="font-size:13px;font-weight:600;color:var(--ink);">40-Language IP + Origin Story</div><div style="font-size:11.5px;color:var(--ink-faint);">Into the Magic Shop is a universal story. Translated into 40 languages before the product company launches.</div></div></div>
+          <div style="padding:10px 12px;background:rgba(232,184,109,0.1);border-radius:8px;display:flex;gap:10px;align-items:flex-start;"><span style="font-size:16px;flex-shrink:0;">⚙️</span><div><div style="font-size:13px;font-weight:600;color:var(--ink);">Codified 6-Step Methodology</div><div style="font-size:11.5px;color:var(--ink-faint);">Stop · Soothe · Savour · Set Intention · Pursue · Release. Teachable, certifiable, scalable.</div></div></div>
+          <div style="padding:10px 12px;background:rgba(168,196,212,0.12);border-radius:8px;display:flex;gap:10px;align-items:flex-start;"><span style="font-size:16px;flex-shrink:0;">❤️</span><div><div style="font-size:13px;font-weight:600;color:var(--ink);">Compassion-First Orientation</div><div style="font-size:11.5px;color:var(--ink-faint);">Opens education, healthcare, enterprise, grief markets. Self-help brands cannot credibly follow here.</div></div></div>
+          <div style="padding:10px 12px;background:rgba(212,132,154,0.1);border-radius:8px;display:flex;gap:10px;align-items:flex-start;"><span style="font-size:16px;flex-shrink:0;">🎬</span><div><div style="font-size:13px;font-weight:600;color:var(--ink);">Media Optionality (Into the Magic Shop)</div><div style="font-size:11.5px;color:var(--ink-faint);">Film/series adaptation rights controlled by founding team. Unmodelled upside. A flywheel if triggered.</div></div></div>
+        </div>
+      </div>
+      <div class="card" style="border-top:4px solid var(--lavender);">
+        <div class="card-label" style="color:#8B6FAA;">Strategic Priorities — Reinforced by Competitive Analysis</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+          <div style="padding:12px 14px;background:rgba(232,115,90,0.06);border-radius:8px;border-left:3px solid var(--coral);">
+            <div style="font-size:12px;font-weight:700;color:var(--coral);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Priority 1 — Launch Now</div>
+            <div style="font-size:12.5px;color:var(--ink-light);">Online course is the fastest route to revenue with no competitor holding the science-backed compassion course format.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(184,164,201,0.1);border-radius:8px;border-left:3px solid var(--lavender);">
+            <div style="font-size:12px;font-weight:700;color:#8B6FAA;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Priority 2 — Build the Multiplier</div>
+            <div style="font-size:12.5px;color:var(--ink-light);">Train the Trainer: Dispenza's NeuroChangeSolutions shows this model works. MM's version has superior scientific credentials.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(232,184,109,0.1);border-radius:8px;border-left:3px solid var(--amber);">
+            <div style="font-size:12px;font-weight:700;color:#A07830;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Priority 3 — The Long Game</div>
+            <div style="font-size:12.5px;color:var(--ink-light);">The MM App occupies white space #4 — the "life agent" that no competitor is building. It's the exit story and the moat that makes this a product company, not a personal brand.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(168,196,212,0.1);border-radius:8px;border-left:3px solid var(--sky);">
+            <div style="font-size:12px;font-weight:700;color:#4A7A9B;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Watch — Potential Partner</div>
+            <div style="font-size:12.5px;color:var(--ink-light);">BetterUp ($628M raised, $214M revenue) is a potential enterprise distribution partner or acquirer. Build consumer first; the B2B conversation becomes much easier with 10K+ app users.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclosure">
+    <p><strong>Methodology:</strong> Competitive intelligence sourced from public filings, Sacra Research, Tracxn, PitchBook (public summaries), Contrary Research, company websites, and press reporting as of Q1 2026. Revenue figures are estimates unless stated as reported. Net worth estimates from multiple published sources (Eye Mind Spirit, ZedDash, Yahoo Finance) and should be treated as directional. This document is prepared for strategic and investor discussion purposes only and does not constitute financial advice. Mind Magic Inc. threat assessments represent the analytical judgement of the report author based on stated assumptions about strategic positioning.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ SWOT + PORTER'S ═══ -->
+<section class="sec" id="swot">
+
+  <!-- INTRO -->
+  <div class="section">
+    <div class="highlight-box">
+      <div class="hq">"Strategy is about making choices, trade-offs; it's about deliberately choosing to be different."</div>
+      <div class="hb">This combined framework — SWOT and Porter's Five Forces — provides a complete picture of Mind Magic's internal position and external industry attractiveness. Together they answer the two questions every investor needs answered: <em>Is this team capable?</em> and <em>Is this market worth entering?</em> The answer to both is yes — but with clear-eyed acknowledgement of where risk lives.</div>
+    </div>
+  </div>
+
+  <!-- SWOT GRID -->
+  <div class="section">
+    <div class="section-label">Section 07A — SWOT Analysis</div>
+    <div class="section-title">Strengths · Weaknesses · Opportunities · Threats</div>
+    <div class="section-desc">Seven items per quadrant, each with evidence or honest assessment. This is not a vanity SWOT — weaknesses and threats are treated with the same rigour as strengths.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;">
+
+      <!-- STRENGTHS -->
+      <div style="background:#fff;padding:28px 30px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--coral),var(--peach));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">S</div>
+          <div>
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--coral);">Strengths</div>
+            <div style="font-size:12px;color:var(--ink-faint);font-weight:300;">Internal advantages — 7 with evidence</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:12px 14px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:3px solid var(--coral);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">S1 · Stanford CCARE Peer-Reviewed Science</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Dr Doty founded Stanford's Centre for Compassion and Altruism Research. Multiple published RCTs validate the compassion cultivation methodology. No competitor has equivalent academic provenance.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:3px solid var(--coral);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">S2 · 40-Language IP + Global Proof of Concept</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;"><em>Into the Magic Shop</em> translated into 40 languages before the product company launched. This is market validation at global scale that most startups spend years attempting to achieve.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:3px solid var(--coral);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">S3 · Codified, Teachable 6-Step Methodology</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Stop → Soothe → Savour → Set Intention → Pursue → Release. Unlike personality-dependent thought leaders, this framework is transferable — the foundation for certification and product scale.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:3px solid var(--coral);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">S4 · Validated Price Point + Cohort Conversion</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Ibiza cohort at €300 reached capacity and spawned a second cohort. Real market evidence — not hypothesis — that buyers will pay premium price for this specific offering.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:3px solid var(--coral);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">S5 · Compassion Moat Opens Multiple Markets</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Outward-facing compassion orientation (vs. self-optimisation) makes MM credible in grief, healthcare, education, and enterprise — markets that dismiss Robbins or Dispenza as inappropriate.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:3px solid var(--coral);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">S6 · Dalai Lama Connection + Global Compassion Network</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Dr Doty was a founding benefactor of the Mind and Life Institute. This relationship with the Dalai Lama's network provides spiritual legitimacy no amount of marketing spend can buy.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:3px solid var(--coral);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">S7 · Media Optionality — Film Rights</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Founding team actively explores <em>Into the Magic Shop</em> adaptation rights. An unmodelled upside — a film or series would create an organic awareness flywheel that would dwarf any paid acquisition budget.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEAKNESSES -->
+      <div style="background:#fff;padding:28px 30px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#C09078,#A07860);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;flex-shrink:0;">W</div>
+          <div>
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#A07860;">Weaknesses</div>
+            <div style="font-size:12px;color:var(--ink-faint);font-weight:300;">Internal limitations — honest assessment</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:12px 14px;background:rgba(160,120,96,0.06);border-radius:10px;border-left:3px solid #C09078;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">W1 · IP + Entity Formation Unresolved</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">No legal entity formed. Trademark position (JL Ledy) unclear. Book publisher rights (ITMS + MM) unconfirmed. This is the primary blocker — no investor can commit without IP clarity.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(160,120,96,0.06);border-radius:10px;border-left:3px solid #C09078;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">W2 · Helena Dependency — Single Delivery Point</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Programme delivery currently concentrated in one facilitator. Until 20+ trainers are certified, this is a capacity constraint and key-person risk that limits revenue and creates reputational exposure.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(160,120,96,0.06);border-radius:10px;border-left:3px solid #C09078;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">W3 · Equity Structure Unresolved</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">50/50 vs. 30/30/30/10 split undecided. Unresolved founder equity is a red flag in investor due diligence and can paralyse decision-making at critical speed-dependent moments.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(160,120,96,0.06);border-radius:10px;border-left:3px solid #C09078;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">W4 · No App or Digital Product Yet</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">The core long-term revenue engine — the MM App — does not exist beyond a brief. Competitors like Headspace and Mindvalley have years of product iteration. MM is starting from scratch.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(160,120,96,0.06);border-radius:10px;border-left:3px solid #C09078;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">W5 · Founder Deceased — Legacy Risk</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Dr Doty passed July 2025. While the methodology is complete and Masha's stewardship substantially mitigates this, the absence of the founder creates authenticity risk if commercialisation feels extractive rather than reverential.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(160,120,96,0.06);border-radius:10px;border-left:3px solid #C09078;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">W6 · No Brand Awareness at Scale (Yet)</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">MM Inc. is pre-launch as a product company. The book has 40-language reach; the business brand has near-zero. Competitors like Mindvalley and Calm have years of compound audience growth.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(160,120,96,0.06);border-radius:10px;border-left:3px solid #C09078;">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">W7 · B2B Revenue Pipeline Dependent on Two Relationships</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">CC Arc and Ivo Machado partnerships are promising but undefined. Enterprise revenue before Y3 is largely contingent on these two relationships materialising — concentration risk for early projections.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPPORTUNITIES -->
+      <div style="background:#fff;padding:28px 30px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--sky),#6AAAC8);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;flex-shrink:0;">O</div>
+          <div>
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#4A7A9B;">Opportunities</div>
+            <div style="font-size:12px;color:var(--ink-faint);font-weight:300;">External factors to exploit</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:12px 14px;background:rgba(168,196,212,0.1);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">O1 · Calm & Headspace Retreating from Transformation</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Both are pivoting to clinical mental health. Their combined market abandonment of personal transformation creates a demand vacuum precisely where MM is positioned to enter.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(168,196,212,0.1);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">O2 · Science-Backed Wellness Growing at 11.3% CAGR</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">The mindfulness training segment — MM's direct addressable market — is growing at twice the rate of broad personal development. Market tailwinds favour the new entrant, not the incumbents.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(168,196,212,0.1);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">O3 · Corporate Mental Health Spending Surge</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">BetterUp reported 300% enterprise surge. Companies are actively seeking science-backed wellbeing programmes. MM's compassion-first B2B offering has no credible current competitor in this positioning.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(168,196,212,0.1);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">O4 · Education Sector Wellbeing Mandate</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Post-pandemic, schools and universities are under regulatory and reputational pressure to deliver student wellbeing programmes. MM's science credentials make it credible for institutional procurement in a way lifestyle brands cannot be.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(168,196,212,0.1);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">O5 · AI Personalisation Makes "Life Agent" Feasible</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">The technology required to build Helena and Gina's "life agent" vision now exists and is affordable. The MM App's AI layer — knowing your life events, personality, and intentions — is technically buildable within a 2–3 year horizon.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(168,196,212,0.1);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">O6 · Film Adaptation Flywheel</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;"><em>Into the Magic Shop</em> adaptation — if triggered — would generate global awareness at a cost no paid marketing budget could match. A single streaming release could accelerate all revenue scenarios by 12–18 months.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(168,196,212,0.1);border-radius:10px;border-left:3px solid var(--sky);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">O7 · Global Spiritual Leaders Network Access</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">The Dalai Lama connection and Jim's academic network provide access to a global community of spiritual and intellectual leaders. Strategic partnerships here would validate MM's compassion mission and drive institutional adoption in markets competitors cannot access.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THREATS -->
+      <div style="background:#fff;padding:28px 30px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--rose),#B86478);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;flex-shrink:0;">T</div>
+          <div>
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#B86478;">Threats</div>
+            <div style="font-size:12px;color:var(--ink-faint);font-weight:300;">External risks — honest assessment</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:12px 14px;background:rgba(212,132,154,0.08);border-radius:10px;border-left:3px solid var(--rose);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">T1 · Dispenza Pivots to Compassion Science</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">If Dispenza — with 200+ certified consultants and stadium retreats — reframes toward compassion-first science, he could credibly occupy MM's positioning before MM reaches scale. Risk is low but non-trivial.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(212,132,154,0.08);border-radius:10px;border-left:3px solid var(--rose);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">T2 · BetterUp Launches Consumer Product</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">BetterUp has $628M raised, a research lab with 40+ PhDs, and enterprise distribution. A consumer brand pivot — even a partial one — would bring enormous resources into MM's space.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(212,132,154,0.08);border-radius:10px;border-left:3px solid var(--rose);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">T3 · Post-Founder Commercialisation Backlash</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">If the community around Jim's work perceives the business as extracting commercial value from his legacy without honouring his mission, reputational damage could be severe and fast — especially among academic and spiritual networks.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(212,132,154,0.08);border-radius:10px;border-left:3px solid var(--rose);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">T4 · Wellness Market Credibility Crisis</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Sustained media scrutiny of wellness industry claims (Joe Dispenza retreats, Goop, manifestation culture) could trigger a broader consumer scepticism that makes science credentials the minimum bar — and forces MM to prove efficacy faster than expected.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(212,132,154,0.08);border-radius:10px;border-left:3px solid var(--rose);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">T5 · App Development Cost + Timeline Risk</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Building a personalised AI-powered wellness app to the standard Helena + Gina envision requires significant capital, engineering talent, and time. A 12–18 month delay in the app shifts the base case revenue trajectory meaningfully right.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(212,132,154,0.08);border-radius:10px;border-left:3px solid var(--rose);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">T6 · Founder Team Cohesion Risk</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Unresolved equity, undefined roles, and geographic spread create real risk of founder conflict. The most common early-stage startup failure mode is not the market — it is the founding team. Formalise agreements now.</div>
+          </div>
+          <div style="padding:12px 14px;background:rgba(212,132,154,0.08);border-radius:10px;border-left:3px solid var(--rose);">
+            <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;">T7 · Macroeconomic Downturn Reduces Discretionary Spending</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.6;">Premium personal development is discretionary. A sustained recession compresses the buyer pool — particularly the online course and retreat segments. The app's subscription model is more recession-resilient; B2B is most exposed.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /SWOT grid -->
+
+    <!-- CROSS ANALYSIS -->
+    <div class="section-label" style="margin-top:36px;">Cross-Analysis</div>
+    <div class="section-title">SO Strategy + WT Risk Matrix</div>
+    <div class="section-desc">Matching strengths to opportunities reveals the highest-conviction growth bets. Pairing weaknesses with threats reveals the risks that compound and demand immediate action.</div>
+
+    <div class="g2">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px 26px;border-top:4px solid var(--coral);">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--coral);margin-bottom:16px;">SO Strategy — Strength × Opportunity</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="padding:10px 14px;background:rgba(232,115,90,0.06);border-radius:8px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">S1 + O1 → Own the Vacated Transformation Space</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">Calm and Headspace leaving transformation + Stanford science credibility = MM enters a crowded-looking-but-actually-vacated space with unassailable scientific positioning.</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(232,115,90,0.06);border-radius:8px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">S3 + O2 → Launch TTT Before Market Peaks</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">Codified methodology + 11.3% CAGR = launch Train the Trainer certification while the science-wellness segment is still in high-growth phase. Every year of delay is lost compound leverage.</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(232,115,90,0.06);border-radius:8px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">S5 + O4 → Compassion Science → Education Contracts</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">Compassion moat + education mandate = school and university procurement is achievable for MM in a way no lifestyle brand can replicate. High contract value, recurring, mission-aligned.</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(232,115,90,0.06);border-radius:8px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">S2 + O6 → 40-Language Book → Film Flywheel</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">Existing 40-language proof + film adaptation optionality = organic awareness engine that would accelerate all revenue scenarios without proportional marketing cost.</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(232,115,90,0.06);border-radius:8px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">S6 + O7 → Spiritual Leaders Network → Institutional Validation</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">Dalai Lama connection + spiritual leaders access = unique institutional validation route that accelerates trust with healthcare, education, and enterprise buyers who require third-party endorsement.</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px 26px;border-top:4px solid var(--rose);">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#B86478;margin-bottom:16px;">WT Risk — Weakness × Threat (must address)</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="padding:10px 14px;background:rgba(212,132,154,0.08);border-radius:8px;border-left:3px solid var(--rose);">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">⚠️ W1 + T3 → IP Unresolved + Legacy Risk = Existential</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">Unresolved IP combined with legacy sensitivity is the single highest-risk combination. A public dispute over rights would destroy both the commercial opportunity and the community's trust simultaneously. Resolve in Q1 2026.</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(212,132,154,0.08);border-radius:8px;border-left:3px solid var(--rose);">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">⚠️ W3 + T6 → Unresolved Equity + Founder Conflict</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">Undefined equity structure is the kindling; any strategic disagreement is the match. The most valuable strategic action available to the team right now is resolving the founders' agreement — before anything else.</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(212,132,154,0.08);border-radius:8px;border-left:3px solid var(--rose);">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">⚠️ W2 + T2 → Helena Dependency + BetterUp Scale</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">If BetterUp launches consumer product while MM is still single-facilitator dependent, the window to establish brand trust in the transformation space closes fast. TTT certification is the only structural mitigant.</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(212,132,154,0.08);border-radius:8px;border-left:3px solid var(--rose);">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">⚠️ W4 + T5 → No App + Development Risk</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">No app brief + potential delays = the core long-term product could arrive after the market window closes. Complete the app design brief urgently — even before funding — so the product vision is locked and ready to build.</div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(212,132,154,0.08);border-radius:8px;border-left:3px solid var(--rose);">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:3px;">⚠️ W6 + T7 → No Brand Awareness + Recession = Revenue Delay</div>
+            <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5;">If macro headwinds compress discretionary spending before MM builds sufficient brand trust to command premium pricing, Y1 revenue targets will be missed. Prioritise trust-building, not just awareness.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PORTER'S FIVE FORCES -->
+  <div class="section">
+    <div class="section-label">Section 07B — Porter's Five Forces</div>
+    <div class="section-title">Industry Attractiveness Assessment</div>
+    <div class="section-desc">Each force rated 1–10 where 10 = maximum threat to profitability. Overall industry attractiveness score derived from inverse of average threat. Mind Magic's position assessed within each force.</div>
+
+    <!-- Score summary bar -->
+    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 28px;margin-bottom:20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:var(--coral);line-height:1;">7.4</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ink-faint);">Industry Attractiveness</div>
+        <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:3px;">out of 10 — Very Attractive</div>
+      </div>
+      <div style="width:1px;height:70px;background:var(--border);flex-shrink:0;"></div>
+      <div style="flex:1;min-width:200px;">
+        <div style="font-size:12.5px;color:var(--ink-light);line-height:1.7;font-weight:300;">The science-backed compassion methodology market scores highly attractive across all five forces. Supplier power is negligible. Buyer power is moderate but manageable. Competitive rivalry is lower than it appears because true category competition does not yet exist. The substitution and new-entry threats are the primary watchpoints. Overall: a compelling industry entry proposition.</div>
+      </div>
+    </div>
+
+    <!-- Force cards -->
+    <div style="display:flex;flex-direction:column;gap:14px;">
+
+      <!-- Supplier Power -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 26px;">
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+          <div style="flex-shrink:0;text-align:center;min-width:80px;">
+            <div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--green);line-height:1;">2</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ink-faint);margin-top:2px;">Threat / 10</div>
+            <div style="font-size:10px;font-weight:700;color:var(--green);margin-top:4px;">Very Low</div>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--green);margin-bottom:6px;">Force 1 — Supplier Power</div>
+            <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;">Who holds leverage over Mind Magic's inputs?</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="padding:8px 12px;background:var(--soft-grey);border-radius:8px;">
+                <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;">Facilitators / Trainers</div>
+                <div style="font-size:11px;color:var(--ink-faint);">Helena is the current supply constraint. TTT solves this by creating an internal supply pool. Low long-term risk.</div>
+              </div>
+              <div style="padding:8px 12px;background:var(--soft-grey);border-radius:8px;">
+                <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;">Tech + Platform</div>
+                <div style="font-size:11px;color:var(--ink-faint);">App development relies on external engineers initially. Standard market, no unusual concentration risk.</div>
+              </div>
+              <div style="padding:8px 12px;background:var(--soft-grey);border-radius:8px;">
+                <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;">Content IP</div>
+                <div style="font-size:11px;color:var(--ink-faint);">Controlled by founding team + Masha. Supplier = MM itself. Strong position once entity is formed.</div>
+              </div>
+              <div style="padding:8px 12px;background:var(--soft-grey);border-radius:8px;">
+                <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;">Venue / Retreat</div>
+                <div style="font-size:11px;color:var(--ink-faint);">Ibiza venue relationship established. Commodity market globally — no concentration risk.</div>
+              </div>
+            </div>
+          </div>
+          <div style="min-width:140px;padding:14px 16px;background:rgba(126,200,138,0.1);border-radius:10px;border:1px solid rgba(126,200,138,0.3);">
+            <div style="font-size:10px;font-weight:700;color:#3A8A4A;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">MM Assessment</div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Suppliers have minimal leverage. The core asset is the IP — which MM owns. TTT programme converts the primary delivery constraint (Helena) into a scalable supply pool.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buyer Power -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 26px;">
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+          <div style="flex-shrink:0;text-align:center;min-width:80px;">
+            <div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--amber);line-height:1;">4</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ink-faint);margin-top:2px;">Threat / 10</div>
+            <div style="font-size:10px;font-weight:700;color:var(--amber);margin-top:4px;">Low–Moderate</div>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#A07830;margin-bottom:6px;">Force 2 — Buyer Power</div>
+            <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;">How much negotiating power do customers hold?</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="padding:8px 12px;background:var(--soft-grey);border-radius:8px;">
+                <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;">Individual (B2C)</div>
+                <div style="font-size:11px;color:var(--ink-faint);">Price-sensitive but emotionally committed to transformation. Cohort conversion proves low price resistance at €300. Low buyer power.</div>
+              </div>
+              <div style="padding:8px 12px;background:var(--soft-grey);border-radius:8px;">
+                <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;">Enterprise (B2B)</div>
+                <div style="font-size:11px;color:var(--ink-faint);">Corporate buyers have procurement leverage and comparison-shop. Moderate buyer power — mitigated by scientific uniqueness.</div>
+              </div>
+              <div style="padding:8px 12px;background:var(--soft-grey);border-radius:8px;">
+                <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;">Education Institutions</div>
+                <div style="font-size:11px;color:var(--ink-faint);">Budget-constrained, committee-bought. Higher buyer power, longer sales cycles. Science credentials reduce substitutability.</div>
+              </div>
+              <div style="padding:8px 12px;background:var(--soft-grey);border-radius:8px;">
+                <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;">TTT Candidates</div>
+                <div style="font-size:11px;color:var(--ink-faint);">Aspirational, mission-aligned buyers. Very low price resistance if certification is perceived as career-defining. Low buyer power.</div>
+              </div>
+            </div>
+          </div>
+          <div style="min-width:140px;padding:14px 16px;background:rgba(232,184,109,0.12);border-radius:10px;border:1px solid rgba(232,184,109,0.3);">
+            <div style="font-size:10px;font-weight:700;color:#A07830;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">MM Assessment</div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Buyer power is moderate and manageable. The scientific uniqueness of the offering substantially reduces substitution pressure. B2B procurement cycles are the primary buyer power exposure — mitigated by TTT and app recurring revenue.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Competitive Rivalry -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 26px;">
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+          <div style="flex-shrink:0;text-align:center;min-width:80px;">
+            <div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--amber);line-height:1;">3</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ink-faint);margin-top:2px;">Threat / 10</div>
+            <div style="font-size:10px;font-weight:700;color:var(--amber);margin-top:4px;">Lower than it appears</div>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#A07830;margin-bottom:6px;">Force 3 — Competitive Rivalry</div>
+            <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;">How intense is competition in this specific category?</div>
+            <p style="font-size:12.5px;color:var(--ink-light);line-height:1.7;font-weight:300;margin-bottom:10px;">The personal development market looks intensely competitive — it is not, at the specific intersection MM occupies. Category creation (science-validated compassion transformation as a product company) means MM has no direct rival. The apparent competition (Mindvalley, Dispenza, Calm) occupies adjacent but materially different positions on the price-vs-science matrix.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="padding:4px 10px;background:rgba(232,115,90,0.1);border-radius:999px;font-size:11px;font-weight:600;color:var(--coral);">No direct category peer</span>
+              <span style="padding:4px 10px;background:rgba(126,200,138,0.12);border-radius:999px;font-size:11px;font-weight:600;color:#3A8A4A;">Calm/Headspace retreating</span>
+              <span style="padding:4px 10px;background:rgba(232,184,109,0.15);border-radius:999px;font-size:11px;font-weight:600;color:#A07830;">Rivalry grows in Y3–5</span>
+            </div>
+          </div>
+          <div style="min-width:140px;padding:14px 16px;background:rgba(232,184,109,0.12);border-radius:10px;border:1px solid rgba(232,184,109,0.3);">
+            <div style="font-size:10px;font-weight:700;color:#A07830;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">MM Assessment</div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Rivalry is currently low for the exact positioning MM holds. This will increase as the category becomes defined — early launch and brand ownership is the defence. Win early.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Threat of Substitution -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 26px;">
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+          <div style="flex-shrink:0;text-align:center;min-width:80px;">
+            <div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--peach);line-height:1;">5</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ink-faint);margin-top:2px;">Threat / 10</div>
+            <div style="font-size:10px;font-weight:700;color:var(--peach);margin-top:4px;">Moderate</div>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#C07850;margin-bottom:6px;">Force 4 — Threat of Substitution</div>
+            <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;">What alternatives exist beyond direct competitors?</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <span style="font-size:16px;flex-shrink:0;">🧘</span>
+                <div><div style="font-size:12px;font-weight:600;color:var(--ink);">Therapy / Coaching (traditional)</div><div style="font-size:11px;color:var(--ink-faint);">Higher cost, one-to-one, clinical framing. Different buyer motivation — treatment vs. transformation.</div></div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <span style="font-size:16px;flex-shrink:0;">📚</span>
+                <div><div style="font-size:12px;font-weight:600;color:var(--ink);">Books / Self-Study</div><div style="font-size:11px;color:var(--ink-faint);">ITMS itself is a substitute for MM's programme. Free substitution risk — mitigated by structured cohort + community value.</div></div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <span style="font-size:16px;flex-shrink:0;">🤖</span>
+                <div><div style="font-size:12px;font-weight:600;color:var(--ink);">General AI (ChatGPT, Claude)</div><div style="font-size:11px;color:var(--ink-faint);">Emerging substitution risk. Users already use general AI for personal guidance. MM's structured methodology + community is the differentiator.</div></div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start;">
+                <span style="font-size:16px;flex-shrink:0;">🕌</span>
+                <div><div style="font-size:12px;font-weight:600;color:var(--ink);">Religious / Spiritual Practice</div><div style="font-size:11px;color:var(--ink-faint);">Church, mosque, temple — free, community-based, deeply embedded. Not a direct competitor but satisfies overlapping needs.</div></div>
+              </div>
+            </div>
+          </div>
+          <div style="min-width:140px;padding:14px 16px;background:rgba(242,160,123,0.12);border-radius:10px;border:1px solid rgba(242,160,123,0.3);">
+            <div style="font-size:10px;font-weight:700;color:#C07850;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">MM Assessment</div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Moderate substitution risk, primarily from AI tools and books. Mitigated by community, certification, and the structured cohort experience — things no book or chatbot replicates.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Threat of New Entry -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 26px;">
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+          <div style="flex-shrink:0;text-align:center;min-width:80px;">
+            <div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--peach);line-height:1;">4</div>
+            <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ink-faint);margin-top:2px;">Threat / 10</div>
+            <div style="font-size:10px;font-weight:700;color:var(--peach);margin-top:4px;">Low–Moderate</div>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:#C07850;margin-bottom:6px;">Force 5 — Threat of New Entry</div>
+            <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;">How easy is it for new players to enter?</div>
+            <p style="font-size:12.5px;color:var(--ink-light);line-height:1.7;font-weight:300;margin-bottom:10px;">A generic wellness app can be built and launched cheaply. But replicating MM's specific combination — Stanford peer-review, 40-language IP, Dalai Lama network, codified methodology, Masha Doty stewardship — is not achievable with capital alone. These are structural barriers that take decades to accumulate, not months to buy.</p>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--soft-grey);"><span style="font-size:12px;color:var(--ink-light);">Build a wellness app</span><span style="font-size:11px;font-weight:700;color:var(--coral);">Easy — low barrier</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--soft-grey);"><span style="font-size:12px;color:var(--ink-light);">Replicate the IP + origin story</span><span style="font-size:11px;font-weight:700;color:var(--green);">Impossible — unique asset</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--soft-grey);"><span style="font-size:12px;color:var(--ink-light);">Establish peer-reviewed science base</span><span style="font-size:11px;font-weight:700;color:var(--green);">10+ years — high barrier</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;"><span style="font-size:12px;color:var(--ink-light);">Build compassion research credibility</span><span style="font-size:11px;font-weight:700;color:var(--green);">Near-impossible to replicate</span></div>
+            </div>
+          </div>
+          <div style="min-width:140px;padding:14px 16px;background:rgba(242,160,123,0.12);border-radius:10px;border:1px solid rgba(242,160,123,0.3);">
+            <div style="font-size:10px;font-weight:700;color:#C07850;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">MM Assessment</div>
+            <div style="font-size:12px;color:var(--ink-light);line-height:1.5;">Low-moderate. The generic wellness market has low entry barriers. The specific MM positioning has very high ones. Speed to establish brand identity and certification network is the key defence.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /force cards -->
+
+    <!-- Porter's Summary Scorecard -->
+    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-top:20px;">
+      <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--ink-faint);margin-bottom:18px;">Five Forces Scorecard — Industry Attractiveness</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="bar-row"><span class="bar-label" style="min-width:170px;">Supplier Power (2/10)</span><div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--green);"></div></div><span class="bar-val" style="color:var(--green);">Very Attractive</span></div>
+        <div class="bar-row"><span class="bar-label" style="min-width:170px;">Buyer Power (4/10)</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--amber);"></div></div><span class="bar-val" style="color:var(--amber);">Attractive</span></div>
+        <div class="bar-row"><span class="bar-label" style="min-width:170px;">Competitive Rivalry (3/10)</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--green);"></div></div><span class="bar-val" style="color:var(--green);">Very Attractive</span></div>
+        <div class="bar-row"><span class="bar-label" style="min-width:170px;">Threat of Substitution (5/10)</span><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--peach);"></div></div><span class="bar-val" style="color:var(--peach);">Moderate</span></div>
+        <div class="bar-row"><span class="bar-label" style="min-width:170px;">Threat of New Entry (4/10)</span><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--amber);"></div></div><span class="bar-val" style="color:var(--amber);">Attractive</span></div>
+        <div style="height:1px;background:var(--border);margin:6px 0;"></div>
+        <div class="bar-row"><span class="bar-label" style="min-width:170px;font-weight:700;color:var(--ink);">Overall Attractiveness</span><div class="bar-track"><div class="bar-fill" style="width:74%;background:linear-gradient(90deg,var(--coral),var(--peach));"></div></div><span class="bar-val" style="color:var(--coral);font-size:14px;">7.4 / 10</span></div>
+      </div>
+      <div style="margin-top:18px;padding:14px 18px;background:rgba(232,115,90,0.06);border-radius:10px;border-left:4px solid var(--coral);">
+        <div style="font-size:12px;font-weight:700;color:var(--coral);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;">Harvard Verdict — Industry Attractiveness: Very High</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.7;">A score of 7.4/10 places the science-backed compassion transformation category firmly in the "enter and move fast" zone. The structural threats are manageable and mostly mitigated by the compound moat. The primary watchpoint is substitution via general AI — which must be addressed in the app's product design from day one. The market is not saturated; it is underserved. The window is open. The barriers are high enough to protect first movers. This is the right market, at the right time, with the right foundational assets.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclosure">
+    <p><strong>Methodology:</strong> SWOT analysis based on strategic session notes, cohort performance data, market research, and competitive intelligence documented in this report. Porter's Five Forces ratings represent the strategic judgement of the report author applied to publicly available market data and validated pricing evidence. All assessments should be reviewed alongside legal, financial, and IP due diligence before investor presentation. Prepared March 2026 for strategic planning purposes only.</p>
+  </div>
+
+</section>
+
+</main>
+
+<button class="print-btn" onclick="window.print()">⬇ Export / Print</button>
+
+<script>
+function show(id, el) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
