@@ -24,7 +24,7 @@
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'DM Sans',sans-serif; background:var(--off-white); color:var(--ink); min-height:100vh; }
-
+ 
 header {
   background: linear-gradient(135deg, #F2C27A 0%, #EFA07A 20%, #E8735A 38%, #C97090 55%, #B09AC8 72%, #9AB8D8 88%, #A8C8E0 100%);
   padding: 48px 60px 0;
@@ -56,40 +56,40 @@ header::after {
 .stat:last-child { border-right:none; }
 .stat-n { font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:#fff; line-height:1; }
 .stat-l { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-top:3px; }
-
+ 
 nav { background:#fff; border-bottom:1px solid var(--border); padding:0 60px; display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; box-shadow:0 2px 12px rgba(100,60,40,0.06); position:sticky; top:0; z-index:100; }
 nav::-webkit-scrollbar { display:none; }
 .tab { padding:16px 20px; font-size:12px; letter-spacing:1px; text-transform:uppercase; font-weight:600; cursor:pointer; color:var(--ink-faint); border-bottom:3px solid transparent; white-space:nowrap; transition:all 0.2s; position:relative; bottom:-1px; }
 .tab:hover { color:var(--coral); }
 .tab.active { color:var(--coral); border-bottom-color:var(--coral); }
-
+ 
 main { max-width:1400px; margin:0 auto; padding:40px 60px; }
 @media(max-width:900px) { header{padding:32px 20px 0;} nav{padding:0 16px;} main{padding:28px 20px;} .header-inner{flex-direction:column;} .header-right{min-width:unset;width:100%;} .g2,.g3,.g4{grid-template-columns:1fr!important;} }
 @media(max-width:1100px) { .g4{grid-template-columns:1fr 1fr!important;} }
-
+ 
 .sec { display:none; animation:fadeUp 0.35s ease; }
 .sec.active { display:block; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
 .section-head { margin-bottom:32px; }
 .section-head h2 { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--ink); margin-bottom:5px; }
 .section-head p { font-size:13px; color:var(--ink-faint); font-weight:300; }
-
+ 
 .card { background:#fff; border-radius:14px; padding:24px 28px; border:1px solid var(--border); box-shadow:var(--shadow); }
 .card-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; font-weight:600; margin-bottom:12px; }
 .card h3 { font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:var(--ink); margin-bottom:10px; }
 .card p { font-size:13.5px; line-height:1.7; color:var(--ink-light); font-weight:300; }
-
+ 
 .g2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
 .g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:20px; }
 .g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:20px; }
-
+ 
 .vision-hero { background:linear-gradient(135deg,#FDF0E8 0%,#F5E8F0 50%,#EAE8F5 100%); border:1px solid rgba(200,160,150,0.25); border-radius:16px; padding:36px 40px; margin-bottom:20px; position:relative; overflow:hidden; }
 .vision-hero::before { content:'"'; font-family:'Playfair Display',serif; font-size:220px; color:rgba(232,115,90,0.07); position:absolute; top:-40px; left:10px; line-height:1; pointer-events:none; }
 .vision-hero .qtext { font-family:'Playfair Display',serif; font-size:clamp(17px,2.5vw,24px); font-style:italic; color:var(--coral); line-height:1.5; position:relative; z-index:1; margin-bottom:12px; }
 .vision-hero .body { font-size:14px; line-height:1.75; color:var(--ink-light); font-weight:300; max-width:800px; }
 .founder-chips { display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
 .fchip { background:#fff; border:1px solid rgba(200,160,150,0.3); border-radius:999px; padding:6px 16px; font-size:13px; color:var(--ink-light); font-weight:500; }
-
+ 
 .pillars-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; margin-bottom:20px; }
 .pillar { background:#fff; border:1px solid var(--border); border-radius:12px; padding:16px 18px; border-top:4px solid; transition:transform 0.2s,box-shadow 0.2s; }
 .pillar:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(100,60,40,0.1); }
@@ -102,7 +102,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
 .b-growth { background:rgba(184,164,201,0.2); color:#8B6FAA; }
 .b-impact { background:rgba(168,196,212,0.25); color:#4A7A9B; }
 .b-future { background:rgba(212,132,154,0.15); color:var(--rose); }
-
+ 
 .oitem { display:flex; align-items:flex-start; gap:14px; padding:13px 16px; border-radius:10px; background:#fff; border:1px solid var(--border); margin-bottom:8px; cursor:pointer; transition:all 0.2s; }
 .oitem:hover { border-color:rgba(232,115,90,0.3); background:#FFFAF8; }
 .oitem.done { opacity:0.4; }
@@ -116,13 +116,13 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
 .t-ops { background:rgba(168,196,212,0.25); color:#4A7A9B; }
 .t-partner { background:rgba(212,132,154,0.15); color:var(--rose); }
 .t-design { background:rgba(232,184,109,0.2); color:#A07830; }
-
+ 
 .strategy-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:22px 24px; display:flex; gap:16px; align-items:flex-start; transition:all 0.2s; margin-bottom:14px; }
 .strategy-card:hover { border-color:rgba(232,115,90,0.3); box-shadow:var(--shadow); }
 .s-num { font-family:'Playfair Display',serif; font-size:42px; font-weight:900; line-height:1; color:var(--soft-grey); min-width:42px; }
 .s-content h4 { font-size:14px; font-weight:600; color:var(--ink); margin-bottom:5px; }
 .s-content p { font-size:13px; color:var(--ink-faint); line-height:1.6; font-weight:300; }
-
+ 
 .matrix-container { background:#fff; border:1px solid var(--border); border-radius:14px; padding:28px; margin-bottom:20px; }
 .matrix-chart { position:relative; width:100%; padding-top:52%; background:linear-gradient(135deg,#FDF8F4 0%,#F5F0FA 100%); border-radius:10px; border:1px solid var(--border); overflow:hidden; }
 .mx-inner { position:absolute; inset:0; }
@@ -137,13 +137,13 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
 .mx-dot:hover .mx-dot-circle { transform:scale(1.4); }
 .mx-dot-circle { border-radius:50%; border:3px solid #fff; box-shadow:0 3px 12px rgba(0,0,0,0.15); transition:transform 0.2s; }
 .mx-dot-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; text-align:center; white-space:nowrap; }
-
+ 
 .pcard { background:#fff; border:1px solid var(--border); border-radius:14px; padding:24px 28px; border-top:5px solid; }
 .pcard h3 { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--ink); margin-bottom:8px; }
 .pcard p { font-size:13.5px; color:var(--ink-light); line-height:1.7; font-weight:300; margin-bottom:14px; }
 .chips { display:flex; gap:8px; flex-wrap:wrap; }
 .chip { background:var(--soft-grey); border-radius:20px; padding:4px 12px; font-size:11px; color:var(--ink-light); font-weight:500; }
-
+ 
 /* BUSINESS PLAN */
 .bp-hero { background:linear-gradient(135deg,#FDEDE8 0%,#F5EAF5 50%,#EAEeF8 100%); border:1px solid rgba(200,160,150,0.2); border-radius:16px; padding:32px 36px; margin-bottom:24px; }
 .bp-hero h3 { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:8px; }
@@ -165,7 +165,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
 .rev-stream p { font-size:12.5px; color:var(--ink-faint); line-height:1.6; font-weight:300; }
 .rev-range { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--ink); margin-top:10px; }
 .rev-range span { font-size:11px; font-family:'DM Sans',sans-serif; font-weight:400; color:var(--ink-faint); }
-
+ 
 /* NEXT STEPS */
 .next-step { background:#fff; border:1px solid var(--border); border-radius:14px; padding:22px 26px; margin-bottom:14px; display:flex; gap:20px; align-items:flex-start; transition:all 0.2s; }
 .next-step:hover { box-shadow:var(--shadow); border-color:rgba(232,115,90,0.25); }
@@ -180,7 +180,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
 .nsp-urgent { background:rgba(232,115,90,0.15); color:var(--coral); }
 .nsp-soon { background:rgba(232,184,109,0.2); color:#A07830; }
 .nsp-plan { background:rgba(184,164,201,0.2); color:#8B6FAA; }
-
+ 
 /* TIMELINE */
 .timeline { position:relative; padding-left:28px; }
 .timeline::before { content:''; position:absolute; left:8px; top:8px; bottom:8px; width:2px; background:linear-gradient(to bottom,var(--coral),var(--lavender)); border-radius:2px; }
@@ -189,7 +189,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
 .tl-item h4 { font-size:14px; font-weight:600; color:var(--ink); margin-bottom:3px; }
 .tl-item p { font-size:12.5px; color:var(--ink-faint); font-weight:300; line-height:1.5; }
 .tl-quarter { font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px; }
-
+ 
 .save-btn { background:linear-gradient(135deg,var(--coral),var(--peach)); color:#fff; border:none; border-radius:10px; padding:10px 22px; font-size:12px; letter-spacing:1px; text-transform:uppercase; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; transition:opacity 0.2s,transform 0.2s; margin-top:16px; }
 .save-btn:hover { opacity:0.9; transform:translateY(-1px); }
 .save-confirm { font-size:12px; color:#7EC88A; margin-left:12px; display:none; }
@@ -198,7 +198,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
 </style>
 </head>
 <body>
-
+ 
 <header>
   <div class="header-inner">
     <div class="header-left">
@@ -213,8 +213,8 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
       </div>
     </div>
     <div class="header-right">
-      <blockquote>"Extreme focus is a superpower."</blockquote>
-      <cite>— Peter Thiel</cite>
+      <blockquote>"When I changed how I looked at the world, the world changed how it looked at me."</blockquote>
+      <cite>— Dr. James Doty</cite>
     </div>
   </div>
   <div class="stats-row">
@@ -224,33 +224,27 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     <div class="stat"><div class="stat-n">2026</div><div class="stat-l">Plan Year</div></div>
   </div>
 </header>
-
+ 
 <nav>
   <a href="index.html" style="padding:16px 20px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:#8A7A72;white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:6px;border-bottom:3px solid transparent;position:relative;bottom:-1px;transition:all 0.2s;" onmouseover="this.style.color='#E8735A'" onmouseout="this.style.color='#8A7A72'">← Home</a>
   <div class="tab active" onclick="show('vision',this)">Vision</div>
   <div class="tab" onclick="show('audience',this)">Audience Branches ✦</div>
-  <div class="tab" onclick="show('verticals',this)">Verticals</div>
+  <div class="tab" onclick="show('verticals',this)">Applications</div>
   <div class="tab" onclick="show('priorities',this)">Priorities</div>
   <div class="tab" onclick="show('strategy',this)">Strategy</div>
   <div class="tab" onclick="show('bizplan',this)">Business Plan</div>
   <div class="tab" onclick="show('nextsteps',this)">Next Steps</div>
   <div class="tab" onclick="show('openitems',this)">Open Items</div>
 </nav>
-
+ 
 <main>
-
+ 
 <!-- VISION -->
 <section class="sec active" id="vision">
   <div class="section-head"><h2>Vision &amp; Mission</h2><p>What we're building, who we are, and why it matters</p></div>
   <div class="vision-hero">
-    <div class="qtext">"The Girl in the Back Row"</div>
+    <div class="qtext">"The Girl in the Back (and the Front) Row"</div>
     <div class="body">Mind Magic Inc. exists to bring Mind Magic to as many people as possible. We are building the world's most powerful mindfulness community and global compassion movement — a highly successful, highly lucrative global empire that honours Jim's legacy and the MM Core, constantly evolving. Ultimately a <strong>product company</strong> with recurring revenue streams at its heart.</div>
-    <div class="founder-chips">
-      <span class="fchip">👤 Masha + Seb</span>
-      <span class="fchip">👤 Helena</span>
-      <span class="fchip">👤 Gina</span>
-      <span class="fchip" style="color:var(--ink-faint);font-style:italic;">Equity: 50/50 or 30/30/30/10 TBD</span>
-    </div>
   </div>
   <div class="g3">
     <div class="card" style="border-top:4px solid var(--coral);">
@@ -289,19 +283,19 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     </div>
   </div>
 </section>
-
+ 
 <!-- AUDIENCE BRANCHES -->
 <section class="sec" id="audience">
   <div class="section-head">
     <h2>Audience Branches</h2>
     <p>Helena's framework — Dr Doty's work is the trunk, these are the branches off it</p>
   </div>
-
+ 
   <div class="vision-hero" style="margin-bottom:24px;">
     <div class="qtext">The trunk is set in stone. The branches grow from it.</div>
     <div class="body">Helena's proposed architecture: subdivide the 13 verticals into a cleaner audience-first framework. B2C · B2B · Education · Train the Trainer — each with clear sub-audiences and cross-cutting life themes. The 3 universal overlays (Life Events, Relationships, Day-to-day Living) cut across all audience types.</div>
   </div>
-
+ 
   <!-- Tree visual -->
   <div class="metric-block" style="margin-bottom:24px;overflow-x:auto;">
     <h4>Architecture Overview</h4>
@@ -372,7 +366,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
       </div>
     </div>
   </div>
-
+ 
   <!-- 3 Universal Overlays -->
   <div class="metric-block" style="margin-bottom:24px;">
     <h4>3 Universal Life Overlays — cut across ALL audience types</h4>
@@ -394,7 +388,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
       </div>
     </div>
   </div>
-
+ 
   <!-- Stickiness / Agent model -->
   <div class="metric-block">
     <h4>The "Never Leave" Product Vision — Helena + Gina</h4>
@@ -432,10 +426,10 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     </div>
   </div>
 </section>
-
+ 
 <!-- VERTICALS -->
 <section class="sec" id="verticals">
-  <div class="section-head"><h2>Business Verticals</h2><p>13 pillars of Mind Magic Inc. — each driving the others</p></div>
+  <div class="section-head"><h2>Applications of Mind Magic</h2><p>13 pillars of Mind Magic Inc. — each driving the others</p></div>
   <div class="pillars-grid">
     <div class="pillar" style="border-top-color:var(--coral);"><span class="pillar-badge b-core">Core</span><h4>MM App</h4><ul><li>The Product</li><li>Membership</li><li>Subscriptions</li></ul></div>
     <div class="pillar" style="border-top-color:var(--coral);"><span class="pillar-badge b-core">Core</span><h4>MM Core Program</h4><ul><li>Online delivery</li><li>In-person</li><li>Course modules</li></ul></div>
@@ -452,7 +446,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     <div class="pillar" style="border-top-color:var(--rose);"><span class="pillar-badge b-future">Future</span><h4>MM Science + Research</h4><ul><li>Academic credibility</li><li>Validate method</li><li>Long-term moat</li></ul></div>
   </div>
 </section>
-
+ 
 <!-- PRIORITIES -->
 <section class="sec" id="priorities">
   <div class="section-head"><h2>Priorities: What Next?</h2><p>Low-hanging fruit first — plotted by impact vs ease, tied to vision + mission</p></div>
@@ -491,12 +485,12 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     </div>
   </div>
 </section>
-
+ 
 <!-- STRATEGY -->
 <section class="sec" id="strategy">
   <div class="section-head"><h2>The How: From 0 → 1</h2><p>Peter Thiel's framework applied to Mind Magic — don't compete, create</p></div>
   <div class="vision-hero" style="margin-bottom:24px;">
-    <div class="qtext">"The key to success is NOT to compete with others, but to create something new and valuable that no one else can offer."</div>
+    <div class="qtext">"Key to success is NOT to compete with others, but to create something new and valuable that no one else can offer."</div>
     <div class="body" style="color:var(--ink-faint);">Thiel calls this "going from zero to one." Mind Magic has this: science-backed compassion methodology + mass accessibility + a product model. No one else offers exactly this combination.</div>
   </div>
   <div class="g2">
@@ -508,7 +502,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     <div class="strategy-card"><div class="s-num">06</div><div class="s-content"><h4>Escape Competition</h4><p>"Competition is for losers." — P. Thiel. Compete on uniqueness, not features or price. Focus relentlessly on what only MM can offer.</p></div></div>
   </div>
 </section>
-
+ 
 <!-- BUSINESS PLAN -->
 <section class="sec" id="bizplan">
   <div class="section-head"><h2>Business Plan 2026</h2><p>Revenue model, success metrics, and financial targets — edit directly below</p></div>
@@ -569,15 +563,14 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     </div>
   </div>
 </section>
-
+ 
 <!-- NEXT STEPS -->
 <section class="sec" id="nextsteps">
   <div class="section-head"><h2>Next Steps + Key Decisions</h2><p>Prioritised actions coming out of the strategy session — 3 time horizons</p></div>
   <div class="metric-block" style="margin-bottom:24px;">
     <h4>Immediate — This Week</h4>
     <div class="next-step"><div class="ns-num">1</div><div class="ns-content"><h4>Resolve Legal Entity + IP</h4><p>Check whether a Mind Magic Inc. entity already exists. Confirm IP protection status, trademark position (JL Ledy), and current book publisher rights. This is the blocker for everything else.</p><div class="ns-meta"><span class="ns-owner">Legal / All founders</span><span class="ns-priority-tag nsp-urgent">Urgent</span><span class="ns-deadline">⏱ Before any public launch</span></div></div></div>
-    <div class="next-step"><div class="ns-num">2</div><div class="ns-content"><h4>Agree Equity Structure</h4><p>Decision required: 50/50 (Masha+Seb vs Helena+Gina) or 30/30/30/10 split. Document and formalise in a founders' agreement. This underpins all decision-making going forward.</p><div class="ns-meta"><span class="ns-owner">All Founders</span><span class="ns-priority-tag nsp-urgent">Urgent</span><span class="ns-deadline">⏱ ASAP</span></div></div></div>
-    <div class="next-step"><div class="ns-num">3</div><div class="ns-content"><h4>App Design Brief</h4><p>As noted in the session: the product map needs a GRAPHIC, not a list. Commission or create a visual "Magic Balls" diagram and proper UX brief for the Mind Magic App.</p><div class="ns-meta"><span class="ns-owner">Helena + Design Lead</span><span class="ns-priority-tag nsp-urgent">Urgent</span></div></div></div>
+    <div class="next-step"><div class="ns-num">2</div><div class="ns-content"><h4>App Design Brief</h4><p>As noted in the session: the product map needs a GRAPHIC, not a list. Commission or create a visual "Magic Balls" diagram and proper UX brief for the Mind Magic App.</p><div class="ns-meta"><span class="ns-owner">Helena + Design Lead</span><span class="ns-priority-tag nsp-urgent">Urgent</span></div></div></div>
   </div>
   <div class="metric-block" style="margin-bottom:24px;">
     <h4>Short Term — Next 30 Days</h4>
@@ -594,7 +587,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     <div class="next-step"><div class="ns-num">11</div><div class="ns-content"><h4>Access Other Spiritual Leaders Network</h4><p>Map the landscape of spiritual leaders who could amplify Mind Magic's reach. Identify top 5 targets and a strategy for each. This could significantly accelerate the global compassion movement flywheel.</p><div class="ns-meta"><span class="ns-owner">All Founders</span><span class="ns-priority-tag nsp-plan">90 Days</span></div></div></div>
   </div>
 </section>
-
+ 
 <!-- OPEN ITEMS -->
 <section class="sec" id="openitems">
   <div class="section-head"><h2>Open Questions + Actions</h2><p>Click any item to mark as resolved — <span id="oi-count">18</span> remaining</p></div>
@@ -614,7 +607,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     <div>
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--rose);margin-bottom:12px;">Relationships + Partnerships</div>
       <div class="oitem" onclick="toggleOI(this)"><div class="oi-check"></div><span class="oi-text">CC Arc relationship — define scope and terms</span><span class="oi-tag t-partner">Partner</span></div>
-      <div class="oitem" onclick="toggleOI(this)"><div class="oi-check"></div><span class="oi-text">Ivo Machado — role and next steps</span><span class="oi-tag t-partner">Contact</span></div>
+      <div class="oitem" onclick="toggleOI(this)"><div class="oi-check"></div><span class="oi-text">Stanford CCARE — role and next steps</span><span class="oi-tag t-partner">Contact</span></div>
       <div class="oitem" onclick="toggleOI(this)"><div class="oi-check"></div><span class="oi-text">Other partnerships — who and how?</span><span class="oi-tag t-partner">Network</span></div>
       <div class="oitem" onclick="toggleOI(this)"><div class="oi-check"></div><span class="oi-text">Access to other spiritual leaders — route in?</span><span class="oi-tag t-partner">Leaders</span></div>
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:#A07830;margin:20px 0 12px;">Design + Docs</div>
@@ -628,7 +621,7 @@ main { max-width:1400px; margin:0 auto; padding:40px 60px; }
     </div>
   </div>
 </section>
-
+ 
 </main>
 <script>
 function show(id,el){
@@ -662,3 +655,4 @@ try {
 </script>
 </body>
 </html>
+ 
